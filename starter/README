@@ -1,0 +1,2 @@
+-cp bin/:lib/lucene-core-2.4.1.jar cs276.pe1.spell.SpellingScorer cs276.pe1.spell.KGramSpellingCorrector
+

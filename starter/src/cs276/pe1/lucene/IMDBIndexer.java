@@ -2,14 +2,15 @@ package cs276.pe1.lucene;
 
 import java.io.File;
 
+import org.apache.lucene.search.IndexSearcher;
+import org.apache.lucene.search.Searcher;
 import org.apache.lucene.analysis.standard.StandardAnalyzer;
 import org.apache.lucene.index.IndexWriter;
 import org.apache.lucene.util.Version;
 
 import cs276.pe1.lucene.IMDBParser.MoviePlotRecord;
 import org.apache.lucene.document.*;
-import org.apache.lucene.search.*;
-import org.apache.lucene.search.IndexSearcher;
+
 
 
 public class IMDBIndexer {
@@ -48,7 +49,8 @@ public class IMDBIndexer {
 		
 		// Can we make an external class?
 		
-		Searcher indexSearcher = new IndexSearcher(indexPath);
+		Searcher searcher = new IndexSearcher();
+		searcher.close();
 		System.err.println("Done");
 	}
 }

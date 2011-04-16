@@ -9,6 +9,7 @@ import org.apache.lucene.util.Version;
 import cs276.pe1.lucene.IMDBParser.MoviePlotRecord;
 import org.apache.lucene.document.*;
 import org.apache.lucene.search.*;
+import org.apache.lucene.search.IndexSearcher;
 
 
 public class IMDBIndexer {
@@ -46,8 +47,8 @@ public class IMDBIndexer {
 		writer.close();
 		
 		// Can we make an external class?
-		//Search mails having the word "java" in the subject field
-		Searcher indexSearcher = new IndexSearcher(writer);
+		
+		Searcher indexSearcher = new IndexSearcher(indexPath);
 		System.err.println("Done");
 	}
 }

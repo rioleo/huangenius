@@ -7,6 +7,7 @@ import org.apache.lucene.index.IndexWriter;
 import org.apache.lucene.util.Version;
 
 import cs276.pe1.lucene.IMDBParser.MoviePlotRecord;
+import org.apache.lucene.document.*;
 
 public class IMDBIndexer {
 	
@@ -22,6 +23,19 @@ public class IMDBIndexer {
 		IndexWriter writer = new IndexWriter(indexPath, new StandardAnalyzer(Version.LUCENE_CURRENT), true, IndexWriter.MaxFieldLength.LIMITED);
 
 		for (MoviePlotRecord rec : IMDBParser.readRecords()) {
+		
+		    Document doc = new Document();
+		    
+		    Field title = new Field("title", rec.title, Field.Store.YES, Field.Index.NOT_ANALYZED);
+		    Field plots = new Field("plots", rec.plots, Field.Store.YES, Field.Index.NOT_ANALYZED);
+		    Field authors = new Field("authors", rec.authors, Field.Store.YES, Field.Index.NOT_ANALYZED);
+		    
+		    doc.add(title);
+		    doc.add(plots);
+		    doc.add(authors);
+		
+	        writer.addDocument(doc);
+	        
 			// TODO do indexing here
 			// See IMDBParser.MoviePlotRecord for info on its fields
 			// Be sure to add all the fields to the index.

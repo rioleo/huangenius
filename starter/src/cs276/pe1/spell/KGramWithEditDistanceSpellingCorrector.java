@@ -26,10 +26,10 @@ public class KGramWithEditDistanceSpellingCorrector implements SpellingCorrector
 	        editDistances.setCount(guess, -1*StringUtils.levenshtein(word, guess));
         }
 	    
-	    System.out.println(word);
-	    for (String guess : editDistances.topK(5)) {
-	        System.out.println(guess + ": " + editDistances.getCount(guess));
-	    }
+//	    System.out.println(word);
+//	    for (String guess : editDistances.topK(5)) {
+//	        System.out.println(guess + ": " + editDistances.getCount(guess));
+//	    }
 	    
 		return editDistances.topK(5);
 	}

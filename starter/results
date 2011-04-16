@@ -9,7 +9,12 @@ colder 0.45454545454545453
 confer 0.45454545454545453
 cinder 0.45454545454545453
 concur 0.45454545454545453
-Incorrect: concider -> cider ,instead of consider
+concider
+consider: -1.0
+considers: -2.0
+coincided: -2.0
+coincide: -2.0
+cider: -3.0
 Word: hierchy
 hierarchy 0.8
 kerchief 0.4166666666666667
@@ -21,6 +26,12 @@ thierry 0.3333333333333333
 chiefly 0.3333333333333333
 anarchy 0.3333333333333333
 archery 0.3333333333333333
+hierchy
+hierarchy: -2.0
+kerchief: -5.0
+kerchiefs: -6.0
+handkerchief: -7.0
+handkerchiefs: -8.0
 Word: valubale
 vale 0.625
 value 0.5555555555555556
@@ -32,7 +43,12 @@ ovale 0.4
 valueless 0.38461538461538464
 valuables 0.38461538461538464
 valentine 0.38461538461538464
-Incorrect: valubale -> vale ,instead of valuable
+valubale
+valuable: -1.0
+value: -3.0
+valve: -4.0
+vale: -4.0
+valse: -4.0
 Word: valuble
 valuable 0.7
 vale 0.625
@@ -44,6 +60,12 @@ ruble 0.4
 valve 0.4
 valse 0.4
 valet 0.4
+valuble
+valuable: -1.0
+valuables: -2.0
+value: -2.0
+vale: -3.0
+invaluable: -3.0
 Word: sorces
 sources 0.6666666666666666
 sores 0.625
@@ -55,6 +77,13 @@ sorts 0.4444444444444444
 soles 0.4444444444444444
 successor 0.4166666666666667
 slices 0.4
+sorces
+sordes: -1.0
+forces: -1.0
+sores: -1.0
+sources: -1.0
+successors: -6.0
+Incorrect: sorces -> sordes, instead of sources --------------------
 Word: comittee
 committee 0.9
 comite 0.7777777777777778
@@ -66,6 +95,12 @@ comte 0.5
 composite 0.46153846153846156
 commit 0.45454545454545453
 committing 0.42857142857142855
+comittee
+committee: -1.0
+committed: -2.0
+comite: -2.0
+committees: -2.0
+committeemen: -4.0
 Word: transportibility
 transport 0.5
 transporting 0.5
@@ -77,7 +112,13 @@ transported 0.45
 tranquility 0.45
 tranquillity 0.42857142857142855
 irresponsibility 0.4166666666666667
-Incorrect: transportibility -> transport ,instead of transportability
+transportibility
+responsibility: -5.0
+transportation: -6.0
+transporting: -6.0
+transports: -7.0
+transport: -7.0
+Incorrect: transportibility -> responsibility, instead of transportability --------------------
 Word: miniscule
 minimise 0.5
 misrule 0.5
@@ -89,7 +130,13 @@ molecule 0.38461538461538464
 reminiscence 0.375
 mule 0.36363636363636365
 mile 0.36363636363636365
-Incorrect: miniscule -> minimise ,instead of minuscule
+miniscule
+misrule: -3.0
+mingle: -4.0
+minimise: -4.0
+minimize: -4.0
+masculine: -5.0
+Incorrect: miniscule -> misrule, instead of minuscule --------------------
 Word: singulaur
 singular 0.7272727272727273
 singularly 0.5
@@ -101,6 +148,12 @@ sing 0.36363636363636365
 sinclair 0.35714285714285715
 sings 0.3333333333333333
 singing 0.3333333333333333
+singulaur
+singular: -1.0
+singularly: -3.0
+singularity: -4.0
+singer: -4.0
+simulating: -6.0
 Word: cemetary
 cemetery 0.6363636363636364
 complementary 0.4375
@@ -112,6 +165,12 @@ tarry 0.36363636363636365
 chary 0.36363636363636365
 carry 0.36363636363636365
 momentary 0.35714285714285715
+cemetary
+cemetery: -1.0
+dietary: -3.0
+commentary: -3.0
+elementary: -3.0
+complementary: -5.0
 Word: semetary
 secretary 0.5833333333333334
 seminary 0.5
@@ -123,7 +182,13 @@ dietary 0.4166666666666667
 sanitary 0.38461538461538464
 symmetry 0.38461538461538464
 solitary 0.38461538461538464
-Incorrect: semetary -> secretary ,instead of cemetery
+semetary
+sedentary: -2.0
+seminary: -2.0
+secretary: -2.0
+starry: -4.0
+supplementary: -5.0
+Incorrect: semetary -> sedentary, instead of cemetery --------------------
 Word: reafreshment
 refreshment 0.7692307692307693
 refreshments 0.6
@@ -135,6 +200,12 @@ represent 0.4
 resident 0.4
 regiment 0.4
 readjustment 0.3888888888888889
+reafreshment
+refreshment: -1.0
+refreshments: -2.0
+resentment: -5.0
+resent: -6.0
+rent: -8.0
 Word: refreshmant
 refreshment 0.6923076923076923
 refreshments 0.5333333333333333
@@ -146,6 +217,12 @@ resistant 0.4
 resultant 0.4
 resent 0.38461538461538464
 restaurant 0.375
+refreshmant
+refreshment: -1.0
+refreshments: -2.0
+refresh: -4.0
+refreshed: -4.0
+resonant: -5.0
 Word: refresment
 refreshment 0.75
 resentment 0.5833333333333334
@@ -157,6 +234,12 @@ impressment 0.4666666666666667
 restatement 0.4666666666666667
 represent 0.46153846153846156
 resident 0.46153846153846156
+refresment
+refreshment: -1.0
+refreshments: -2.0
+refinement: -3.0
+resentment: -4.0
+resent: -4.0
 Word: refressmunt
 refreshment 0.4666666666666667
 resent 0.38461538461538464
@@ -168,6 +251,12 @@ resonant 0.3333333333333333
 represent 0.3333333333333333
 refreshed 0.3333333333333333
 rent 0.3333333333333333
+refressmunt
+refreshment: -2.0
+refreshments: -3.0
+refresh: -5.0
+remount: -6.0
+resent: -6.0
 Word: totaly
 totally 0.875
 total 0.625
@@ -179,6 +268,13 @@ teetotaler 0.38461538461538464
 toy 0.375
 fatally 0.36363636363636365
 vitally 0.36363636363636365
+totaly
+total: -1.0
+totally: -1.0
+totaled: -2.0
+tolly: -2.0
+italy: -2.0
+Incorrect: totaly -> total, instead of totally --------------------
 Word: centraly
 central 0.7
 centralized 0.5
@@ -190,7 +286,13 @@ centred 0.4166666666666667
 centres 0.4166666666666667
 ventral 0.4166666666666667
 centralization 0.4117647058823529
-Incorrect: centraly -> central ,instead of centrally
+centraly
+central: -1.0
+centre: -3.0
+centralized: -4.0
+concentrically: -6.0
+translucently: -9.0
+Incorrect: centraly -> central, instead of centrally --------------------
 Word: ment
 moment 0.7142857142857143
 meant 0.5714285714285714
@@ -202,7 +304,12 @@ memento 0.5
 foment 0.5
 lament 0.5
 mental 0.5
-Incorrect: ment -> moment ,instead of meant
+ment
+meant: -1.0
+moment: -2.0
+movement: -4.0
+monument: -4.0
+merriment: -5.0
 Word: somone
 someone 0.6666666666666666
 some 0.5
@@ -214,6 +321,12 @@ shone 0.4444444444444444
 sooner 0.4
 sombre 0.4
 son 0.375
+somone
+someone: -1.0
+some: -2.0
+solomon: -3.0
+sorbonne: -3.0
+lonesome: -5.0
 Word: possable
 possible 0.6363636363636364
 presupposable 0.5333333333333333
@@ -225,6 +338,12 @@ ossible 0.4166666666666667
 pliable 0.4166666666666667
 palpable 0.4166666666666667
 payable 0.4166666666666667
+possable
+possible: -1.0
+portable: -2.0
+impossible: -3.0
+sable: -3.0
+presupposable: -6.0
 Word: choise
 chose 0.625
 chaise 0.5555555555555556
@@ -236,7 +355,12 @@ choir 0.4444444444444444
 noise 0.4444444444444444
 chase 0.4444444444444444
 chinoises 0.4166666666666667
-Incorrect: choise -> chose ,instead of choice
+choise
+choice: -1.0
+chaise: -1.0
+chose: -1.0
+choose: -1.0
+chemise: -2.0
 Word: descide
 decide 0.625
 decides 0.5555555555555556
@@ -248,6 +372,12 @@ decided 0.4
 descry 0.4
 desire 0.4
 divide 0.4
+descide
+decide: -1.0
+describe: -2.0
+deride: -2.0
+decides: -2.0
+de: -5.0
 Word: awfall
 all 0.5714285714285714
 fall 0.5
@@ -259,7 +389,13 @@ awfully 0.36363636363636365
 alluvial 0.36363636363636365
 footfall 0.3333333333333333
 downfall 0.3333333333333333
-Incorrect: awfall -> all ,instead of awful
+awfall
+fall: -2.0
+befall: -2.0
+awful: -2.0
+all: -3.0
+al: -4.0
+Incorrect: awfall -> fall, instead of awful --------------------
 Word: afful
 awful 0.5
 artful 0.4444444444444444
@@ -271,6 +407,12 @@ affect 0.3
 fitful 0.3
 fulfil 0.3
 afford 0.3
+afful
+awful: -1.0
+afflux: -2.0
+artful: -2.0
+lawful: -2.0
+full: -3.0
 Word: uneque
 une 0.5714285714285714
 unique 0.5555555555555556
@@ -282,7 +424,12 @@ equine 0.4
 cheque 0.4
 untrue 0.4
 undone 0.4
-Incorrect: uneque -> une ,instead of unique
+uneque
+unique: -1.0
+undue: -2.0
+unequal: -2.0
+une: -3.0
+unequaled: -3.0
 Word: articals
 articles 0.5
 artificial 0.42857142857142855
@@ -294,6 +441,12 @@ arts 0.4
 cortical 0.38461538461538464
 arsenals 0.38461538461538464
 artifice 0.38461538461538464
+articals
+articles: -2.0
+artists: -3.0
+artistic: -4.0
+artificial: -4.0
+urticarial: -5.0
 Word: febuary
 february 0.7
 ferry 0.4
@@ -305,6 +458,12 @@ marbury 0.3333333333333333
 fury 0.3
 vary 0.3
 fear 0.3
+febuary
+february: -1.0
+ferry: -3.0
+feebly: -4.0
+quarry: -4.0
+feb: -4.0
 Word: neccesary
 necessary 0.8181818181818182
 necessarily 0.5714285714285714
@@ -316,6 +475,12 @@ necklaces 0.3333333333333333
 necessities 0.3125
 salary 0.3076923076923077
 rosary 0.3076923076923077
+neccesary
+necessary: -2.0
+necessarily: -4.0
+unnecessary: -4.0
+necessity: -4.0
+unnecessarily: -6.0
 Word: necesary
 necessary 0.9
 necessarily 0.6153846153846154
@@ -327,6 +492,12 @@ necessities 0.3333333333333333
 salary 0.3333333333333333
 rosary 0.3333333333333333
 nearby 0.3333333333333333
+necesary
+necessary: -1.0
+necessarily: -3.0
+unnecessary: -3.0
+necessity: -3.0
+unnecessarily: -5.0
 Word: neccesary
 necessary 0.8181818181818182
 necessarily 0.5714285714285714
@@ -338,6 +509,12 @@ necklaces 0.3333333333333333
 necessities 0.3125
 salary 0.3076923076923077
 rosary 0.3076923076923077
+neccesary
+necessary: -2.0
+necessarily: -4.0
+unnecessary: -4.0
+necessity: -4.0
+unnecessarily: -6.0
 Word: necassary
 necessary 0.6666666666666666
 necessarily 0.4666666666666667
@@ -349,6 +526,12 @@ carry 0.3333333333333333
 commissary 0.3125
 salary 0.3076923076923077
 rosary 0.3076923076923077
+necassary
+necessary: -1.0
+necessarily: -3.0
+emissary: -3.0
+unnecessary: -3.0
+unnecessarily: -5.0
 Word: necassery
 necessary 0.42857142857142855
 nunnery 0.38461538461538464
@@ -360,6 +543,12 @@ cassel 0.3076923076923077
 seneca 0.3076923076923077
 assert 0.3076923076923077
 necessarily 0.29411764705882354
+necassery
+necessary: -2.0
+neisser: -3.0
+necessity: -3.0
+nursery: -4.0
+nunnery: -5.0
 Word: neccasary
 necessary 0.5384615384615384
 necessarily 0.375
@@ -371,6 +560,12 @@ nearby 0.3076923076923077
 nearly 0.3076923076923077
 savary 0.3076923076923077
 sarcasm 0.2857142857142857
+neccasary
+necessary: -2.0
+necessarily: -4.0
+unnecessary: -4.0
+salary: -5.0
+carry: -5.0
 Word: leval
 level 0.5
 legal 0.5
@@ -382,6 +577,13 @@ vale 0.375
 levi 0.375
 levy 0.375
 oval 0.375
+leval
+legal: -1.0
+level: -1.0
+val: -2.0
+lethal: -2.0
+revival: -3.0
+Incorrect: leval -> legal, instead of level --------------------
 Word: astablishing
 establishing 0.7333333333333333
 abolishing 0.6
@@ -393,6 +595,12 @@ whistling 0.4375
 relishing 0.4375
 establish 0.4375
 disabling 0.4375
+astablishing
+establishing: -1.0
+astonishing: -3.0
+stabling: -4.0
+abolishing: -4.0
+publishing: -4.0
 Word: establising
 establishing 0.7857142857142857
 stabling 0.6153846153846154
@@ -404,6 +612,12 @@ resisting 0.4666666666666667
 disabling 0.4666666666666667
 establishment 0.4444444444444444
 blistering 0.4375
+establising
+establishing: -1.0
+establishes: -3.0
+stabling: -3.0
+establish: -3.0
+established: -3.0
 Word: remine
 remind 0.5555555555555556
 refine 0.5555555555555556
@@ -415,6 +629,13 @@ reminding 0.45454545454545453
 reminder 0.45454545454545453
 reminded 0.45454545454545453
 remained 0.45454545454545453
+remine
+refine: -1.0
+remind: -1.0
+reminds: -2.0
+mine: -2.0
+feminine: -3.0
+Incorrect: remine -> refine, instead of remind --------------------
 Word: remined
 reminded 0.7
 remained 0.7
@@ -426,7 +647,13 @@ mined 0.5555555555555556
 retained 0.5454545454545454
 rejoined 0.5454545454545454
 regained 0.5454545454545454
-Incorrect: remined -> reminded ,instead of remind
+remined
+reined: -1.0
+reminded: -1.0
+refined: -1.0
+remained: -1.0
+remind: -1.0
+Incorrect: remined -> reined, instead of remind --------------------
 Word: benifit
 benefit 0.6
 bent 0.4444444444444444
@@ -438,6 +665,12 @@ benign 0.36363636363636365
 munificent 0.35714285714285715
 fit 0.3333333333333333
 bennett 0.3333333333333333
+benifit
+benefit: -1.0
+benefits: -2.0
+benefited: -3.0
+bent: -3.0
+beneficent: -4.0
 Word: addresable
 advisable 0.5
 address 0.46153846153846156
@@ -449,7 +682,13 @@ sable 0.4166666666666667
 admirable 0.4
 addressed 0.4
 agreeable 0.4
-Incorrect: addresable -> advisable ,instead of addressable
+addresable
+advisable: -3.0
+address: -4.0
+addresses: -4.0
+readable: -5.0
+able: -6.0
+Incorrect: addresable -> advisable, instead of addressable --------------------
 Word: biscits
 biscuits 0.7
 bits 0.625
@@ -461,6 +700,12 @@ bitski 0.36363636363636365
 visits 0.36363636363636365
 habits 0.36363636363636365
 scientists 0.35714285714285715
+biscits
+biscuits: -1.0
+biscuit: -2.0
+bits: -3.0
+baits: -3.0
+bites: -4.0
 Word: biscutes
 bites 0.5
 biscuits 0.5
@@ -472,7 +717,13 @@ discusses 0.35714285714285715
 acuteness 0.35714285714285715
 testis 0.3333333333333333
 babies 0.3333333333333333
-Incorrect: biscutes -> bites ,instead of biscuits
+biscutes
+disputes: -2.0
+biscuits: -2.0
+bites: -3.0
+biscuit: -3.0
+brutes: -3.0
+Incorrect: biscutes -> disputes, instead of biscuits --------------------
 Word: biscuts
 biscuits 0.7
 biscuit 0.45454545454545453
@@ -484,6 +735,12 @@ cutis 0.4
 scouts 0.36363636363636365
 bishops 0.3333333333333333
 billets 0.3333333333333333
+biscuts
+biscuits: -1.0
+biscuit: -2.0
+bouts: -3.0
+bits: -3.0
+cuts: -3.0
 Word: bisquits
 biscuits 0.6363636363636364
 bits 0.5555555555555556
@@ -495,6 +752,12 @@ bites 0.36363636363636365
 quitrents 0.35714285714285715
 fruits 0.3333333333333333
 befits 0.3333333333333333
+bisquits
+biscuits: -1.0
+biscuit: -2.0
+quits: -3.0
+suits: -3.0
+bits: -4.0
 Word: buiscits
 biscuits 0.6363636363636364
 biscuit 0.4166666666666667
@@ -506,6 +769,12 @@ baits 0.36363636363636365
 quits 0.36363636363636365
 butts 0.36363636363636365
 busts 0.36363636363636365
+buiscits
+biscuits: -2.0
+bursitis: -3.0
+biscuit: -3.0
+bits: -4.0
+circuits: -4.0
 Word: buiscuts
 biscuits 0.6363636363636364
 butts 0.5
@@ -517,6 +786,12 @@ busts 0.36363636363636365
 bursts 0.3333333333333333
 scouts 0.3333333333333333
 discuss 0.3076923076923077
+buiscuts
+biscuits: -2.0
+biscuit: -3.0
+bouts: -4.0
+butts: -4.0
+cuts: -4.0
 Word: rote
 rotate 0.7142857142857143
 route 0.5714285714285714
@@ -528,7 +803,13 @@ rooted 0.5
 rotted 0.5
 rotten 0.5
 royaute 0.4444444444444444
-Incorrect: rote -> rotate ,instead of wrote
+rote
+rot: -1.0
+route: -1.0
+wrote: -1.0
+rotate: -2.0
+remote: -2.0
+Incorrect: rote -> rot, instead of wrote --------------------
 Word: wote
 wrote 0.5714285714285714
 woe 0.5
@@ -540,6 +821,13 @@ wove 0.42857142857142855
 wore 0.42857142857142855
 note 0.42857142857142855
 white 0.375
+wote
+woe: -1.0
+vote: -1.0
+wrote: -1.0
+woot: -2.0
+wotten: -2.0
+Incorrect: wote -> woe, instead of wrote --------------------
 Word: unexpcted
 unexpected 0.75
 unelected 0.5384615384615384
@@ -551,6 +839,12 @@ unexecuted 0.5
 unexplained 0.5
 unexplored 0.5
 unconnected 0.4666666666666667
+unexpcted
+unexpected: -1.0
+unexposed: -2.0
+unelected: -2.0
+unexpectedly: -3.0
+unexpended: -3.0
 Word: unexpeted
 unexpected 0.75
 unexpended 0.6153846153846154
@@ -562,6 +856,12 @@ uncarpeted 0.5
 unexplained 0.5
 unexplored 0.5
 unexpressed 0.4666666666666667
+unexpeted
+unexpected: -1.0
+unexpended: -2.0
+unexposed: -2.0
+unexpectedly: -3.0
+unexpectedness: -5.0
 Word: unexspected
 unexpected 0.7692307692307693
 unsuspected 0.6
@@ -573,6 +873,12 @@ expected 0.5
 unconnected 0.5
 inspected 0.4666666666666667
 respected 0.4666666666666667
+unexspected
+unexpected: -1.0
+unsuspected: -2.0
+unexpectedly: -3.0
+unexecuted: -3.0
+unelected: -3.0
 Word: bicycal
 cyclical 0.5454545454545454
 biological 0.46153846153846156
@@ -584,7 +890,12 @@ bicycling 0.38461538461538464
 bicipital 0.38461538461538464
 umbilical 0.38461538461538464
 lyrical 0.3333333333333333
-Incorrect: bicycal -> cyclical ,instead of bicycle
+bicycal
+bicycle: -2.0
+cynical: -4.0
+cyclical: -4.0
+biological: -5.0
+biochemical: -5.0
 Word: bycicle
 bicycle 0.6
 cycle 0.4
@@ -596,6 +907,12 @@ vehicle 0.3333333333333333
 clavicle 0.3333333333333333
 bye 0.3333333333333333
 pedicle 0.3333333333333333
+bycicle
+bicycle: -2.0
+cycle: -3.0
+recycle: -3.0
+circle: -3.0
+semicircle: -5.0
 Word: bycycle
 bicycle 0.6666666666666666
 cycle 0.625
@@ -607,6 +924,12 @@ basle 0.3
 uncle 0.3
 bible 0.3
 bryce 0.3
+bycycle
+bicycle: -1.0
+cycle: -2.0
+recycle: -2.0
+bile: -4.0
+bye: -4.0
 Word: ofen
 often 0.5714285714285714
 offend 0.5
@@ -618,6 +941,12 @@ owen 0.42857142857142855
 omen 0.42857142857142855
 oven 0.42857142857142855
 offended 0.4
+ofen
+often: -1.0
+oxen: -1.0
+offend: -2.0
+offence: -3.0
+offense: -3.0
 Word: offen
 offend 0.625
 offence 0.5555555555555556
@@ -629,7 +958,13 @@ offenser 0.5
 offenses 0.5
 offences 0.5
 often 0.5
-Incorrect: offen -> offend ,instead of often
+offen
+offend: -1.0
+offence: -2.0
+offense: -2.0
+offender: -3.0
+offended: -3.0
+Incorrect: offen -> offend, instead of often --------------------
 Word: offten
 often 0.8571428571428571
 soften 0.5555555555555556
@@ -641,6 +976,12 @@ oft 0.375
 off 0.375
 offence 0.36363636363636365
 offense 0.36363636363636365
+offten
+often: -1.0
+soften: -2.0
+offend: -2.0
+oftener: -3.0
+oftenest: -4.0
 Word: ofton
 on 0.5
 often 0.5
@@ -652,7 +993,12 @@ eton 0.375
 anton 0.3333333333333333
 baton 0.3333333333333333
 alton 0.3333333333333333
-Incorrect: ofton -> on ,instead of often
+ofton
+often: -1.0
+ton: -2.0
+oft: -2.0
+onion: -2.0
+on: -3.0
 Word: ther
 thither 0.7142857142857143
 theater 0.625
@@ -664,7 +1010,13 @@ together 0.5555555555555556
 rather 0.5
 gather 0.5
 her 0.5
-Incorrect: ther -> thither ,instead of there
+ther
+ether: -1.0
+there: -1.0
+their: -1.0
+thither: -3.0
+theater: -3.0
+Incorrect: ther -> ether, instead of there --------------------
 Word: receit
 receipt 0.6666666666666666
 deceit 0.5555555555555556
@@ -676,6 +1028,12 @@ receiver 0.45454545454545453
 received 0.45454545454545453
 receives 0.45454545454545453
 relit 0.4444444444444444
+receit
+receipt: -1.0
+deceit: -1.0
+recent: -1.0
+recruit: -2.0
+receive: -2.0
 Word: receite
 recite 0.6666666666666666
 receive 0.6
@@ -687,7 +1045,13 @@ reunite 0.45454545454545453
 rite 0.4444444444444444
 rete 0.4444444444444444
 retraite 0.4166666666666667
-Incorrect: receite -> recite ,instead of receipt
+receite
+recite: -1.0
+receive: -1.0
+recede: -2.0
+recited: -2.0
+receipt: -2.0
+Incorrect: receite -> recite, instead of receipt --------------------
 Word: reciet
 recipient 0.5454545454545454
 regret 0.4444444444444444
@@ -699,7 +1063,13 @@ retreat 0.4
 recipe 0.4
 recite 0.4
 reject 0.4
-Incorrect: reciet -> recipient ,instead of receipt
+reciet
+secret: -2.0
+recast: -2.0
+regret: -2.0
+retort: -3.0
+recipient: -3.0
+Incorrect: reciet -> secret, instead of receipt --------------------
 Word: recipt
 receipt 0.6666666666666666
 recipe 0.5555555555555556
@@ -711,6 +1081,13 @@ resect 0.4
 recite 0.4
 reject 0.4
 recent 0.4
+recipt
+recipe: -1.0
+receipt: -1.0
+receipts: -2.0
+rescript: -2.0
+recipient: -3.0
+Incorrect: recipt -> recipe, instead of receipt --------------------
 Word: magnificnet
 magnificent 0.6
 magnet 0.5833333333333334
@@ -722,6 +1099,12 @@ magnifying 0.35294117647058826
 munificent 0.35294117647058826
 dragnet 0.3333333333333333
 significant 0.3333333333333333
+magnificnet
+magnificent: -1.0
+magnificence: -3.0
+magnifico: -3.0
+magnetic: -5.0
+magnet: -5.0
 Word: magificent
 magnificent 0.7692307692307693
 munificent 0.5714285714285714
@@ -733,6 +1116,12 @@ management 0.375
 magical 0.35714285714285715
 magician 0.3333333333333333
 reticent 0.3333333333333333
+magificent
+magnificent: -1.0
+munificent: -2.0
+magnificence: -3.0
+magnifico: -4.0
+magic: -5.0
 Word: magnifcent
 magnificent 0.7692307692307693
 magnificence 0.5333333333333333
@@ -744,6 +1133,12 @@ magnifying 0.375
 management 0.375
 manifest 0.3333333333333333
 cent 0.3333333333333333
+magnifcent
+magnificent: -1.0
+magnificence: -3.0
+munificent: -3.0
+magnified: -3.0
+magnifico: -4.0
 Word: magnifecent
 magnificent 0.7142857142857143
 magnificence 0.5
@@ -755,6 +1150,12 @@ decent 0.35714285714285715
 magnet 0.35714285714285715
 recent 0.35714285714285715
 magnifying 0.35294117647058826
+magnifecent
+magnificent: -1.0
+magnificence: -3.0
+munificent: -3.0
+magnifico: -4.0
+manifest: -4.0
 Word: magnifiscant
 magnificent 0.5625
 significant 0.47058823529411764
@@ -766,6 +1167,12 @@ manifest 0.375
 scant 0.35714285714285715
 malignant 0.35294117647058826
 miscreant 0.35294117647058826
+magnifiscant
+magnificent: -2.0
+significant: -3.0
+magnifico: -4.0
+magnified: -5.0
+insignificant: -5.0
 Word: magnifisent
 magnificent 0.7142857142857143
 magnificence 0.5
@@ -777,6 +1184,12 @@ magnet 0.35714285714285715
 magnifying 0.35294117647058826
 management 0.35294117647058826
 significant 0.3333333333333333
+magnifisent
+magnificent: -1.0
+magnificence: -3.0
+munificent: -3.0
+magnified: -3.0
+magnifico: -4.0
 Word: magnificant
 magnificent 0.7142857142857143
 significant 0.6
@@ -788,6 +1201,12 @@ significantly 0.4444444444444444
 munificent 0.4375
 manifest 0.4
 significance 0.3888888888888889
+magnificant
+magnificent: -1.0
+significant: -2.0
+magnificence: -3.0
+magnifico: -3.0
+insignificant: -4.0
 Word: chalenges
 challenges 0.9090909090909091
 challenge 0.6666666666666666
@@ -799,6 +1218,12 @@ charles 0.5
 caleches 0.46153846153846156
 changers 0.46153846153846156
 chale 0.45454545454545453
+chalenges
+challenges: -1.0
+challenged: -2.0
+challenge: -2.0
+changes: -2.0
+charges: -3.0
 Word: chalenges
 challenges 0.9090909090909091
 challenge 0.6666666666666666
@@ -810,6 +1235,12 @@ charles 0.5
 caleches 0.46153846153846156
 changers 0.46153846153846156
 chale 0.45454545454545453
+chalenges
+challenges: -1.0
+challenged: -2.0
+challenge: -2.0
+changes: -2.0
+charges: -3.0
 Word: descided
 decided 0.6666666666666666
 descended 0.5454545454545454
@@ -821,6 +1252,12 @@ descend 0.45454545454545453
 divided 0.45454545454545453
 resided 0.45454545454545453
 detested 0.45454545454545453
+descided
+decided: -1.0
+descended: -2.0
+descried: -2.0
+decides: -2.0
+described: -2.0
 Word: chosing
 choosing 0.8888888888888888
 chasing 0.6
@@ -832,6 +1269,13 @@ losing 0.5
 composing 0.5
 ceasing 0.45454545454545453
 chafing 0.45454545454545453
+chosing
+chasing: -1.0
+choosing: -1.0
+choking: -1.0
+closing: -1.0
+chopping: -2.0
+Incorrect: chosing -> chasing, instead of choosing --------------------
 Word: futher
 further 0.6666666666666666
 father 0.5555555555555556
@@ -843,6 +1287,12 @@ other 0.4444444444444444
 southerner 0.4166666666666667
 rather 0.4
 gather 0.4
+futher
+further: -1.0
+luther: -1.0
+father: -1.0
+farther: -2.0
+feather: -2.0
 Word: questionaire
 questionnaire 0.9285714285714286
 questionable 0.625
@@ -854,6 +1304,12 @@ unquestionable 0.47368421052631576
 questioning 0.47058823529411764
 questionings 0.4444444444444444
 questioningly 0.42105263157894735
+questionaire
+questionnaire: -1.0
+questionable: -2.0
+questionably: -3.0
+questions: -4.0
+question: -4.0
 Word: speaical
 spherical 0.46153846153846156
 special 0.4166666666666667
@@ -865,7 +1321,12 @@ steal 0.36363636363636365
 spear 0.36363636363636365
 speak 0.36363636363636365
 spell 0.36363636363636365
-Incorrect: speaical -> spherical ,instead of special
+speaical
+special: -2.0
+spherical: -2.0
+surgical: -3.0
+seal: -4.0
+peal: -4.0
 Word: specail
 special 0.45454545454545453
 sail 0.4444444444444444
@@ -877,6 +1338,12 @@ spill 0.4
 speech 0.36363636363636365
 specie 0.36363636363636365
 specify 0.3333333333333333
+specail
+special: -1.0
+speck: -3.0
+spoil: -3.0
+sail: -3.0
+spell: -3.0
 Word: specal
 special 0.6666666666666666
 especial 0.45454545454545453
@@ -888,6 +1355,12 @@ specially 0.4166666666666667
 recall 0.4
 spiral 0.4
 speech 0.4
+specal
+special: -1.0
+especial: -2.0
+speck: -2.0
+spell: -2.0
+specifically: -6.0
 Word: speical
 spherical 0.5
 special 0.45454545454545453
@@ -899,7 +1372,12 @@ satirical 0.38461538461538464
 spiral 0.36363636363636365
 spinal 0.36363636363636365
 periodical 0.35714285714285715
-Incorrect: speical -> spherical ,instead of special
+speical
+special: -1.0
+spherical: -2.0
+surgical: -3.0
+spell: -3.0
+specifically: -5.0
 Word: realy
 really 0.8571428571428571
 real 0.5714285714285714
@@ -911,6 +1389,13 @@ ready 0.5
 rally 0.5
 reply 0.5
 rarely 0.4444444444444444
+realy
+real: -1.0
+really: -1.0
+rely: -1.0
+readily: -2.0
+reality: -2.0
+Incorrect: realy -> real, instead of really --------------------
 Word: relley
 greeley 0.5
 rely 0.5
@@ -922,7 +1407,13 @@ revellers 0.4166666666666667
 repellent 0.4166666666666667
 rarely 0.4
 valley 0.4
-Incorrect: relley -> greeley ,instead of really
+relley
+rely: -2.0
+relay: -2.0
+greeley: -2.0
+repelled: -3.0
+wellesley: -4.0
+Incorrect: relley -> rely, instead of really --------------------
 Word: relly
 rely 0.8333333333333334
 rarely 0.625
@@ -934,7 +1425,12 @@ rally 0.5
 reply 0.5
 jelly 0.5
 relatively 0.45454545454545453
-Incorrect: relly -> rely ,instead of really
+relly
+really: -1.0
+rely: -1.0
+relay: -1.0
+telly: -1.0
+rarely: -3.0
 Word: failes
 files 0.625
 fails 0.625
@@ -946,7 +1442,13 @@ fail 0.5
 fairies 0.5
 faithlessness 0.46153846153846156
 tailless 0.45454545454545453
-Incorrect: failes -> files ,instead of fails
+failes
+files: -1.0
+fails: -1.0
+faites: -1.0
+failed: -1.0
+failures: -2.0
+Incorrect: failes -> files, instead of fails --------------------
 Word: volantry
 voluntary 0.46153846153846156
 gallantry 0.46153846153846156
@@ -958,6 +1460,12 @@ infantry 0.38461538461538464
 entry 0.36363636363636365
 peasantry 0.35714285714285715
 wintry 0.3333333333333333
+volantry
+voluntary: -2.0
+pantry: -3.0
+gallantry: -3.0
+chantry: -3.0
+idolatry: -3.0
 Word: perple
 perplex 0.6666666666666666
 people 0.5555555555555556
@@ -969,7 +1477,12 @@ perplexity 0.5
 pe 0.42857142857142855
 perpetuate 0.4166666666666667
 pimple 0.4
-Incorrect: perple -> perplex ,instead of purple
+perple
+purple: -1.0
+perplex: -1.0
+people: -1.0
+pere: -2.0
+perplexed: -3.0
 Word: perpul
 puerperal 0.6
 pull 0.5
@@ -981,7 +1494,13 @@ perusal 0.36363636363636365
 perplex 0.36363636363636365
 paul 0.3333333333333333
 pulp 0.3333333333333333
-Incorrect: perpul -> puerperal ,instead of purple
+perpul
+peril: -2.0
+perpetual: -3.0
+pull: -4.0
+puerperal: -4.0
+puerperium: -5.0
+Incorrect: perpul -> peril, instead of purple --------------------
 Word: poarple
 purple 0.5
 pole 0.4444444444444444
@@ -993,6 +1512,12 @@ pledge 0.36363636363636365
 pliable 0.3333333333333333
 plenary 0.3333333333333333
 perplex 0.3333333333333333
+poarple
+purple: -2.0
+parole: -2.0
+pole: -3.0
+pimple: -3.0
+people: -3.0
 Word: seperate
 separate 0.6363636363636364
 operate 0.5454545454545454
@@ -1004,6 +1529,12 @@ separated 0.46153846153846156
 separates 0.46153846153846156
 desperate 0.46153846153846156
 steppe 0.45454545454545453
+seperate
+separate: -1.0
+temperate: -2.0
+operate: -2.0
+serrated: -3.0
+semiliterate: -5.0
 Word: acess
 access 0.8571428571428571
 abscess 0.5555555555555556
@@ -1015,6 +1546,12 @@ paces 0.5
 faces 0.5
 acetones 0.5
 assess 0.5
+acess
+access: -1.0
+actress: -2.0
+abscess: -2.0
+accessed: -3.0
+actresses: -4.0
 Word: vairious
 various 0.7
 vainglorious 0.5714285714285714
@@ -1026,6 +1563,12 @@ furious 0.4166666666666667
 riotous 0.4166666666666667
 serious 0.4166666666666667
 vacuous 0.4166666666666667
+vairious
+various: -1.0
+variously: -3.0
+delirious: -3.0
+victorious: -4.0
+vainglorious: -4.0
 Word: beetween
 between 1.0
 been 0.625
@@ -1037,6 +1580,12 @@ benign 0.36363636363636365
 benton 0.36363636363636365
 beetles 0.3333333333333333
 brethren 0.3333333333333333
+beetween
+between: -1.0
+bwethwen: -3.0
+been: -4.0
+weeden: -4.0
+ben: -5.0
 Word: avaible
 available 0.6363636363636364
 audible 0.45454545454545453
@@ -1048,6 +1597,13 @@ bible 0.4
 avail 0.4
 aisle 0.4
 legible 0.36363636363636365
+avaible
+audible: -2.0
+available: -2.0
+availed: -2.0
+able: -3.0
+amble: -3.0
+Incorrect: avaible -> audible, instead of available --------------------
 Word: accesing
 acceding 0.6363636363636364
 accusing 0.6363636363636364
@@ -1059,7 +1615,13 @@ access 0.45454545454545453
 acting 0.45454545454545453
 aching 0.45454545454545453
 processing 0.42857142857142855
-Incorrect: accesing -> acceding ,instead of accessing
+accesing
+accusing: -1.0
+acceding: -1.0
+accepting: -2.0
+accession: -3.0
+accentuating: -5.0
+Incorrect: accesing -> accusing, instead of accessing --------------------
 Word: vairiant
 variant 0.7
 valiant 0.5454545454545454
@@ -1071,6 +1633,12 @@ irritant 0.38461538461538464
 giant 0.36363636363636365
 brilliant 0.35714285714285715
 valiantly 0.35714285714285715
+vairiant
+variant: -1.0
+valiant: -2.0
+vagrant: -2.0
+vacant: -3.0
+friant: -3.0
 Word: completly
 completely 0.75
 comply 0.7
@@ -1082,6 +1650,12 @@ incompletely 0.5333333333333333
 complexity 0.5
 complex 0.5
 completion 0.5
+completly
+completely: -1.0
+complete: -2.0
+compactly: -2.0
+completed: -2.0
+comply: -3.0
 Word: adress
 address 0.875
 addresses 0.7777777777777778
@@ -1093,6 +1667,12 @@ addressed 0.5454545454545454
 headdress 0.5454545454545454
 assures 0.5
 adroitness 0.5
+adress
+address: -1.0
+dress: -1.0
+redress: -2.0
+dresses: -3.0
+addresses: -3.0
 Word: adres
 address 0.75
 addresses 0.6666666666666666
@@ -1104,6 +1684,13 @@ acres 0.5
 adrenals 0.5
 addressed 0.45454545454545453
 headdress 0.45454545454545453
+adres
+adores: -1.0
+adheres: -2.0
+address: -2.0
+admires: -2.0
+addresses: -4.0
+Incorrect: adres -> adores, instead of address --------------------
 Word: desicate
 delicate 0.6363636363636364
 dedicate 0.6363636363636364
@@ -1115,7 +1702,13 @@ desecrate 0.46153846153846156
 duplicate 0.46153846153846156
 deprecate 0.46153846153846156
 delicately 0.46153846153846156
-Incorrect: desicate -> delicate ,instead of desiccate
+desicate
+delicate: -1.0
+dedicate: -1.0
+desolate: -2.0
+dedicates: -2.0
+designate: -2.0
+Incorrect: desicate -> delicate, instead of desiccate --------------------
 Word: dessicate
 delicate 0.5833333333333334
 dedicate 0.5833333333333334
@@ -1127,7 +1720,13 @@ dedicated 0.46153846153846156
 desecrate 0.42857142857142855
 duplicate 0.42857142857142855
 deprecate 0.42857142857142855
-Incorrect: dessicate -> delicate ,instead of desiccate
+dessicate
+delicate: -2.0
+dessicans: -2.0
+dedicate: -2.0
+dedicates: -3.0
+designate: -3.0
+Incorrect: dessicate -> delicate, instead of desiccate --------------------
 Word: dessiccate
 delicate 0.5384615384615384
 dedicate 0.5384615384615384
@@ -1139,7 +1738,13 @@ dedicated 0.42857142857142855
 desecrate 0.4
 duplicate 0.4
 deprecate 0.4
-Incorrect: dessiccate -> delicate ,instead of desiccate
+dessiccate
+delicate: -3.0
+dessicans: -3.0
+designate: -3.0
+dedicate: -3.0
+dedicates: -4.0
+Incorrect: dessiccate -> delicate, instead of desiccate --------------------
 Word: embaras
 embarrassed 0.5384615384615384
 embarrassments 0.5333333333333333
@@ -1151,7 +1756,13 @@ embassy 0.45454545454545453
 embargo 0.45454545454545453
 embarked 0.4166666666666667
 embraces 0.4166666666666667
-Incorrect: embaras -> embarrassed ,instead of embarrass
+embaras
+embark: -2.0
+embargoes: -3.0
+embarrassed: -4.0
+embarrassing: -5.0
+embarrassments: -7.0
+Incorrect: embaras -> embark, instead of embarrass --------------------
 Word: embarass
 embarrassed 0.6153846153846154
 embarrassments 0.6
@@ -1163,7 +1774,13 @@ embassage 0.46153846153846156
 embark 0.45454545454545453
 unembarrassed 0.4375
 embargo 0.4166666666666667
-Incorrect: embarass -> embarrassed ,instead of embarrass
+embarass
+embassy: -3.0
+embarrassed: -3.0
+embarrassing: -4.0
+embarrassment: -5.0
+embarrassments: -6.0
+Incorrect: embarass -> embassy, instead of embarrass --------------------
 Word: wantid
 wanted 0.5555555555555556
 wand 0.5
@@ -1175,6 +1792,12 @@ warranted 0.4166666666666667
 wanton 0.4
 warranties 0.38461538461538464
 wid 0.375
+wantid
+wanted: -1.0
+wanting: -2.0
+wants: -2.0
+want: -2.0
+wand: -2.0
 Word: wonted
 wonted 1.0
 unwonted 0.6
@@ -1186,7 +1809,13 @@ contented 0.5
 contested 0.45454545454545453
 wondered 0.45454545454545453
 consented 0.4166666666666667
-Incorrect: wonted -> wonted ,instead of wanted
+wonted
+wonted: -0.0
+wanted: -1.0
+wont: -2.0
+worsted: -2.0
+unwonted: -2.0
+Incorrect: wonted -> wonted, instead of wanted --------------------
 Word: lones
 loneliness 0.6
 lone 0.5714285714285714
@@ -1198,7 +1827,13 @@ lines 0.5
 londoners 0.5
 bones 0.5
 lonesome 0.5
-Incorrect: lones -> loneliness ,instead of loans
+lones
+lodes: -1.0
+lone: -1.0
+ones: -1.0
+lanes: -1.0
+loneliness: -5.0
+Incorrect: lones -> lodes, instead of loans --------------------
 Word: accomodation
 accommodation 0.9285714285714286
 accommodations 0.75
@@ -1210,6 +1845,12 @@ accumulation 0.4444444444444444
 commendation 0.4444444444444444
 commotion 0.4375
 action 0.42857142857142855
+accomodation
+accommodation: -1.0
+accommodations: -2.0
+accommodated: -4.0
+accommodate: -4.0
+accusation: -4.0
 Word: acommodation
 accommodation 0.9285714285714286
 accommodations 0.75
@@ -1221,6 +1862,12 @@ recommendation 0.47368421052631576
 action 0.42857142857142855
 common 0.42857142857142855
 communication 0.42105263157894735
+acommodation
+accommodation: -1.0
+accommodations: -2.0
+commotion: -3.0
+commendation: -3.0
+accommodate: -4.0
 Word: acomodation
 accommodation 0.8571428571428571
 accommodations 0.6875
@@ -1232,6 +1879,12 @@ action 0.46153846153846156
 attraction 0.4375
 accusation 0.4375
 locomotion 0.4375
+acomodation
+accommodation: -2.0
+accommodations: -3.0
+commendation: -4.0
+accommodated: -5.0
+accommodate: -5.0
 Word: chaper
 chapter 0.6666666666666666
 cheaper 0.6666666666666666
@@ -1243,6 +1896,12 @@ chanter 0.5
 clapper 0.5
 chaucer 0.5
 chatter 0.5
+chaper
+chapter: -1.0
+caper: -1.0
+chapel: -1.0
+cheaper: -1.0
+charter: -2.0
 Word: chaphter
 chapter 0.7
 charter 0.5454545454545454
@@ -1254,6 +1913,12 @@ chamber 0.4166666666666667
 chaucer 0.4166666666666667
 charmer 0.4166666666666667
 cheaper 0.4166666666666667
+chaphter
+chapter: -1.0
+charter: -2.0
+chapters: -2.0
+chanter: -2.0
+chatter: -2.0
 Word: chaptur
 chapter 0.6
 capture 0.45454545454545453
@@ -1265,6 +1930,12 @@ chapters 0.4166666666666667
 chaps 0.4
 chair 0.4
 capturing 0.38461538461538464
+chaptur
+chapter: -1.0
+capture: -2.0
+chap: -3.0
+captures: -3.0
+captured: -3.0
 Word: defenition
 definition 0.6923076923076923
 dentition 0.6666666666666666
@@ -1276,6 +1947,12 @@ deflection 0.4666666666666667
 deposition 0.4666666666666667
 deglutition 0.4666666666666667
 devotion 0.42857142857142855
+defenition
+definition: -1.0
+definitions: -2.0
+detention: -2.0
+defection: -2.0
+dentition: -3.0
 Word: benifits
 benefits 0.6363636363636364
 befits 0.6
@@ -1287,6 +1964,12 @@ bennigsenites 0.4
 beats 0.36363636363636365
 baits 0.36363636363636365
 bends 0.36363636363636365
+benifits
+benefits: -1.0
+befits: -2.0
+benefit: -2.0
+fits: -4.0
+bits: -4.0
 Word: carrer
 carer 0.8571428571428571
 career 0.75
@@ -1298,7 +1981,13 @@ care 0.5
 clearer 0.5
 careers 0.5
 carteret 0.45454545454545453
-Incorrect: carrer -> carer ,instead of career
+carrer
+carter: -1.0
+carer: -1.0
+career: -1.0
+carrier: -1.0
+car: -3.0
+Incorrect: carrer -> carter, instead of career --------------------
 Word: hierachial
 brachial 0.5833333333333334
 hierarchy 0.42857142857142855
@@ -1310,7 +1999,13 @@ hernial 0.38461538461538464
 tracheal 0.35714285714285715
 wallachia 0.3333333333333333
 bacterial 0.3333333333333333
-Incorrect: hierachial -> brachial ,instead of hierarchal
+hierachial
+brachial: -3.0
+racial: -4.0
+branchial: -4.0
+hierarchy: -4.0
+brachialis: -5.0
+Incorrect: hierachial -> brachial, instead of hierarchal --------------------
 Word: experance
 experience 0.6153846153846154
 temperance 0.5
@@ -1322,6 +2017,13 @@ inexperience 0.4375
 intemperance 0.4375
 extravagance 0.4375
 severance 0.42857142857142855
+experance
+temperance: -2.0
+experience: -2.0
+experiences: -3.0
+experienced: -3.0
+perseverance: -5.0
+Incorrect: experance -> temperance, instead of experience --------------------
 Word: experiance
 experience 0.6923076923076923
 experienced 0.5333333333333333
@@ -1333,6 +2035,12 @@ perchance 0.4
 expertise 0.4
 inexperienced 0.3888888888888889
 expert 0.38461538461538464
+experiance
+experience: -1.0
+experiences: -2.0
+experienced: -2.0
+inexperience: -3.0
+variance: -4.0
 Word: liaision
 liaison 0.7
 lion 0.5555555555555556
@@ -1344,6 +2052,12 @@ fission 0.4166666666666667
 derision 0.38461538461538464
 emission 0.38461538461538464
 division 0.38461538461538464
+liaision
+liaison: -1.0
+vision: -3.0
+lesion: -3.0
+lion: -4.0
+collision: -4.0
 Word: liason
 liaison 0.6666666666666666
 lion 0.5
@@ -1355,6 +2069,12 @@ lesson 0.4
 reason 0.4
 season 0.4
 son 0.375
+liason
+liaison: -1.0
+lion: -2.0
+mason: -2.0
+jason: -2.0
+livonian: -5.0
 Word: planed
 planed 1.0
 planned 0.875
@@ -1366,7 +2086,13 @@ placed 0.5555555555555556
 planet 0.5555555555555556
 planes 0.5555555555555556
 plagued 0.5
-Incorrect: planed -> planed ,instead of planned
+planed
+planed: -0.0
+planked: -1.0
+plane: -1.0
+planted: -1.0
+planned: -1.0
+Incorrect: planed -> planed, instead of planned --------------------
 Word: inetials
 initials 0.6363636363636364
 inertia 0.4166666666666667
@@ -1378,6 +2104,12 @@ nineties 0.38461538461538464
 installs 0.38461538461538464
 inequalities 0.375
 initially 0.35714285714285715
+inetials
+initials: -1.0
+initial: -2.0
+inertia: -3.0
+minerals: -3.0
+intestines: -4.0
 Word: inistals
 installs 0.6363636363636364
 initials 0.5
@@ -1389,7 +2121,12 @@ install 0.4166666666666667
 genitals 0.38461538461538464
 crystals 0.38461538461538464
 instants 0.38461538461538464
-Incorrect: inistals -> installs ,instead of initials
+inistals
+initials: -2.0
+instal: -2.0
+installs: -2.0
+stalls: -4.0
+peristalsis: -5.0
 Word: initails
 initials 0.5
 tails 0.5
@@ -1401,6 +2138,12 @@ installs 0.38461538461538464
 jails 0.36363636363636365
 pails 0.36363636363636365
 mails 0.36363636363636365
+initails
+initials: -1.0
+entails: -2.0
+details: -3.0
+tails: -3.0
+ills: -5.0
 Word: initals
 initials 0.7
 genitals 0.5454545454545454
@@ -1412,6 +2155,12 @@ italians 0.4166666666666667
 italy 0.4
 hospitals 0.38461538461538464
 initially 0.38461538461538464
+initals
+initials: -1.0
+initial: -2.0
+genitals: -2.0
+installs: -2.0
+infinitesimals: -7.0
 Word: intials
 initials 0.7
 intervals 0.5
@@ -1423,6 +2172,12 @@ credentials 0.42857142857142855
 intestines 0.4166666666666667
 installs 0.4166666666666667
 tints 0.4
+intials
+initials: -1.0
+initial: -2.0
+intervals: -3.0
+essentials: -4.0
+interstitial: -7.0
 Word: intial
 initial 0.6666666666666666
 interstitial 0.5833333333333334
@@ -1434,6 +2189,12 @@ initials 0.45454545454545453
 interval 0.45454545454545453
 integral 0.45454545454545453
 internal 0.45454545454545453
+intial
+initial: -1.0
+intestinal: -4.0
+intentional: -5.0
+influential: -5.0
+interstitial: -6.0
 Word: usefull
 useful 0.875
 houseful 0.5454545454545454
@@ -1445,6 +2206,12 @@ rueful 0.36363636363636365
 ungraceful 0.35714285714285715
 ungrateful 0.35714285714285715
 fateful 0.3333333333333333
+usefull
+useful: -1.0
+caseful: -3.0
+full: -3.0
+houseful: -3.0
+usefulness: -4.0
 Word: diagrammaticaally
 dramatically 0.631578947368421
 grammatical 0.5
@@ -1456,7 +2223,13 @@ radically 0.4
 magically 0.4
 automatically 0.391304347826087
 systematically 0.375
-Incorrect: diagrammaticaally -> dramatically ,instead of diagrammatically
+diagrammaticaally
+dramatically: -5.0
+grammatical: -6.0
+diametrically: -7.0
+melodramatically: -7.0
+erratically: -8.0
+Incorrect: diagrammaticaally -> dramatically, instead of diagrammatically --------------------
 Word: aranging
 arranging 0.8888888888888888
 ranging 0.6666666666666666
@@ -1468,7 +2241,13 @@ angina 0.5
 raging 0.5
 banging 0.5
 arming 0.5
-Incorrect: aranging -> arranging ,instead of arrangeing
+aranging
+ranging: -1.0
+arranging: -1.0
+hanging: -2.0
+averaging: -3.0
+rearranging: -3.0
+Incorrect: aranging -> ranging, instead of arrangeing --------------------
 Word: lagh
 laugh 0.5714285714285714
 lash 0.42857142857142855
@@ -1480,6 +2259,12 @@ laguna 0.3333333333333333
 launch 0.3333333333333333
 lagged 0.3333333333333333
 lambach 0.3
+lagh
+laugh: -1.0
+lash: -1.0
+latch: -2.0
+la: -2.0
+lavish: -3.0
 Word: lauf
 luff 0.42857142857142855
 laugh 0.375
@@ -1491,7 +2276,13 @@ la 0.3333333333333333
 laurel 0.3333333333333333
 launch 0.3333333333333333
 laughed 0.3
-Incorrect: lauf -> luff ,instead of laugh
+lauf
+lauck: -2.0
+laugh: -2.0
+laura: -2.0
+luff: -2.0
+laughs: -3.0
+Incorrect: lauf -> lauck, instead of laugh --------------------
 Word: laught
 laugh 0.625
 aught 0.625
@@ -1503,6 +2294,12 @@ caught 0.5555555555555556
 onslaught 0.5454545454545454
 draught 0.5
 fraught 0.5
+laught
+laugh: -1.0
+aught: -1.0
+taught: -1.0
+naught: -1.0
+laughter: -2.0
 Word: lugh
 laugh 0.5714285714285714
 ugh 0.5
@@ -1514,6 +2311,13 @@ dough 0.375
 bough 0.375
 hough 0.375
 lunch 0.375
+lugh
+ugh: -1.0
+laugh: -1.0
+hugh: -1.0
+lush: -1.0
+tough: -2.0
+Incorrect: lugh -> ugh, instead of laugh --------------------
 Word: liew
 lie 0.5
 lieu 0.42857142857142855
@@ -1525,7 +2329,13 @@ lilies 0.375
 li 0.3333333333333333
 leslie 0.3333333333333333
 review 0.3333333333333333
-Incorrect: liew -> lie ,instead of lieu
+liew
+lied: -1.0
+lieu: -1.0
+lies: -1.0
+view: -1.0
+lie: -1.0
+Incorrect: liew -> lied, instead of lieu --------------------
 Word: scisors
 scissors 0.8888888888888888
 incisors 0.5454545454545454
@@ -1537,6 +2347,12 @@ scars 0.4
 disorders 0.38461538461538464
 sordes 0.36363636363636365
 scores 0.36363636363636365
+scisors
+scissors: -1.0
+incisors: -2.0
+sponsors: -3.0
+sores: -4.0
+supervisors: -5.0
 Word: sissors
 scissors 0.7
 successors 0.46153846153846156
@@ -1548,6 +2364,12 @@ incisors 0.4166666666666667
 sores 0.4
 sorts 0.4
 swiss 0.4
+sissors
+scissors: -1.0
+sisters: -2.0
+visitors: -3.0
+successors: -4.0
+supervisors: -6.0
 Word: occurence
 occurrence 0.9090909090909091
 occurrences 0.6923076923076923
@@ -1559,6 +2381,12 @@ occurs 0.4166666666666667
 recurrences 0.4
 offence 0.38461538461538464
 obscure 0.38461538461538464
+occurence
+occurrence: -1.0
+occurrences: -2.0
+recurrence: -3.0
+concurrence: -3.0
+occurred: -4.0
 Word: occurence
 occurrence 0.9090909090909091
 occurrences 0.6923076923076923
@@ -1570,6 +2398,12 @@ occurs 0.4166666666666667
 recurrences 0.4
 offence 0.38461538461538464
 obscure 0.38461538461538464
+occurence
+occurrence: -1.0
+occurrences: -2.0
+recurrence: -3.0
+concurrence: -3.0
+occurred: -4.0
 Word: poame
 ame 0.42857142857142855
 came 0.375
@@ -1581,7 +2415,13 @@ same 0.375
 pole 0.375
 fame 0.375
 tame 0.375
-Incorrect: poame -> ame ,instead of poem
+poame
+dame: -2.0
+name: -2.0
+ame: -2.0
+came: -2.0
+lame: -2.0
+Incorrect: poame -> dame, instead of poem --------------------
 Word: managment
 management 0.75
 mismanagement 0.6
@@ -1593,6 +2433,12 @@ tenant 0.4166666666666667
 moment 0.4166666666666667
 manage 0.4166666666666667
 pigment 0.38461538461538464
+managment
+management: -1.0
+fragment: -3.0
+mismanagement: -4.0
+malignant: -4.0
+meant: -5.0
 Word: begining
 beginning 0.8888888888888888
 begging 0.7777777777777778
@@ -1604,6 +2450,12 @@ bwinging 0.5
 beckoning 0.5
 bringing 0.5
 beg 0.5
+begining
+beginning: -1.0
+begging: -2.0
+beginnings: -2.0
+being: -3.0
+begin: -3.0
 Word: localy
 locally 0.875
 local 0.625
@@ -1615,6 +2467,12 @@ lowly 0.4444444444444444
 ly 0.42857142857142855
 localised 0.4166666666666667
 locate 0.4
+localy
+locally: -1.0
+local: -1.0
+locality: -2.0
+loyally: -2.0
+localise: -3.0
 Word: paralel
 parallel 0.8888888888888888
 parallels 0.6363636363636364
@@ -1626,6 +2484,12 @@ partial 0.45454545454545453
 paradol 0.45454545454545453
 papal 0.4444444444444444
 para 0.4444444444444444
+paralel
+parallel: -1.0
+parcel: -2.0
+parallels: -2.0
+pal: -4.0
+parallelogram: -6.0
 Word: paralell
 parallel 1.0
 parallels 0.7272727272727273
@@ -1637,6 +2501,12 @@ parcel 0.45454545454545453
 pal 0.4444444444444444
 pleural 0.4166666666666667
 partial 0.4166666666666667
+paralell
+parallel: -1.0
+parallels: -2.0
+pall: -4.0
+unparalleled: -5.0
+parallelogram: -6.0
 Word: parrallel
 parallel 0.9
 parallels 0.6666666666666666
@@ -1648,6 +2518,12 @@ parcel 0.4166666666666667
 pal 0.4
 pleural 0.38461538461538464
 partial 0.38461538461538464
+parrallel
+parallel: -1.0
+parallels: -2.0
+pall: -5.0
+unparalleled: -5.0
+parallelogram: -6.0
 Word: parralell
 parallel 0.9
 parallels 0.6666666666666666
@@ -1659,6 +2535,12 @@ parcel 0.4166666666666667
 pal 0.4
 pleural 0.38461538461538464
 partial 0.38461538461538464
+parralell
+parallel: -2.0
+parallels: -3.0
+pall: -5.0
+unparalleled: -6.0
+parallelogram: -7.0
 Word: parrallell
 parallel 0.9
 parallels 0.6666666666666666
@@ -1670,6 +2552,12 @@ parcel 0.4166666666666667
 pal 0.4
 pleural 0.38461538461538464
 partial 0.38461538461538464
+parrallell
+parallel: -2.0
+parallels: -2.0
+unparalleled: -5.0
+pall: -6.0
+parallelogram: -6.0
 Word: pronounciation
 pronunciation 0.8
 pronation 0.5333333333333333
@@ -1681,6 +2569,12 @@ pronounce 0.5
 pronounced 0.47058823529411764
 punctuation 0.4444444444444444
 prostration 0.4444444444444444
+pronounciation
+pronunciation: -1.0
+enunciation: -4.0
+pronouncing: -5.0
+pronation: -5.0
+probation: -6.0
 Word: inconvienient
 inconvenient 0.8461538461538461
 inconveniently 0.625
@@ -1692,6 +2586,12 @@ inconsequent 0.47058823529411764
 inconsistent 0.47058823529411764
 invent 0.46153846153846156
 incoherent 0.4375
+inconvienient
+inconvenient: -1.0
+convenient: -3.0
+inconveniently: -3.0
+inconvenience: -3.0
+convient: -5.0
 Word: inconvient
 inconvenient 0.7692307692307693
 convient 0.6666666666666666
@@ -1703,6 +2603,13 @@ inconveniencing 0.5
 invent 0.5
 convenient 0.5
 incoherent 0.4666666666666667
+inconvient
+convient: -2.0
+inconvenient: -2.0
+inconveniently: -4.0
+inconsequent: -4.0
+inconvenience: -4.0
+Incorrect: inconvient -> convient, instead of inconvenient --------------------
 Word: inconvinient
 inconvenient 0.8461538461538461
 inconveniently 0.625
@@ -1714,6 +2621,12 @@ inconsequent 0.47058823529411764
 inconsistent 0.47058823529411764
 invent 0.46153846153846156
 incoherent 0.4375
+inconvinient
+inconvenient: -1.0
+convenient: -3.0
+inconveniently: -3.0
+inconvenience: -3.0
+convient: -4.0
 Word: cartains
 curtains 0.6363636363636364
 certains 0.6363636363636364
@@ -1725,6 +2638,13 @@ carts 0.5
 chains 0.45454545454545453
 stains 0.45454545454545453
 cabins 0.45454545454545453
+cartains
+captains: -1.0
+curtains: -1.0
+certains: -1.0
+contains: -2.0
+cartoons: -2.0
+Incorrect: cartains -> captains, instead of curtains --------------------
 Word: certans
 certains 0.7
 certain 0.45454545454545453
@@ -1736,7 +2656,13 @@ concerns 0.4166666666666667
 crepitans 0.38461538461538464
 instances 0.38461538461538464
 cancerous 0.38461538461538464
-Incorrect: certans -> certains ,instead of curtains
+certans
+certains: -1.0
+curtains: -2.0
+certain: -2.0
+censers: -4.0
+cancers: -5.0
+Incorrect: certans -> certains, instead of curtains --------------------
 Word: courtens
 courteous 0.6363636363636364
 courte 0.6
@@ -1748,7 +2674,13 @@ contentions 0.46153846153846156
 courtesan 0.46153846153846156
 courtiers 0.46153846153846156
 cohens 0.45454545454545453
-Incorrect: courtens -> courteous ,instead of curtains
+courtens
+courte: -2.0
+courted: -2.0
+courts: -2.0
+courteous: -2.0
+court: -3.0
+Incorrect: courtens -> courte, instead of curtains --------------------
 Word: cuaritains
 curtains 0.5384615384615384
 certains 0.42857142857142855
@@ -1760,6 +2692,12 @@ cummins 0.35714285714285715
 retains 0.35714285714285715
 britain 0.35714285714285715
 attains 0.35714285714285715
+cuaritains
+curtains: -2.0
+captains: -3.0
+certains: -3.0
+contains: -4.0
+chains: -5.0
 Word: curtans
 curtains 0.7
 curtis 0.5
@@ -1771,6 +2709,12 @@ certains 0.4166666666666667
 puritans 0.4166666666666667
 curls 0.4
 cures 0.4
+curtans
+curtains: -1.0
+curtis: -2.0
+cubans: -2.0
+curtail: -2.0
+curtain: -2.0
 Word: curtians
 curtis 0.6
 curtains 0.5
@@ -1782,7 +2726,12 @@ canadians 0.38461538461538464
 cutis 0.36363636363636365
 curls 0.36363636363636365
 cures 0.36363636363636365
-Incorrect: curtians -> curtis ,instead of curtains
+curtians
+curtains: -1.0
+curtis: -2.0
+christians: -3.0
+cubans: -3.0
+curt: -4.0
 Word: curtions
 curtis 0.6
 contortions 0.5384615384615384
@@ -1794,7 +2743,13 @@ contentions 0.46153846153846156
 conditions 0.46153846153846156
 partitions 0.46153846153846156
 insertions 0.46153846153846156
-Incorrect: curtions -> curtis ,instead of curtains
+curtions
+portions: -2.0
+curtis: -2.0
+curtains: -2.0
+cushions: -2.0
+contortions: -4.0
+Incorrect: curtions -> portions, instead of curtains --------------------
 Word: familes
 families 0.7
 miles 0.5555555555555556
@@ -1806,6 +2761,12 @@ failures 0.4166666666666667
 infamies 0.4166666666666667
 missiles 0.4166666666666667
 fates 0.4
+familes
+families: -1.0
+files: -2.0
+family: -2.0
+miles: -2.0
+smiles: -2.0
 Word: triangulaur
 triangular 0.7692307692307693
 angular 0.42857142857142855
@@ -1817,6 +2778,12 @@ rectangular 0.3333333333333333
 strangulated 0.3157894736842105
 austrian 0.3125
 singular 0.3125
+triangulaur
+triangular: -1.0
+triangle: -4.0
+triangles: -4.0
+angular: -4.0
+auricular: -6.0
 Word: extented
 extended 0.7
 extent 0.6666666666666666
@@ -1828,6 +2795,12 @@ entrusted 0.5
 extracted 0.5
 enchanted 0.5
 experimented 0.5
+extented
+extended: -1.0
+extent: -2.0
+extend: -2.0
+extorted: -2.0
+entered: -3.0
 Word: undersand
 understand 0.7272727272727273
 understood 0.5384615384615384
@@ -1839,6 +2812,12 @@ understanding 0.4666666666666667
 undersell 0.46153846153846156
 underwood 0.46153846153846156
 underground 0.46153846153846156
+undersand
+understand: -1.0
+understands: -2.0
+undersized: -3.0
+understood: -3.0
+under: -4.0
 Word: undistand
 understand 0.5833333333333334
 stand 0.5
@@ -1850,6 +2829,12 @@ standi 0.45454545454545453
 und 0.4444444444444444
 undisputed 0.42857142857142855
 undismayed 0.42857142857142855
+undistand
+understand: -2.0
+undisturbed: -4.0
+stand: -4.0
+undid: -4.0
+misunderstand: -5.0
 Word: basicaly
 basically 0.9
 basic 0.5
@@ -1861,6 +2846,12 @@ basilic 0.4166666666666667
 aseptically 0.4
 casually 0.38461538461538464
 rascally 0.38461538461538464
+basicaly
+basically: -1.0
+basic: -3.0
+basely: -3.0
+baldly: -4.0
+classically: -4.0
 Word: particulaur
 particular 0.8333333333333334
 particulars 0.6428571428571429
@@ -1872,6 +2863,12 @@ articulate 0.4375
 papular 0.42857142857142855
 articulating 0.4117647058823529
 articulation 0.4117647058823529
+particulaur
+particular: -1.0
+articular: -2.0
+particulars: -2.0
+particularly: -3.0
+auricular: -4.0
 Word: conciderable
 considerable 0.7333333333333333
 inconsiderable 0.6470588235294118
@@ -1883,6 +2880,12 @@ coincide 0.4666666666666667
 constable 0.4375
 coincidence 0.4117647058823529
 comparable 0.4117647058823529
+conciderable
+considerable: -1.0
+considerably: -2.0
+considerate: -3.0
+inconsiderable: -3.0
+unconquerable: -5.0
 Word: rember
 remember 0.875
 remembers 0.6
@@ -1894,6 +2897,13 @@ reminder 0.45454545454545453
 december 0.45454545454545453
 rarer 0.4444444444444444
 amber 0.4444444444444444
+rember
+member: -1.0
+remember: -2.0
+remembers: -3.0
+remembered: -4.0
+remembering: -5.0
+Incorrect: rember -> member, instead of remember --------------------
 Word: remeber
 remember 0.7777777777777778
 remembers 0.5454545454545454
@@ -1905,6 +2915,12 @@ reminder 0.4166666666666667
 rarer 0.4
 rebel 0.4
 refer 0.4
+remeber
+remember: -1.0
+member: -2.0
+remembers: -2.0
+remembered: -3.0
+remembering: -4.0
 Word: rememmer
 remember 0.6666666666666666
 reformer 0.45454545454545453
@@ -1916,6 +2932,12 @@ refer 0.4444444444444444
 remainder 0.4166666666666667
 renter 0.4
 redder 0.4
+rememmer
+remember: -1.0
+remembers: -2.0
+reminder: -3.0
+reformer: -3.0
+remembered: -3.0
 Word: rermember
 remember 0.8888888888888888
 remembers 0.6363636363636364
@@ -1927,6 +2949,12 @@ members 0.4166666666666667
 dismembered 0.4
 november 0.38461538461538464
 reminder 0.38461538461538464
+rermember
+remember: -1.0
+remembers: -2.0
+member: -3.0
+remembered: -3.0
+remembering: -4.0
 Word: acount
 account 0.875
 accountant 0.7
@@ -1938,6 +2966,13 @@ aunt 0.5
 accounting 0.5
 counteract 0.5
 accountable 0.46153846153846156
+acount
+amount: -1.0
+count: -1.0
+account: -1.0
+accounts: -2.0
+accountant: -4.0
+Incorrect: acount -> amount, instead of account --------------------
 Word: aranged
 arranged 0.8888888888888888
 ranged 0.6666666666666666
@@ -1949,6 +2984,12 @@ prearranged 0.5384615384615384
 hanged 0.5
 estranged 0.5
 banged 0.5
+aranged
+arranged: -1.0
+ranged: -1.0
+arrange: -2.0
+rearranged: -3.0
+angered: -4.0
 Word: arrainged
 arranged 0.7272727272727273
 arraigned 0.5384615384615384
@@ -1960,6 +3001,12 @@ arranging 0.46153846153846156
 engrained 0.42857142857142855
 singed 0.4166666666666667
 winged 0.4166666666666667
+arrainged
+arranged: -1.0
+arraigned: -1.0
+arrange: -2.0
+rearranged: -3.0
+arrayed: -3.0
 Word: unfortunatly
 unfortunately 0.7857142857142857
 unfortunate 0.6428571428571429
@@ -1971,6 +3018,12 @@ uniformly 0.375
 portly 0.35714285714285715
 fortune 0.3333333333333333
 fortnightly 0.3333333333333333
+unfortunatly
+unfortunately: -1.0
+unfortunate: -2.0
+unfortunates: -2.0
+fortunately: -3.0
+fortunate: -4.0
 Word: exstacy
 expectancy 0.35714285714285715
 exactly 0.3333333333333333
@@ -1982,7 +3035,12 @@ stay 0.3
 obstinacy 0.2857142857142857
 constancy 0.2857142857142857
 exist 0.2727272727272727
-Incorrect: exstacy -> expectancy ,instead of ecstasy
+exstacy
+ecstasy: -2.0
+eustace: -2.0
+evstafey: -3.0
+exactly: -4.0
+expectancy: -4.0
 Word: ecstacy
 ecstasy 0.6
 ecstatic 0.4166666666666667
@@ -1994,6 +3052,12 @@ evstafey 0.3076923076923077
 efficacy 0.3076923076923077
 stay 0.3
 obstinacy 0.2857142857142857
+ecstacy
+ecstasy: -1.0
+ecstatic: -3.0
+ecstasies: -4.0
+ecstatically: -5.0
+expectancy: -5.0
 Word: wether
 whether 0.75
 weather 0.6666666666666666
@@ -2005,6 +3069,13 @@ catheter 0.45454545454545453
 together 0.45454545454545453
 other 0.4444444444444444
 wethersfield 0.42857142857142855
+wether
+ether: -1.0
+weather: -1.0
+nether: -1.0
+whether: -1.0
+weyrother: -3.0
+Incorrect: wether -> ether, instead of whether --------------------
 Word: pertend
 portend 0.6
 petered 0.45454545454545453
@@ -2016,7 +3087,12 @@ peter 0.4
 spend 0.4
 permeated 0.38461538461538464
 pretended 0.38461538461538464
-Incorrect: pertend -> portend ,instead of pretend
+pertend
+pretend: -1.0
+portend: -1.0
+tend: -3.0
+petered: -3.0
+pestered: -3.0
 Word: protend
 pretend 0.6
 protected 0.5454545454545454
@@ -2028,6 +3104,12 @@ protein 0.45454545454545453
 protege 0.45454545454545453
 protect 0.45454545454545453
 promote 0.45454545454545453
+protend
+pretend: -1.0
+protected: -3.0
+promoted: -3.0
+protested: -3.0
+pretended: -3.0
 Word: prtend
 portend 0.6666666666666666
 pretend 0.6666666666666666
@@ -2039,7 +3121,12 @@ presented 0.4166666666666667
 parted 0.4
 extend 0.4
 attend 0.4
-Incorrect: prtend -> portend ,instead of pretend
+prtend
+pretend: -1.0
+portend: -1.0
+pretends: -2.0
+tend: -2.0
+pretended: -3.0
 Word: pritend
 pretend 0.6
 pretended 0.5
@@ -2051,6 +3138,12 @@ profited 0.4166666666666667
 pried 0.4
 prevented 0.38461538461538464
 presented 0.38461538461538464
+pritend
+pretend: -1.0
+printed: -2.0
+portend: -2.0
+tend: -3.0
+pretended: -3.0
 Word: transfred
 transferred 0.6923076923076923
 transfigured 0.6428571428571429
@@ -2062,6 +3155,12 @@ translated 0.5
 transmuted 0.5
 transmitted 0.4666666666666667
 transported 0.4666666666666667
+transfred
+transferred: -2.0
+transfixed: -2.0
+transformed: -2.0
+transpired: -2.0
+transfigured: -3.0
 Word: recieve
 relieve 0.6
 reverie 0.6
@@ -2073,7 +3172,13 @@ revolve 0.45454545454545453
 receive 0.45454545454545453
 revenue 0.45454545454545453
 revenge 0.45454545454545453
-Incorrect: recieve -> relieve ,instead of receive
+recieve
+relieve: -1.0
+recipe: -2.0
+retrieve: -2.0
+revive: -2.0
+reverie: -4.0
+Incorrect: recieve -> relieve, instead of receive --------------------
 Word: cak
 cake 0.5
 cloak 0.42857142857142855
@@ -2085,6 +3190,12 @@ car 0.3333333333333333
 cat 0.3333333333333333
 can 0.3333333333333333
 cap 0.3333333333333333
+cak
+cake: -1.0
+ca: -1.0
+cakes: -2.0
+cloak: -2.0
+creak: -2.0
 Word: fisited
 fitted 0.6666666666666666
 visited 0.6
@@ -2096,7 +3207,12 @@ fidgeted 0.4166666666666667
 resisted 0.4166666666666667
 assisted 0.4166666666666667
 desisted 0.4166666666666667
-Incorrect: fisited -> fitted ,instead of visited
+fisited
+visited: -1.0
+fitted: -2.0
+fished: -2.0
+flitted: -3.0
+finished: -3.0
 Word: viseted
 visited 0.6
 advised 0.45454545454545453
@@ -2108,6 +3224,12 @@ violated 0.4166666666666667
 secreted 0.4166666666666667
 vibrated 0.4166666666666667
 meted 0.4
+viseted
+visited: -1.0
+vise: -3.0
+devised: -4.0
+advised: -4.0
+revised: -4.0
 Word: vistid
 viscid 0.5555555555555556
 vivid 0.5
@@ -2119,7 +3241,13 @@ visited 0.36363636363636365
 vitiated 0.3333333333333333
 activist 0.3333333333333333
 void 0.3333333333333333
-Incorrect: vistid -> viscid ,instead of visited
+vistid
+viscid: -1.0
+vistas: -2.0
+vista: -2.0
+vivid: -2.0
+vis: -3.0
+Incorrect: vistid -> viscid, instead of visited --------------------
 Word: vistied
 viewed 0.5
 visited 0.45454545454545453
@@ -2131,7 +3259,12 @@ satisfied 0.38461538461538464
 justified 0.38461538461538464
 testified 0.38461538461538464
 vistas 0.36363636363636365
-Incorrect: vistied -> viewed ,instead of visited
+vistied
+visited: -1.0
+vista: -3.0
+viewed: -3.0
+tied: -3.0
+vitiated: -3.0
 Word: problam
 problem 0.6
 program 0.45454545454545453
@@ -2143,6 +3276,12 @@ probe 0.4
 probed 0.36363636363636365
 protoplasm 0.35714285714285715
 probing 0.3333333333333333
+problam
+problem: -1.0
+problems: -2.0
+program: -2.0
+proclaim: -2.0
+probable: -4.0
 Word: proble
 probable 0.7777777777777778
 problem 0.6666666666666666
@@ -2154,7 +3293,13 @@ profitable 0.5
 profile 0.5
 preamble 0.45454545454545453
 probably 0.45454545454545453
-Incorrect: proble -> probable ,instead of problem
+proble
+preble: -1.0
+problem: -1.0
+probe: -1.0
+problems: -2.0
+probable: -2.0
+Incorrect: proble -> preble, instead of problem --------------------
 Word: promblem
 problem 0.7
 emblem 0.5
@@ -2166,6 +3311,12 @@ problematical 0.35294117647058826
 preble 0.3333333333333333
 profitable 0.3333333333333333
 prompt 0.3333333333333333
+promblem
+problem: -1.0
+problems: -2.0
+probable: -3.0
+emblem: -3.0
+preamble: -3.0
 Word: proplen
 prop 0.4444444444444444
 plenty 0.36363636363636365
@@ -2177,7 +3328,13 @@ pahlen 0.36363636363636365
 pollen 0.36363636363636365
 proportion 0.35714285714285715
 protoplasm 0.35714285714285715
-Incorrect: proplen -> prop ,instead of problem
+proplen
+proper: -2.0
+people: -2.0
+prop: -3.0
+propos: -3.0
+plenty: -5.0
+Incorrect: proplen -> proper, instead of problem --------------------
 Word: muinets
 muskets 0.45454545454545453
 nets 0.4444444444444444
@@ -2189,7 +3346,13 @@ tenets 0.36363636363636365
 moines 0.36363636363636365
 donets 0.36363636363636365
 miners 0.36363636363636365
-Incorrect: muinets -> muskets ,instead of minutes
+muinets
+mints: -2.0
+mines: -2.0
+muskets: -2.0
+nets: -3.0
+meets: -3.0
+Incorrect: muinets -> mints, instead of minutes --------------------
 Word: compair
 impair 0.5
 compact 0.45454545454545453
@@ -2201,7 +3364,13 @@ compacts 0.4166666666666667
 compared 0.4166666666666667
 compares 0.4166666666666667
 composer 0.4166666666666667
-Incorrect: compair -> impair ,instead of compare
+compair
+compact: -2.0
+company: -2.0
+compare: -2.0
+compass: -2.0
+impair: -2.0
+Incorrect: compair -> compact, instead of compare --------------------
 Word: cirtain
 certain 0.6
 curtain 0.6
@@ -2213,6 +3382,12 @@ certains 0.4166666666666667
 stain 0.4
 chain 0.4
 curtained 0.38461538461538464
+cirtain
+certain: -1.0
+curtain: -1.0
+contain: -2.0
+captain: -2.0
+cain: -3.0
 Word: supercede
 supersede 0.6666666666666666
 superseded 0.5384615384615384
@@ -2224,6 +3399,12 @@ supervise 0.42857142857142855
 intercede 0.42857142857142855
 secede 0.4166666666666667
 superb 0.4166666666666667
+supercede
+supersede: -1.0
+superseded: -2.0
+superbe: -3.0
+superadded: -3.0
+super: -4.0
 Word: superceed
 superseded 0.5384615384615384
 succeed 0.5
@@ -2235,7 +3416,13 @@ super 0.45454545454545453
 speed 0.45454545454545453
 superscribed 0.4375
 perceived 0.42857142857142855
-Incorrect: superceed -> superseded ,instead of supersede
+superceed
+superseded: -2.0
+supervened: -2.0
+succeed: -3.0
+supervised: -3.0
+superadded: -3.0
+Incorrect: superceed -> superseded, instead of supersede --------------------
 Word: contenpted
 contented 0.8
 contended 0.6666666666666666
@@ -2247,6 +3434,12 @@ contente 0.5454545454545454
 confronted 0.5384615384615384
 contentedly 0.5384615384615384
 commented 0.5384615384615384
+contenpted
+contented: -1.0
+contended: -2.0
+consented: -2.0
+contested: -2.0
+contend: -3.0
 Word: contende
 contente 0.7777777777777778
 contended 0.7272727272727273
@@ -2258,7 +3451,13 @@ contents 0.5454545454545454
 contending 0.5384615384615384
 contentment 0.5
 concentrate 0.5
-Incorrect: contende -> contente ,instead of contented
+contende
+contend: -1.0
+contended: -1.0
+contente: -1.0
+content: -2.0
+conde: -3.0
+Incorrect: contende -> contend, instead of contented --------------------
 Word: contended
 contended 1.0
 contend 0.8
@@ -2270,7 +3469,13 @@ contested 0.5833333333333334
 content 0.5454545454545454
 tended 0.5454545454545454
 contente 0.5454545454545454
-Incorrect: contended -> contended ,instead of contented
+contended
+contended: -0.0
+contented: -1.0
+condensed: -2.0
+contend: -2.0
+consented: -2.0
+Incorrect: contended -> contended, instead of contented --------------------
 Word: contentid
 contend 0.7
 contented 0.7
@@ -2282,7 +3487,12 @@ contentions 0.5833333333333334
 consented 0.5833333333333334
 contents 0.5454545454545454
 continent 0.5
-Incorrect: contentid -> contend ,instead of contented
+contentid
+contented: -1.0
+content: -2.0
+contend: -2.0
+contente: -2.0
+contention: -2.0
 Word: guic
 guise 0.375
 guilt 0.375
@@ -2294,7 +3504,13 @@ guides 0.3333333333333333
 guided 0.3333333333333333
 linguistic 0.3333333333333333
 guilty 0.3333333333333333
-Incorrect: guic -> guise ,instead of juice
+guic
+guide: -2.0
+guile: -2.0
+guild: -2.0
+guilt: -2.0
+guise: -2.0
+Incorrect: guic -> guide, instead of juice --------------------
 Word: juce
 juice 0.5714285714285714
 justice 0.4444444444444444
@@ -2306,6 +3522,13 @@ bruce 0.375
 judge 0.375
 julie 0.375
 deduce 0.3333333333333333
+juce
+june: -1.0
+juice: -1.0
+truce: -2.0
+sauce: -2.0
+justice: -3.0
+Incorrect: juce -> june, instead of juice --------------------
 Word: jucie
 julie 0.5
 june 0.375
@@ -2317,7 +3540,13 @@ juliet 0.3
 jumble 0.3
 je 0.2857142857142857
 justiciable 0.2857142857142857
-Incorrect: jucie -> julie ,instead of juice
+jucie
+julie: -1.0
+juice: -1.0
+judge: -2.0
+june: -2.0
+specie: -3.0
+Incorrect: jucie -> julie, instead of juice --------------------
 Word: juise
 guise 0.5
 juice 0.5
@@ -2329,7 +3558,12 @@ disguise 0.4
 june 0.375
 rise 0.375
 vise 0.375
-Incorrect: juise -> guise ,instead of juice
+juise
+juice: -1.0
+guise: -1.0
+louise: -2.0
+cruise: -2.0
+cuisse: -2.0
 Word: juse
 use 0.5
 justice 0.4444444444444444
@@ -2341,7 +3575,13 @@ just 0.42857142857142855
 june 0.42857142857142855
 cause 0.375
 russe 0.375
-Incorrect: juse -> use ,instead of juice
+juse
+muse: -1.0
+fuse: -1.0
+jose: -1.0
+use: -1.0
+justice: -3.0
+Incorrect: juse -> muse, instead of juice --------------------
 Word: stomac
 stomach 0.6666666666666666
 potomac 0.5
@@ -2353,6 +3593,12 @@ stop 0.3333333333333333
 accustom 0.3333333333333333
 systolic 0.3333333333333333
 staccato 0.3333333333333333
+stomac
+stomach: -1.0
+potomac: -2.0
+stroma: -2.0
+sac: -3.0
+stomatitis: -5.0
 Word: stomache
 stomach 0.7
 macheve 0.4166666666666667
@@ -2364,6 +3610,12 @@ stone 0.36363636363636365
 stole 0.36363636363636365
 stoke 0.36363636363636365
 stowe 0.36363636363636365
+stomache
+stomach: -1.0
+bache: -4.0
+ache: -4.0
+mustache: -4.0
+macheve: -5.0
 Word: stomec
 stomach 0.36363636363636365
 stormed 0.36363636363636365
@@ -2375,6 +3627,13 @@ systolic 0.3333333333333333
 stomatitis 0.3076923076923077
 customers 0.3076923076923077
 storeroom 0.3076923076923077
+stomec
+stormed: -2.0
+some: -2.0
+stomach: -2.0
+stop: -3.0
+domestic: -5.0
+Incorrect: stomec -> stormed, instead of stomach --------------------
 Word: stumache
 stomach 0.4166666666666667
 macheve 0.4166666666666667
@@ -2386,6 +3645,12 @@ bache 0.36363636363636365
 tache 0.36363636363636365
 moustache 0.35714285714285715
 apache 0.3333333333333333
+stumache
+stomach: -2.0
+stumble: -3.0
+ache: -4.0
+mustache: -4.0
+macheve: -5.0
 Word: diffrent
 different 0.7272727272727273
 diffident 0.5833333333333334
@@ -2397,6 +3662,12 @@ difference 0.42857142857142855
 dissent 0.4166666666666667
 diluent 0.4166666666666667
 differentiating 0.4117647058823529
+diffrent
+different: -1.0
+diffident: -2.0
+differently: -3.0
+indifferent: -3.0
+differential: -4.0
 Word: clearical
 clerical 0.7272727272727273
 clinical 0.46153846153846156
@@ -2408,6 +3679,12 @@ clearings 0.42857142857142855
 classical 0.42857142857142855
 cicatricial 0.42857142857142855
 carpal 0.4166666666666667
+clearical
+clerical: -1.0
+clearing: -3.0
+clinical: -3.0
+critical: -4.0
+cyclical: -4.0
 Word: monitering
 monitoring 0.6923076923076923
 loitering 0.5
@@ -2419,6 +3696,12 @@ moaning 0.46153846153846156
 reconnoitering 0.4444444444444444
 uttering 0.42857142857142855
 watering 0.42857142857142855
+monitering
+monitoring: -1.0
+loitering: -2.0
+mastering: -3.0
+muttering: -3.0
+glittering: -4.0
 Word: biult
 bit 0.42857142857142855
 bolt 0.375
@@ -2430,7 +3713,13 @@ vault 0.3333333333333333
 built 0.3333333333333333
 adult 0.3333333333333333
 insult 0.3
-Incorrect: biult -> bit ,instead of built
+biult
+bit: -2.0
+cult: -2.0
+bolt: -2.0
+belt: -2.0
+vult: -2.0
+Incorrect: biult -> bit, instead of built --------------------
 Word: perhapse
 perhaps 0.7
 perverse 0.4166666666666667
@@ -2442,6 +3731,12 @@ shape 0.36363636363636365
 perchance 0.35714285714285715
 elapse 0.3333333333333333
 papers 0.3333333333333333
+perhapse
+perhaps: -1.0
+perverse: -3.0
+lapse: -4.0
+pere: -4.0
+paper: -5.0
 Word: personnell
 personnel 0.9090909090909091
 personal 0.5384615384615384
@@ -2453,6 +3748,12 @@ peterson 0.42857142857142855
 peroneal 0.42857142857142855
 personage 0.4
 personate 0.4
+personnell
+personnel: -1.0
+personally: -3.0
+personen: -3.0
+personal: -3.0
+person: -4.0
 Word: poartry
 poetry 0.5
 portray 0.45454545454545453
@@ -2464,6 +3765,13 @@ artery 0.36363636363636365
 portly 0.36363636363636365
 pantry 0.36363636363636365
 partly 0.36363636363636365
+poartry
+poultry: -2.0
+parry: -2.0
+portray: -2.0
+poetry: -2.0
+party: -2.0
+Incorrect: poartry -> poultry, instead of poetry --------------------
 Word: poertry
 poetry 0.6666666666666666
 pottery 0.45454545454545453
@@ -2475,6 +3783,12 @@ perry 0.4
 paltry 0.36363636363636365
 artery 0.36363636363636365
 portly 0.36363636363636365
+poertry
+poetry: -1.0
+poverty: -2.0
+portray: -2.0
+powdery: -3.0
+pottery: -3.0
 Word: poetre
 poetry 0.5555555555555556
 etre 0.5
@@ -2486,6 +3800,12 @@ pre 0.375
 posture 0.36363636363636365
 pure 0.3333333333333333
 retraite 0.3333333333333333
+poetre
+poetry: -1.0
+metre: -2.0
+etre: -2.0
+poet: -2.0
+poets: -2.0
 Word: poety
 poetry 0.625
 poet 0.5714285714285714
@@ -2497,6 +3817,13 @@ poetic 0.4444444444444444
 ety 0.42857142857142855
 poverty 0.4
 pity 0.375
+poety
+piety: -1.0
+poet: -1.0
+poetry: -1.0
+poets: -1.0
+petty: -2.0
+Incorrect: poety -> piety, instead of poetry --------------------
 Word: powetry
 poetry 0.6666666666666666
 powdery 0.45454545454545453
@@ -2508,6 +3835,12 @@ powell 0.36363636363636365
 pantry 0.36363636363636365
 powerfully 0.35714285714285715
 pottery 0.3333333333333333
+powetry
+poetry: -1.0
+poultry: -2.0
+powdery: -2.0
+power: -2.0
+paltry: -3.0
 Word: arragment
 fragment 0.5833333333333334
 arrangement 0.5714285714285714
@@ -2519,7 +3852,12 @@ agrement 0.46153846153846156
 argument 0.46153846153846156
 agent 0.45454545454545453
 arrangements 0.4375
-Incorrect: arragment -> fragment ,instead of arrangement
+arragment
+arrangement: -2.0
+fragment: -2.0
+arrestment: -3.0
+augment: -3.0
+fragmentary: -5.0
 Word: stanerdizing
 standing 0.5714285714285714
 understanding 0.4444444444444444
@@ -2531,7 +3869,13 @@ staring 0.4
 staying 0.4
 staining 0.4
 staking 0.4
-Incorrect: stanerdizing -> standing ,instead of standardizing
+stanerdizing
+tantalizing: -4.0
+standing: -4.0
+stammering: -5.0
+staggering: -5.0
+understanding: -9.0
+Incorrect: stanerdizing -> tantalizing, instead of standardizing --------------------
 Word: independant
 independent 0.8181818181818182
 intendant 0.6666666666666666
@@ -2543,6 +3887,12 @@ defendant 0.5
 independency 0.5
 independence 0.5
 descendant 0.4666666666666667
+independant
+independent: -1.0
+independently: -3.0
+cependant: -3.0
+intendant: -3.0
+dependent: -3.0
 Word: independant
 independent 0.8181818181818182
 intendant 0.6666666666666666
@@ -2554,6 +3904,12 @@ defendant 0.5
 independency 0.5
 independence 0.5
 descendant 0.4666666666666667
+independant
+independent: -1.0
+independently: -3.0
+cependant: -3.0
+intendant: -3.0
+dependent: -3.0
 Word: litriture
 litre 0.6666666666666666
 literature 0.5384615384615384
@@ -2565,7 +3921,12 @@ furniture 0.38461538461538464
 trite 0.36363636363636365
 lithe 0.36363636363636365
 structure 0.35714285714285715
-Incorrect: litriture -> litre ,instead of literature
+litriture
+literature: -2.0
+ligature: -3.0
+stricture: -3.0
+litre: -4.0
+lecture: -4.0
 Word: discription
 description 0.7142857142857143
 discretion 0.6428571428571429
@@ -2577,6 +3938,12 @@ descriptions 0.5625
 prescription 0.5625
 proscription 0.5625
 disruption 0.5333333333333333
+discription
+description: -1.0
+discretion: -2.0
+inscription: -2.0
+conscription: -3.0
+discrimination: -4.0
 Word: opisite
 opposite 0.5454545454545454
 site 0.4444444444444444
@@ -2588,6 +3955,12 @@ despite 0.3333333333333333
 visited 0.3333333333333333
 opiates 0.3333333333333333
 situate 0.3333333333333333
+opisite
+opposite: -2.0
+site: -3.0
+spite: -3.0
+requisite: -4.0
+exquisite: -4.0
 Word: oppasite
 opposite 0.6363636363636364
 parasite 0.5
@@ -2599,6 +3972,12 @@ oppressive 0.3333333333333333
 opposition 0.3333333333333333
 oppose 0.3333333333333333
 passionate 0.3333333333333333
+oppasite
+opposite: -1.0
+paste: -3.0
+parasite: -3.0
+site: -4.0
+parasites: -4.0
 Word: oppesite
 opposite 0.6363636363636364
 oppressive 0.42857142857142855
@@ -2610,6 +3989,12 @@ sites 0.36363636363636365
 telescope 0.35714285714285715
 steppe 0.3333333333333333
 petite 0.3333333333333333
+oppesite
+opposite: -1.0
+appetite: -2.0
+oppressive: -3.0
+operate: -3.0
+site: -4.0
 Word: oppisit
 opposite 0.4166666666666667
 visit 0.4
@@ -2621,6 +4006,12 @@ opposing 0.3076923076923077
 mississippi 0.3076923076923077
 opponent 0.3076923076923077
 spit 0.3
+oppisit
+opposite: -2.0
+visit: -3.0
+sit: -4.0
+opposition: -4.0
+pit: -4.0
 Word: oppisite
 opposite 0.6363636363636364
 site 0.4
@@ -2632,6 +4023,12 @@ oppressive 0.3333333333333333
 opposition 0.3333333333333333
 oppose 0.3333333333333333
 osteoporosis 0.3125
+oppisite
+opposite: -1.0
+site: -4.0
+requisite: -4.0
+spite: -4.0
+exquisite: -4.0
 Word: opposit
 opposite 0.7
 opposition 0.5833333333333334
@@ -2643,6 +4040,12 @@ opponent 0.4166666666666667
 appositely 0.35714285714285715
 apposition 0.35714285714285715
 proposition 0.3333333333333333
+opposit
+opposite: -1.0
+opposing: -2.0
+opposed: -2.0
+oppose: -2.0
+opposition: -3.0
 Word: oppossite
 opposite 0.9
 oppose 0.5454545454545454
@@ -2654,6 +4057,12 @@ composite 0.42857142857142855
 appositely 0.4
 oppressive 0.4
 ossible 0.38461538461538464
+oppossite
+opposite: -1.0
+opposing: -3.0
+oppose: -3.0
+opposition: -4.0
+possibilite: -6.0
 Word: oppossitte
 opposite 0.8181818181818182
 oppose 0.5
@@ -2665,6 +4074,12 @@ composite 0.4
 appositely 0.375
 oppressive 0.375
 ossible 0.35714285714285715
+oppossitte
+opposite: -2.0
+opposing: -4.0
+opposition: -4.0
+oppose: -4.0
+possibilite: -6.0
 Word: poims
 poems 0.5
 points 0.4444444444444444
@@ -2676,6 +4091,12 @@ ports 0.3333333333333333
 poisonous 0.3333333333333333
 whims 0.3333333333333333
 poses 0.3333333333333333
+poims
+poems: -1.0
+points: -2.0
+pots: -2.0
+aims: -2.0
+poisons: -3.0
 Word: pomes
 poses 0.5
 pores 0.5
@@ -2687,7 +4108,13 @@ homes 0.5
 possesses 0.4444444444444444
 hommes 0.4444444444444444
 sommes 0.4444444444444444
-Incorrect: pomes -> poses ,instead of poems
+pomes
+poses: -1.0
+pores: -1.0
+popes: -1.0
+poles: -1.0
+comes: -1.0
+Incorrect: pomes -> poses, instead of poems --------------------
 Word: southen
 southern 0.7
 south 0.5555555555555556
@@ -2699,6 +4126,12 @@ then 0.4444444444444444
 southampton 0.42857142857142855
 soutenir 0.4166666666666667
 southwestern 0.4
+southen
+southern: -1.0
+south: -2.0
+southerner: -3.0
+southerly: -3.0
+southeast: -3.0
 Word: dirven
 driven 0.4
 den 0.375
@@ -2710,6 +4143,12 @@ dire 0.3333333333333333
 dirt 0.3333333333333333
 dive 0.3333333333333333
 didn 0.3333333333333333
+dirven
+driven: -1.0
+din: -3.0
+oven: -3.0
+even: -3.0
+den: -3.0
 Word: vistors
 visitors 0.7
 victors 0.6
@@ -2721,6 +4160,12 @@ vista 0.4
 victories 0.38461538461538464
 histories 0.38461538461538464
 ancestors 0.38461538461538464
+vistors
+visitors: -1.0
+victors: -1.0
+vistas: -2.0
+violators: -3.0
+vis: -4.0
 Word: levals
 levels 0.5555555555555556
 valets 0.4
@@ -2732,6 +4177,12 @@ les 0.375
 valleys 0.36363636363636365
 reveals 0.36363636363636365
 levellers 0.3333333333333333
+levals
+levels: -1.0
+levers: -2.0
+levies: -2.0
+rivals: -2.0
+valets: -4.0
 Word: experances
 experiences 0.6428571428571429
 expectancies 0.5
@@ -2743,6 +4194,12 @@ frances 0.46153846153846156
 appearances 0.4375
 experienced 0.4375
 expenses 0.42857142857142855
+experances
+experiences: -2.0
+entrances: -3.0
+utterances: -3.0
+experience: -3.0
+expectancies: -3.0
 Word: possition
 position 0.9
 proposition 0.6923076923076923
@@ -2754,6 +4211,12 @@ opposition 0.6153846153846154
 apposition 0.6153846153846154
 composition 0.5714285714285714
 supposition 0.5714285714285714
+possition
+position: -1.0
+positions: -2.0
+exposition: -3.0
+possession: -3.0
+proposition: -3.0
 Word: varable
 variable 0.7
 arable 0.6666666666666666
@@ -2765,6 +4228,12 @@ venerable 0.5
 rabble 0.5
 vulnerable 0.46153846153846156
 invariable 0.46153846153846156
+varable
+variable: -1.0
+arable: -1.0
+valuable: -2.0
+viable: -2.0
+bearable: -2.0
 Word: extreamly
 extremely 0.5384615384615384
 extremity 0.42857142857142855
@@ -2776,6 +4245,12 @@ early 0.3333333333333333
 expressly 0.3333333333333333
 streamlet 0.3333333333333333
 extra 0.3333333333333333
+extreamly
+extremely: -2.0
+extremes: -3.0
+entreaty: -3.0
+extreme: -3.0
+extremity: -3.0
 Word: galery
 gallery 0.875
 galere 0.5555555555555556
@@ -2787,6 +4262,12 @@ gallantry 0.4166666666666667
 galleries 0.4166666666666667
 galaxy 0.4
 galled 0.4
+galery
+gallery: -1.0
+galere: -1.0
+galley: -2.0
+gale: -2.0
+gerry: -3.0
 Word: gallary
 gallantry 0.6363636363636364
 gallery 0.6
@@ -2798,7 +4279,12 @@ gallant 0.45454545454545453
 gall 0.4444444444444444
 axillary 0.4166666666666667
 galloway 0.4166666666666667
-Incorrect: gallary -> gallantry ,instead of gallery
+gallary
+gallery: -1.0
+galley: -2.0
+gallantry: -2.0
+salary: -2.0
+galaxy: -2.0
 Word: gallerry
 gallery 0.8888888888888888
 galley 0.6
@@ -2810,6 +4296,12 @@ galled 0.45454545454545453
 legally 0.4166666666666667
 gall 0.4
 gale 0.4
+gallerry
+gallery: -1.0
+galley: -2.0
+galleries: -3.0
+gallantry: -3.0
+gerry: -3.0
 Word: gallrey
 galley 0.6666666666666666
 gallery 0.45454545454545453
@@ -2821,7 +4313,13 @@ gallantry 0.38461538461538464
 gallantly 0.38461538461538464
 galaxy 0.36363636363636365
 valley 0.36363636363636365
-Incorrect: gallrey -> galley ,instead of gallery
+gallrey
+galley: -1.0
+gallery: -1.0
+gall: -3.0
+galloway: -3.0
+grey: -3.0
+Incorrect: gallrey -> galley, instead of gallery --------------------
 Word: scarcly
 scarcely 0.7
 scaly 0.5555555555555556
@@ -2833,6 +4331,12 @@ scantily 0.4166666666666667
 scars 0.4
 scarf 0.4
 scare 0.4
+scarcly
+scarcely: -1.0
+scarify: -2.0
+scaly: -2.0
+scarcity: -2.0
+scarce: -2.0
 Word: scarecly
 scaly 0.5
 scare 0.5
@@ -2844,7 +4348,12 @@ scar 0.4
 squarely 0.38461538461538464
 securely 0.38461538461538464
 secretly 0.38461538461538464
-Incorrect: scarecly -> scaly ,instead of scarcely
+scarecly
+scarcely: -1.0
+scarify: -3.0
+scaly: -3.0
+scared: -3.0
+scare: -3.0
 Word: scarely
 scarcely 0.7
 scaly 0.5555555555555556
@@ -2856,6 +4365,12 @@ scared 0.5
 surely 0.5
 barely 0.5
 carelessly 0.46153846153846156
+scarely
+scarcely: -1.0
+squarely: -2.0
+scaly: -2.0
+rarely: -2.0
+scare: -2.0
 Word: scarsely
 scarcely 0.6363636363636364
 hoarsely 0.5
@@ -2867,6 +4382,12 @@ scarify 0.4166666666666667
 tersely 0.4166666666666667
 scar 0.4
 sedately 0.38461538461538464
+scarsely
+scarcely: -1.0
+coarsely: -2.0
+hoarsely: -2.0
+scaly: -3.0
+scars: -3.0
 Word: auxillary
 axillary 0.7272727272727273
 maxillary 0.5384615384615384
@@ -2878,7 +4399,13 @@ bacillary 0.42857142857142855
 axilla 0.4166666666666667
 inframaxillary 0.3888888888888889
 auxiliaries 0.375
-Incorrect: auxillary -> axillary ,instead of auxiliary
+auxillary
+axillary: -1.0
+maxillary: -2.0
+papillary: -3.0
+artillery: -3.0
+submaxillary: -4.0
+Incorrect: auxillary -> axillary, instead of auxiliary --------------------
 Word: spledid
 splendid 0.7
 sidled 0.5
@@ -2890,6 +4417,12 @@ dimpled 0.45454545454545453
 spelled 0.45454545454545453
 sped 0.4444444444444444
 splashed 0.4166666666666667
+spledid
+splendid: -1.0
+splendidly: -3.0
+spilled: -4.0
+sidled: -4.0
+displeased: -5.0
 Word: splended
 splendid 0.6363636363636364
 suspended 0.5833333333333334
@@ -2901,6 +4434,12 @@ splendour 0.46153846153846156
 spleen 0.45454545454545453
 bended 0.45454545454545453
 mended 0.45454545454545453
+splended
+splendid: -1.0
+splendor: -2.0
+blended: -2.0
+suspended: -3.0
+spend: -3.0
 Word: splened
 splendid 0.5454545454545454
 spleen 0.5
@@ -2912,6 +4451,12 @@ splenic 0.45454545454545453
 spelled 0.45454545454545453
 sped 0.4444444444444444
 splashed 0.4166666666666667
+splened
+splendid: -2.0
+spleen: -2.0
+spanned: -2.0
+spoiled: -3.0
+spilled: -3.0
 Word: splended
 splendid 0.6363636363636364
 suspended 0.5833333333333334
@@ -2923,6 +4468,12 @@ splendour 0.46153846153846156
 spleen 0.45454545454545453
 bended 0.45454545454545453
 mended 0.45454545454545453
+splended
+splendid: -1.0
+splendor: -2.0
+blended: -2.0
+suspended: -3.0
+spend: -3.0
 Word: definately
 definitely 0.6923076923076923
 indefinitely 0.5333333333333333
@@ -2934,6 +4485,12 @@ desperately 0.4375
 definite 0.42857142857142855
 infinitely 0.4
 defiantly 0.4
+definately
+definitely: -1.0
+delicately: -2.0
+indefinitely: -3.0
+obstinately: -4.0
+inadequately: -6.0
 Word: difinately
 definitely 0.4666666666666667
 obstinately 0.4375
@@ -2945,6 +4502,12 @@ delicately 0.4
 diffusely 0.4
 inattentively 0.3888888888888889
 finely 0.38461538461538464
+difinately
+definitely: -2.0
+divinely: -3.0
+obstinately: -4.0
+inadequately: -7.0
+indiscriminately: -7.0
 Word: annt
 ant 0.8
 amant 0.5714285714285714
@@ -2956,7 +4519,13 @@ ante 0.42857142857142855
 anti 0.42857142857142855
 ants 0.42857142857142855
 want 0.42857142857142855
-Incorrect: annt -> ant ,instead of aunt
+annt
+ann: -1.0
+ant: -1.0
+amant: -2.0
+ancient: -3.0
+annulment: -5.0
+Incorrect: annt -> ann, instead of aunt --------------------
 Word: anut
 ant 0.5
 nut 0.5
@@ -2968,7 +4537,13 @@ annulment 0.36363636363636365
 walnut 0.3333333333333333
 annual 0.3333333333333333
 at 0.3333333333333333
-Incorrect: anut -> ant ,instead of aunt
+anut
+anus: -1.0
+nut: -1.0
+ant: -1.0
+about: -2.0
+adjutant: -5.0
+Incorrect: anut -> anus, instead of aunt --------------------
 Word: arnt
 ardent 0.5
 ant 0.5
@@ -2980,7 +4555,13 @@ apparent 0.4
 argument 0.4
 agent 0.375
 arbat 0.375
-Incorrect: arnt -> ardent ,instead of aunt
+arnt
+art: -1.0
+aunt: -1.0
+ant: -1.0
+learnt: -2.0
+ardent: -2.0
+Incorrect: arnt -> art, instead of aunt --------------------
 Word: defenitions
 definitions 0.7142857142857143
 definition 0.5333333333333333
@@ -2992,6 +4573,12 @@ devotions 0.4666666666666667
 defection 0.4666666666666667
 denominations 0.4444444444444444
 denunciations 0.4444444444444444
+defenitions
+definitions: -1.0
+definition: -2.0
+deletions: -3.0
+dentition: -4.0
+deferens: -5.0
 Word: voteing
 voting 0.6666666666666666
 vote 0.4444444444444444
@@ -3003,6 +4590,12 @@ volunteering 0.4
 voted 0.4
 votes 0.4
 voter 0.4
+voteing
+voting: -1.0
+devoting: -3.0
+vomiting: -3.0
+vote: -3.0
+vouching: -3.0
 Word: lates
 lateness 0.6666666666666666
 latest 0.625
@@ -3014,7 +4607,13 @@ rates 0.5
 lakes 0.5
 fates 0.5
 lanes 0.5
-Incorrect: lates -> lateness ,instead of latest
+lates
+plates: -1.0
+late: -1.0
+latest: -1.0
+dilates: -2.0
+lateness: -3.0
+Incorrect: lates -> plates, instead of latest --------------------
 Word: latets
 platelets 0.5454545454545454
 late 0.5
@@ -3026,7 +4625,13 @@ later 0.4444444444444444
 etats 0.4444444444444444
 lateralis 0.4166666666666667
 latter 0.4
-Incorrect: latets -> platelets ,instead of latest
+latets
+late: -2.0
+lets: -2.0
+platelets: -3.0
+lateness: -3.0
+flats: -3.0
+Incorrect: latets -> late, instead of latest --------------------
 Word: latiest
 latest 0.6666666666666666
 loftiest 0.5454545454545454
@@ -3038,6 +4643,12 @@ emptiest 0.4166666666666667
 liveliest 0.4166666666666667
 lowliest 0.4166666666666667
 latin 0.4
+latiest
+latest: -1.0
+loftiest: -2.0
+largest: -2.0
+last: -3.0
+tiniest: -3.0
 Word: latist
 latest 0.5555555555555556
 last 0.5
@@ -3049,4 +4660,10 @@ latent 0.4
 latissimus 0.38461538461538464
 legitimist 0.38461538461538464
 separatist 0.38461538461538464
-cs276.pe1.spell.KGramSpellingCorrector: 189/270 in 14322ms
+latist
+latest: -1.0
+last: -2.0
+latin: -2.0
+list: -2.0
+satirist: -3.0
+cs276.pe1.spell.KGramWithEditDistanceSpellingCorrector: 192/270 in 12861ms

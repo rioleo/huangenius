@@ -62,11 +62,11 @@ public class KGramSpellingCorrector implements SpellingCorrector {
 		}
 		
 //	    System.out.println("Word: " + word);
-//	    for (String entry : possibleCorrections.topK(10)) {
+//	    for (String entry : possibleCorrections.topK(5)) {
 //	        System.out.println(entry + " " + possibleCorrections.getCount(entry));
 //	    }
 		
-		return possibleCorrections.topK(10);
+		return possibleCorrections.topK(5);
 	}
 	
 	

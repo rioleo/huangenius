@@ -20,10 +20,10 @@ public class KGramSpellingCorrector implements SpellingCorrector {
 	    index = new HashMap<String, Counter<String>>();
 	    
         File path = new File("/afs/ir/class/cs276/pe1-2011/big.txt.gz");
-        for (String line : IOUtils.readLines(IOUtils.openFile(path))) {
+        for (String line : IOUtils.readLines(IOUtils.openFile(path))) {        
             for (String word : StringUtils.tokenize(line)) {
-                ArrayList<String> bigrams = getBigrams(word);
-                
+            
+                ArrayList<String> bigrams = getBigrams(word);                
                 for (String bigram : bigrams) {
                     if (index.containsKey(bigram)) {
                         index.get(bigram).incrementCount(word);
@@ -33,10 +33,6 @@ public class KGramSpellingCorrector implements SpellingCorrector {
                         index.put(bigram, words);
                     }
                 }
-                
-//                for (String key : index.keySet()) {
-//                    System.out.println(key + " " + index.get(key));
-//                }
                 
             }
         }
@@ -59,22 +55,18 @@ public class KGramSpellingCorrector implements SpellingCorrector {
 	                    Set<String> union = getBigramsSet(posting);
 	                    union.addAll(wordBigrams);
 	                    
-//	                    System.out.println(word + " " + posting + ": " + intersect);
-	                    
 	                    possibleCorrections.setCount(posting, ((double) intersect.size())/union.size());
-		                
 	                }
 		        }
 		    }
 		}
 		
-	    System.out.println("Word: " + word);
-	    for (String entry : possibleCorrections.topK(10)) {
-	        System.out.println(entry + " " + possibleCorrections.getCount(entry));
-	    }
+//	    System.out.println("Word: " + word);
+//	    for (String entry : possibleCorrections.topK(10)) {
+//	        System.out.println(entry + " " + possibleCorrections.getCount(entry));
+//	    }
 		
 		return possibleCorrections.topK(10);
-		
 	}
 	
 	

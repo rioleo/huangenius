@@ -9,8 +9,8 @@ import org.apache.lucene.util.Version;
 
 import cs276.pe1.lucene.IMDBParser.MoviePlotRecord;
 import org.apache.lucene.document.*;
-
-
+import org.apache.lucene.queryParser.QueryParser;
+import org.apache.lucene.index.IndexReader;
 
 public class IMDBIndexer {
 	
@@ -47,9 +47,11 @@ public class IMDBIndexer {
 		writer.close();
 		
 		// Can we make an external class?
+		//Search("Rob", indexPath);
 		
-		Searcher searcher = new IndexSearcher(indexPath);
-		searcher.close();
+		//Hits hits = indexsearcher.search(query);
 		System.err.println("Done");
 	}
+	
+	
 }

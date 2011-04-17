@@ -1,4 +1,7 @@
 java -cp bin/:lib/lucene-core-2.4.1.jar cs276.pe1.spell.SpellingScorer cs276.pe1.spell.KGramSpellingCorrector
 
+To build index:
 java -cp bin/:lib/lucene-core-2.9.0.jar cs276.pe1.lucene.IMDBIndexer
 
+To run queries:
+java -cp bin/:lib/lucene-core-2.9.0.jar cs276.pe1.lucene.IMDBReader

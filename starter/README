@@ -8,3 +8,8 @@ java -cp bin/:lib/lucene-core-2.9.0.jar cs276.pe1.lucene.IMDBReader
 
 To run spellchecker (not sure):
 java -cp bin/:lib/lucene-core-2.9.0.jar:lib/lucene-spellchecker-2.3.2.jar cs276.pe1.lucene.IMDBReader
+
+To run spellchecker:
+java -cp bin/:lib/lucene-core-2.9.0.jar cs276.pe1.lucene.RunQueries
+
+

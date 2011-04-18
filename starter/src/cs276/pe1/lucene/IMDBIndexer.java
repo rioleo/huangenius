@@ -29,9 +29,9 @@ public class IMDBIndexer {
 		
 		    Document doc = new Document();
 		    
-		    Field title = new Field("title", rec.title, Field.Store.YES, Field.Index.NOT_ANALYZED);
-		    Field plots = new Field("plots", rec.plots, Field.Store.YES, Field.Index.NOT_ANALYZED);
-		    Field authors = new Field("authors", rec.authors, Field.Store.YES, Field.Index.NOT_ANALYZED);
+		    Field title = new Field("title", rec.title, Field.Store.YES, Field.Index.ANALYZED);
+		    Field plots = new Field("plots", rec.plots, Field.Store.YES, Field.Index.ANALYZED);
+		    Field authors = new Field("authors", rec.authors, Field.Store.YES, Field.Index.ANALYZED);
 		    
 		    doc.add(title);
 		    doc.add(plots);

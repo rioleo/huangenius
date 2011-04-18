@@ -32,22 +32,26 @@ public class IMDBReader {
 		
 
 
-// 10 items query works
-        Term term = new Term("title", "Trmmy");
-		PrefixQuery query = new PrefixQuery(term);
+// 10 items query works this no longer works
+//Term term = new Term("title", "\"10 Items or Less\"");
+//PrefixQuery query = new PrefixQuery(term);
 
-// Murdered eighteen query DOES NOT WORK
-//        Term term1 = new Term("plots", "murdered");
-//        Term term2 = new Term("plots", "eighteen");
-//        PhraseQuery query = new PhraseQuery();
-//        query.add(term1);
-//        query.add(term2);
-//        query.setSlop(5);
+// Meh
+PhraseQuery query = new PhraseQuery();
+query.add(new Term("title","10"));
+query.add(new Term("title","items"));
+
+// This WORKS
+//PhraseQuery query = new PhraseQuery();
+//query.setSlop(5);
+//query.add(new Term("plots","eighteen"));
+//query.add(new Term("plots","murdered"));
 
 
 // Rob query WORKS
-		//Term term = new Term("authors", "Rob");
-        //TermQuery query = new TermQuery(term);		
+//QueryParser queryParser = new QueryParser("authors",new StandardAnalyzer());
+//Query query = queryParser.parse("Rob");
+	
 
 
 		TopDocs results = indexsearcher.search(query, null, 20);

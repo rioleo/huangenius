@@ -33,8 +33,8 @@ public class IMDBReader {
 
 
 // 10 items query works
-//        Term term = new Term("title", "\"10 Items or Less\"");
-//		PrefixQuery query = new PrefixQuery(term);
+        Term term = new Term("title", "Trmmy");
+		PrefixQuery query = new PrefixQuery(term);
 
 // Murdered eighteen query DOES NOT WORK
 //        Term term1 = new Term("plots", "murdered");
@@ -46,8 +46,8 @@ public class IMDBReader {
 
 
 // Rob query WORKS
-		Term term = new Term("authors", "Rob ");
-        TermQuery query = new TermQuery(term);		
+		//Term term = new Term("authors", "Rob");
+        //TermQuery query = new TermQuery(term);		
 
 
 		TopDocs results = indexsearcher.search(query, null, 20);

@@ -95,9 +95,13 @@ public class IMDBParser {
 							}
 							title = line.substring(4);
 						} else if (line.startsWith("PL: ")) {
-							plots.append(line.substring(4)).append(" ");
+							for (String word : line.substring(4).split("\\s+")) {
+								plots.append(word + " ");
+								//System.out.println(word);
+							}
+							
 						} else if (line.startsWith("BY: ")) {
-							authors.append(line.substring(4)).append(" ");
+							authors.append(line.substring(4)).append("");
 						}
 					}
 					

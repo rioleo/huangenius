@@ -12,9 +12,11 @@ import org.apache.lucene.document.*;
 import org.apache.lucene.queryParser.QueryParser;
 import org.apache.lucene.index.IndexReader;
 import org.apache.lucene.index.Term;
+
 import org.apache.lucene.search.spell.SpellChecker;
 import org.apache.lucene.search.spell.LuceneDictionary;
 import java.util.List;
+import org.apache.lucene.store.FSDirectory;
 
 import cs276.pe1.spell.KGramWithEditDistanceSpellingCorrector;
 
@@ -86,9 +88,10 @@ public class IMDBReader {
 // Rob query WORKS
 QueryParser queryParser = new QueryParser("title",new StandardAnalyzer());
 Query query = queryParser.parse("Timmy");
-SpellChecker spell = new SpellChecker(indexPath);
+FSDirectory fs = FSDirectory.getDirectory(indexPath);
+SpellChecker spell = new SpellChecker(fs);
 spell.indexDictionary(new LuceneDictionary(ireader,"title"));
-String[] similar = spellChecker.suggestSimilar("sevanty", 2);	
+String[] similar = spell.suggestSimilar("Trmmy", 10);	
 
 for (String word : similar) {
 		    System.out.println(word);

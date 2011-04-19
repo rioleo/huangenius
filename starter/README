@@ -6,10 +6,16 @@ java -cp bin/:lib/lucene-core-2.9.0.jar cs276.pe1.lucene.IMDBIndexer
 To run queries:
 java -cp bin/:lib/lucene-core-2.9.0.jar cs276.pe1.lucene.IMDBReader
 
-To run spellchecker (not sure):
+To run spellchecker:
 java -cp bin/:lib/lucene-core-2.9.0.jar:lib/lucene-spellchecker-2.3.2.jar cs276.pe1.lucene.IMDBReader
 
 To run spellchecker:
 java -cp bin/:lib/lucene-core-2.9.0.jar cs276.pe1.lucene.RunQueries
 
+To run spellchecker bis:
+java -cp bin/:lib/lucene-core-2.9.0.jar:lib/lucene-spellchecker-2.3.2.jar cs276.pe1.lucene.RunQueries
 
+To run Luke (briefly):
+Open lukeall-1.0.1.jar. Select the files in cs276-index (on your home folder, or alternatively copy the entire contents on to your desktop and point luke to that folder).
+
+Browse! Note, be sure to use StandardAnalyzer - mine defaults to KeywordAnalyzer.

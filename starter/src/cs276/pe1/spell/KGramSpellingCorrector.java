@@ -19,7 +19,8 @@ public class KGramSpellingCorrector implements SpellingCorrector {
 	    // instantiate new index
 	    index = new HashMap<String, Counter<String>>();
 	    
-        File path = new File("/afs/ir/class/cs276/pe1-2011/big.txt.gz");
+        //File path = new File("/afs/ir/class/cs276/pe1-2011/big.txt.gz");
+		File path = new File("/afs/ir/class/cs276/pe1-2011/imdb-plots-20081003.list.gz");
         for (String line : IOUtils.readLines(IOUtils.openFile(path))) {        
             for (String word : StringUtils.tokenize(line)) {
             

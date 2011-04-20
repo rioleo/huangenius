@@ -24,7 +24,8 @@ public class KGramSpellingCorrector implements SpellingCorrector {
         for (String line : IOUtils.readLines(IOUtils.openFile(path))) {        
             for (String word : StringUtils.tokenize(line)) {
             
-                ArrayList<String> bigrams = getBigrams(word);                
+                //ArrayList<String> bigrams = getBigrams(word);           
+				ArrayList<String> bigrams = getKgrams(word, 2); 
                 for (String bigram : bigrams) {
                     if (index.containsKey(bigram)) {
                         index.get(bigram).incrementCount(word);
@@ -40,7 +41,7 @@ public class KGramSpellingCorrector implements SpellingCorrector {
 	}
 
 	public List<String> corrections(String word) {
-		Set<String> wordBigrams = getBigramsSet(word);
+		Set<String> wordBigrams = getKgramsSet(word, 2);
 		
 		Counter<String> possibleCorrections = new Counter<String>();
 		
@@ -50,10 +51,10 @@ public class KGramSpellingCorrector implements SpellingCorrector {
 		    if (postings != null) {
 		        for (String posting : postings) {
 		            if (!possibleCorrections.containsKey(posting)) {
-	                    Set<String> intersect = getBigramsSet(posting);
+	                    Set<String> intersect = getKgramsSet(posting, 2);
                         intersect.retainAll(wordBigrams);
 	                    
-	                    Set<String> union = getBigramsSet(posting);
+	                    Set<String> union = getKgramsSet(posting, 2);
 	                    union.addAll(wordBigrams);
 	                    
 	                    possibleCorrections.setCount(posting, ((double) intersect.size())/union.size());
@@ -71,24 +72,24 @@ public class KGramSpellingCorrector implements SpellingCorrector {
 	}
 	
 	
-	private Set<String> getBigramsSet(String word) {
-	    Set<String> bigrams = new HashSet<String>();
+	private Set<String> getKgramsSet(String word, int k) {
+	    Set<String> kgrams = new HashSet<String>();
 	    word = "$" + word + "$";
-        for (int i = 0; i < word.length()-1; i++) {
-            String bigram = word.substring(i, i+2);
-            bigrams.add(bigram);
+        for (int i = 0; i < word.length()-(k-1); i++) {
+            String kgram = word.substring(i, i+k);
+            kgrams.add(kgram);
         }
-        return bigrams;
+        return kgrams;
 	}
 	
-	private ArrayList<String> getBigrams(String word) {
-	    ArrayList<String> bigrams = new ArrayList<String>();
+	private ArrayList<String> getKgrams(String word, int k) {
+	    ArrayList<String> kgrams = new ArrayList<String>();
 	    word = "$" + word + "$";
-        for (int i = 0; i < word.length()-1; i++) {
-            String bigram = word.substring(i, i+2);
-            bigrams.add(bigram);
+        for (int i = 0; i < word.length()-(k-1); i++) {
+            String kgram = word.substring(i, i+k);
+            kgrams.add(kgram);
         }
-        return bigrams;
+        return kgrams;
 	}
-	
+
 }

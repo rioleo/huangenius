@@ -85,9 +85,6 @@ public class SpellingScorer {
 				if (!corrections.isEmpty() && corrections.get(0).equals(word)) {
 					nCorrect += 1;
 				}
-				else if (!corrections.isEmpty()) {
-				    System.out.println("Incorrect: " + misspelling + " -> " + corrections.get(0) + ", instead of " + word + " --------------------");
-                }
 				nTotal += 1;
 			}
 		}

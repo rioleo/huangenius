@@ -17,30 +17,55 @@ import org.apache.lucene.search.spell.SpellChecker;
 import org.apache.lucene.search.spell.LuceneDictionary;
 import java.util.List;
 import org.apache.lucene.store.FSDirectory;
-
+import cs276.util.Counter;
 import cs276.pe1.spell.KGramWithEditDistanceSpellingCorrector;
+import cs276.util.StringUtils;
 
 public class IMDBReader {
 	
 	static KGramWithEditDistanceSpellingCorrector spellChecker = new KGramWithEditDistanceSpellingCorrector();
 	
-	public static String runQueryForTitle(String rawQuery) throws Exception {
+	public static String runQueryForTitle(String rawQuery, String field) throws Exception {
 		
 		File indexPath = new File(new File(System.getProperty("user.home")),"cs276-index");		
 		IndexReader ireader = IndexReader.open(indexPath);
 		IndexSearcher indexsearcher = new IndexSearcher(ireader);
 		
-        QueryParser queryParser = new QueryParser("title",new StandardAnalyzer());
+		//Our spellchecker
+        QueryParser queryParser = new QueryParser(field,new StandardAnalyzer());
         List<String> corrections = spellChecker.corrections(rawQuery);
 		
+		//Lucene spellchecker
 		System.out.println("******Lucene spellchecker suggestions");
 		FSDirectory fs = FSDirectory.getDirectory(indexPath);
 		SpellChecker spell = new SpellChecker(fs);
-		//spell.indexDictionary(new LuceneDictionary(ireader,"title"));
+		
+		//Implementation 1. 
 		String[] similar = spell.suggestSimilar(rawQuery, 1);	
 		for (String word : similar) {
-				    System.out.println(word);
-			    }
+			System.out.println(word);
+		}
+		
+		//Implementation 2.
+		//System.out.println("----> with morePopular = true <--");
+		//String[] similar = spell.suggestSimilar(rawQuery, 1, ireader, field, true);
+		//for (String word : similar) {
+		//		    System.out.println(word);
+		//	    }
+		//System.out.println("----> with morePopular = false <--");
+		//similar = spell.suggestSimilar(rawQuery, 1, ireader, field, false);
+		//for (String word : similar) {
+		//	System.out.println(word);
+		//}
+		
+		//Implementation 3. Uncomment this section
+		
+		//Counter<String> editDistances = new Counter<String>();
+		//for (String guess : similar) {
+	    //    editDistances.setCount(guess, -1*StringUtils.levenshtein(rawQuery, guess));
+        //}
+		//System.out.println("---->Edit distance on Lucene<----");
+		//System.out.println(editDistances.topK(1));
 		
         if (corrections != null && corrections.size() > 0 && !corrections.get(0).equals(rawQuery)) {
             rawQuery = corrections.get(0);

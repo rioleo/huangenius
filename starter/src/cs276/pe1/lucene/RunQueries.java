@@ -22,7 +22,9 @@ public class RunQueries {
         while (true) {
             System.out.print("Enter query: ");
             String query = br.readLine();
-            System.out.println(IMDBReader.runQueryForTitle(query));
+			System.out.print("Enter field: ");
+            String field = br.readLine();
+            System.out.println(IMDBReader.runQueryForTitle(query, field));
         }
 	}
 }

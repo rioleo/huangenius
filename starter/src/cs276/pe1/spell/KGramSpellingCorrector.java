@@ -19,8 +19,8 @@ public class KGramSpellingCorrector implements SpellingCorrector {
 	    // instantiate new index
 	    index = new HashMap<String, Counter<String>>();
 	    
-        //File path = new File("/afs/ir/class/cs276/pe1-2011/big.txt.gz");
-		File path = new File("/afs/ir/class/cs276/pe1-2011/imdb-plots-20081003.list.gz");
+        File path = new File("/afs/ir/class/cs276/pe1-2011/big.txt.gz");
+//		File path = new File("/afs/ir/class/cs276/pe1-2011/imdb-plots-20081003.list.gz");
         for (String line : IOUtils.readLines(IOUtils.openFile(path))) {        
             for (String word : StringUtils.tokenize(line)) {
             
@@ -64,8 +64,10 @@ public class KGramSpellingCorrector implements SpellingCorrector {
 		}
 		
 //	    System.out.println("Word: " + word);
-//	    for (String entry : possibleCorrections.topK(5)) {
-//	        System.out.println(entry + " " + possibleCorrections.getCount(entry));
+//	    System.out.println("KGram corrections----------------------");
+//	    for (String entry : possibleCorrections.topK(20)) {
+//	        double occurrences = index.get(getKgrams(entry,2).get(0)).getCount(entry);
+//	        System.out.println(entry + " " + possibleCorrections.getCount(entry) + ": " + occurrences);
 //	    }
 		
 		return possibleCorrections.topK(5);
@@ -74,7 +76,7 @@ public class KGramSpellingCorrector implements SpellingCorrector {
 	
 	private Set<String> getKgramsSet(String word, int k) {
 	    Set<String> kgrams = new HashSet<String>();
-	    word = "$" + word + "$";
+	    for (int i = 0; i < k-1; i++) word = "$" + word + "$";
         for (int i = 0; i < word.length()-(k-1); i++) {
             String kgram = word.substring(i, i+k);
             kgrams.add(kgram);
@@ -84,12 +86,16 @@ public class KGramSpellingCorrector implements SpellingCorrector {
 	
 	private ArrayList<String> getKgrams(String word, int k) {
 	    ArrayList<String> kgrams = new ArrayList<String>();
-	    word = "$" + word + "$";
+	    for (int i = 0; i < k-1; i++) word = "$" + word + "$";
         for (int i = 0; i < word.length()-(k-1); i++) {
             String kgram = word.substring(i, i+k);
             kgrams.add(kgram);
         }
         return kgrams;
+	}
+	
+	public double getOccurrences(String word) {
+        return(index.get(getKgrams(word,2).get(0)).getCount(word));
 	}
 
 }

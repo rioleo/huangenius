@@ -27,36 +27,38 @@ public class IMDBReader {
 	public static String runQueryForTitle(String rawQuery) throws Exception {
 		
 		File indexPath = new File(new File(System.getProperty("user.home")),"cs276-index");		
-		IndexReader ireader = IndexReader.open(indexPath);
-		IndexSearcher indexsearcher = new IndexSearcher(ireader);
+//		IndexReader ireader = IndexReader.open(indexPath);
+//		IndexSearcher indexsearcher = new IndexSearcher(ireader);
 		
-        QueryParser queryParser = new QueryParser("title",new StandardAnalyzer());
-        List<String> corrections = spellChecker.corrections(rawQuery);
+//        QueryParser queryParser = new QueryParser("title",new StandardAnalyzer());
+//        List<String> corrections = spellChecker.corrections(rawQuery);
 		
 		System.out.println("******Lucene spellchecker suggestions");
 		FSDirectory fs = FSDirectory.getDirectory(indexPath);
 		SpellChecker spell = new SpellChecker(fs);
-		//spell.indexDictionary(new LuceneDictionary(ireader,"title"));
-		String[] similar = spell.suggestSimilar(rawQuery, 1);	
+//		spell.indexDictionary(new LuceneDictionary(ireader,"title"));
+//		spell.indexDictionary(new LuceneDictionary(ireader,"authors"));
+//		spell.indexDictionary(new LuceneDictionary(ireader,"plots"));
+		String[] similar = spell.suggestSimilar(rawQuery, 5);	
 		for (String word : similar) {
-				    System.out.println(word);
-			    }
-		
-        if (corrections != null && corrections.size() > 0 && !corrections.get(0).equals(rawQuery)) {
-            rawQuery = corrections.get(0);
-            System.out.println("******Spellchecker: searching for " + rawQuery);
-        }
-        
-        Query query = queryParser.parse(rawQuery);
-		
-		TopDocs results = indexsearcher.search(query, null, 20);
-		for (ScoreDoc doc : results.scoreDocs) {
-		    System.out.println(ireader.document(doc.doc).get("title"));
+	        System.out.println(word);
 	    }
-				
 		
-        System.out.println("Query: " + query);
-		System.out.println("Results: showing " + results.scoreDocs.length + " out of " + results.totalHits);
+//        if (corrections != null && corrections.size() > 0 && !corrections.get(0).equals(rawQuery)) {
+//            rawQuery = corrections.get(0);
+//            System.out.println("******Spellchecker: searching for " + rawQuery);
+//        }
+        
+//        Query query = queryParser.parse(rawQuery);
+//		
+//		TopDocs results = indexsearcher.search(query, null, 20);
+//		for (ScoreDoc doc : results.scoreDocs) {
+//		    System.out.println(ireader.document(doc.doc).get("title"));
+//	    }
+//				
+//		
+//        System.out.println("Query: " + query);
+//		System.out.println("Results: showing " + results.scoreDocs.length + " out of " + results.totalHits);
         return "";
 		
 	}
@@ -77,22 +79,17 @@ public class IMDBReader {
 		
 		
 		
-		
-		
-		// Meh
-		//PhraseQuery query = new PhraseQuery();
-		//query.add(new Term("title","10"));
-		//query.add(new Term("title","items"));
+
 		
 		// WORKS
-		//QueryParser queryParser = new QueryParser("title",new StandardAnalyzer());
-		//Query query = queryParser.parse("\"10 items or less\"~1");
+		QueryParser queryParser = new QueryParser("title",new StandardAnalyzer());
+		Query query = queryParser.parse("\"10 items or less\"~1");
 		
 		// This WORKS
-		//PhraseQuery query = new PhraseQuery();
-		//query.setSlop(5);
-		//query.add(new Term("plots","eighteen"));
-		//query.add(new Term("plots","murdered"));
+//		PhraseQuery query = new PhraseQuery();
+//		query.setSlop(5);
+//		query.add(new Term("plots","eighteen"));
+//		query.add(new Term("plots","murdered"));
 		
 		
 		// Rob query WORKS
@@ -109,8 +106,8 @@ public class IMDBReader {
 		//		    System.out.println(word);
 		//	    }
 		
-		QueryParser queryParser = new QueryParser("title",new StandardAnalyzer());
-		Query query = queryParser.parse("authors:Rob^4 authors:Hart");
+//		QueryParser queryParser = new QueryParser("title",new StandardAnalyzer());
+//		
 		
 		TopDocs results = indexsearcher.search(query, null, 20);
 		

@@ -28,8 +28,8 @@ public class IMDBReader {
 	public static String runQueryForTitle(String rawQuery, String field) throws Exception {
 		
 		File indexPath = new File(new File(System.getProperty("user.home")),"cs276-index");		
-//		IndexReader ireader = IndexReader.open(indexPath);
-//		IndexSearcher indexsearcher = new IndexSearcher(ireader);
+		IndexReader ireader = IndexReader.open(indexPath);
+		IndexSearcher indexsearcher = new IndexSearcher(ireader);
 		
 
 		//Our spellchecker

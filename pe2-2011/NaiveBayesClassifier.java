@@ -3,8 +3,8 @@ import cs224n.util.Counter;
 
 public class NaiveBayesClassifier {
   
-  static HashMap<String, List<String>> classToDocs;
-  static HashMap<String, Counter<String>> docToTokens;
+  static HashMap<Integer, List<String>> classToDocs;
+  static HashMap<String, MessageFeatures> docToTokens;
   
   public static void doBinomial(MessageIterator mi) {
 		initialize();
@@ -71,31 +71,57 @@ public class NaiveBayesClassifier {
   
   // Written by Joe
   public static void initialize() {
+
+		classToDocs = new HashMap<Integer, List<String>>();
+		docToTokens = new HashMap<String, MessageFeatures>();
+  	
+  	MessageIterator iterator = null;
+  	
   	try {
-  		
-			classToDocs = new HashMap<String, List<String>>();
-			docToTokens = new HashMap<String, Counter<String>>();
-  	
-  	
-    	MessageIterator iter = new MessageIterator("train.gz");
-    	MessageFeatures message = iter.getNextMessage();
-    	System.out.println(message.fileName);
-    	System.out.println(message.newsgroupNumber);
-    	
-    	
-    	for (String token : message.subject.keySet()) {
-//    		System.out.println(token + " " + message.subject.getCount(token));
-  		}
-  		
-    	for (String token : message.body.keySet()) {
-//    		System.out.println(token + " " + message.body.getCount(token));
-  		}
-    	
+    	iterator = new MessageIterator("train.gz");
   	} catch (Exception e) {
   		e.printStackTrace();
 		}
-  }
-  
+		
+		int numMessagesRead = 0;
+  	try {
+  		System.out.print("Initializing database of docs/words.");
+    	while (true) {
+    		MessageFeatures message = iterator.getNextMessage();
+    		addMessageToDatabase(message);
+    		
+    		numMessagesRead++;
+    		if (numMessagesRead % 1000 == 0) System.out.print(".");
+    	}	
+    	
+  	} catch (Exception e) {
+  		System.out.println("\nDone initializing database of docs/words");
+		}
+		
+	}
+
+	public static void addMessageToDatabase(MessageFeatures message) {
+		
+		int newsgroupNumber = message.newsgroupNumber;
+		String filename = message.fileName;
+
+		// Add document to class->docs hashmap		
+		if (!classToDocs.containsKey(newsgroupNumber)) {
+			classToDocs.put(newsgroupNumber, new ArrayList<String>());
+		}
+		classToDocs.get(newsgroupNumber).add(filename);
+		
+		// Add MessageFeatures to doc->wordcounter hashmap
+		docToTokens.put(filename, message);
+  	
+	}
+	
+	public static void printNumClasses() {
+		for (int key : classToDocs.keySet()) {
+			System.out.println(key + ": " + classToDocs.get(key).size());
+		}
+	}
+
   
   
   

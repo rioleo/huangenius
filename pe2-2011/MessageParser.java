@@ -1,5 +1,4 @@
 
-
 /**
   The MessageParser class reads in a bunch of newsgroup messages
   from a list of directories specified on the command line, creates

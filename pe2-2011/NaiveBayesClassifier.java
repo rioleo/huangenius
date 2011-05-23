@@ -1,8 +1,13 @@
+import java.util.*;
+import cs224n.util.Counter;
 
 public class NaiveBayesClassifier {
   
+  static HashMap<String, List<String>> classToDocs;
+  static HashMap<String, Counter<String>> docToTokens;
+  
   public static void doBinomial(MessageIterator mi) {
-    // Your code here.
+		initialize();
   }
   
   public static void doBinomialChi2(MessageIterator mi) {
@@ -29,6 +34,7 @@ public class NaiveBayesClassifier {
 	  System.out.format( "%n" );
  }
   
+  // Starter code
   public static void main(String args[]) {
     if (args.length != 2) {
       System.err.println("Usage: NaiveBayesClassifier <mode> <train>");
@@ -61,4 +67,50 @@ public class NaiveBayesClassifier {
       System.exit(-1);
     }
   }
+  
+  
+  // Written by Joe
+  public static void initialize() {
+  	try {
+  		
+			classToDocs = new HashMap<String, List<String>>();
+			docToTokens = new HashMap<String, Counter<String>>();
+  	
+  	
+    	MessageIterator iter = new MessageIterator("train.gz");
+    	MessageFeatures message = iter.getNextMessage();
+    	System.out.println(message.fileName);
+    	System.out.println(message.newsgroupNumber);
+    	
+    	
+    	for (String token : message.subject.keySet()) {
+//    		System.out.println(token + " " + message.subject.getCount(token));
+  		}
+  		
+    	for (String token : message.body.keySet()) {
+//    		System.out.println(token + " " + message.body.getCount(token));
+  		}
+    	
+  	} catch (Exception e) {
+  		e.printStackTrace();
+		}
+  }
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
 }

@@ -12,7 +12,7 @@
 # While testing your code, use <traingdir> = /afs/ir/data/linguistic-data/TextCat/20Newsgroups/20news-18828
 
 # build the code
-/usr/pubsw/bin/javac -g MessageParser.java NaiveBayesClassifier.java
+/usr/pubsw/bin/javac -g MessageParser.java MessageIterator.java NaiveBayesClassifier.java
 
 # preprocess the data
 /usr/pubsw/bin/java -Xmx800m MessageParser $1 train.gz

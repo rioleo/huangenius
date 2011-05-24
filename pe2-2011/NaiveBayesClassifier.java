@@ -12,12 +12,12 @@ public class NaiveBayesClassifier {
   static int totalNumDocs = 0;
   
   public static void doBinomial(MessageIterator mi) {
-		initialize(mi);
-		
-		calculateBinomialConditionalProbabilities();
-		
-  	MessageIterator iterator = getIterator();
-		
+		initializeBinomial(mi);
+	
+		System.out.println("Classifying documents...");
+		int total = 0;
+		int correct = 0;
+	
     for (int curNewsgroup = 0; curNewsgroup < numNewsgroups; curNewsgroup++) {
     	for (int doc = 0; doc < 20; doc++) {
 
@@ -39,7 +39,7 @@ public class NaiveBayesClassifier {
 					for (String token : allTokens) {
 						double conditionalProbability = conditionalProbabilities.get(token).get(newsgroup);
 						if (docTokens.contains(token))	totalScore += Math.log(conditionalProbability);
-						else totalScore += Math.log(1-conditionalProbability);
+						else totalScore += Math.log(1.0-conditionalProbability);
 					}	
 					
 					// Store total score for class
@@ -48,10 +48,24 @@ public class NaiveBayesClassifier {
 				
 				// Print out scores for document
 				System.out.println("Document " + doc + " class " + curNewsgroup);
+				
+				int bestClass = 0;
+				double bestScore = -100000;
+				for (int i = 0; i < numNewsgroups; i++) {
+					if (scores[i] > bestScore) {
+						bestClass = i;
+						bestScore = scores[i];
+					}
+				}
+				
+				if (bestClass == curNewsgroup) correct++;
+				total++;
+				
 				outputProbability(scores);
 			
+				System.out.println("Accuracy: " + correct + "/" + total);
+				
 			}
-		
 		}
 
   }
@@ -114,61 +128,15 @@ public class NaiveBayesClassifier {
       System.exit(-1);
     }
   }
-  
-  
-  // Written by Joe
-  public static void initialize(MessageIterator mi) {
 
-		classToDocs = new HashMap<Integer, List<String>>();
-		docToTokens = new HashMap<String, MessageFeatures>();
-		allTokens = new HashSet<String>();
-  	
-  	MessageIterator iterator = mi;
-  	numNewsgroups = iterator.numNewsgroups;
-  	
-/*  	try {
-    	iterator = new MessageIterator("train.gz");
-    	numNewsgroups = iterator.numNewsgroups;
-  	} catch (Exception e) {
-  		e.printStackTrace();
-		}*/
-		
-		int numMessagesRead = 0;
-  	try {
-  		System.out.print("Initializing database of docs/words");
-    	while (true) {
-    		MessageFeatures message = iterator.getNextMessage();
-    		addMessageToDatabase(message);
-    		
-    		numMessagesRead++;
-    		if (numMessagesRead % 1000 == 0) System.out.print(".");
-    	}	
-    	
-  	} catch (Exception e) {
-  		totalNumDocs = numMessagesRead;
-  		System.out.println("\nDone initializing database of docs/words");
-		}
-		
-	}
 
-	public static void addMessageToDatabase(MessageFeatures message) {
-		
-		allTokens.addAll(message.subject.keySet());
-		allTokens.addAll(message.body.keySet());
-		
-		int newsgroupNumber = message.newsgroupNumber;
-		String filename = message.fileName;
 
-		// Add document to class->docs hashmap		
-		if (!classToDocs.containsKey(newsgroupNumber)) {
-			classToDocs.put(newsgroupNumber, new ArrayList<String>());
-		}
-		classToDocs.get(newsgroupNumber).add(filename);
-		
-		// Add MessageFeatures to doc->wordcounter hashmap
-		docToTokens.put(filename, message);
-  	
-	}
+
+
+
+
+
+	
 	
 	public static MessageIterator getIterator() {
   	try {
@@ -190,6 +158,7 @@ public class NaiveBayesClassifier {
 	// BINOMIAL ----------------------------------------
 
 
+/*
   // Calculates conditional probabilties for ALL tokens... don't use this.
   public static void calculateBinomialConditionalProbabilities() {
   	System.out.println("Calculating conditional probabilities for Binomial:");
@@ -224,6 +193,8 @@ public class NaiveBayesClassifier {
 		System.out.println("Done calculating conditional probabilities for Binomial");
   }
   
+  
+  
   // Gets conditional probability for one token in one newsgroup
   public static double getBinomialConditionalProbability(String token, int newsgroup) {
   
@@ -240,6 +211,102 @@ public class NaiveBayesClassifier {
 		return ((double)occurrence + 1)/(total + 2);
   
   }
+  */
+  
+  public static void initializeBinomial(MessageIterator mi) {
+
+		classToDocs = new HashMap<Integer, List<String>>();
+		docToTokens = new HashMap<String, MessageFeatures>();
+  	conditionalProbabilities = new HashMap<String, HashMap<Integer, Double>>();
+		allTokens = new HashSet<String>();
+  	
+  	MessageIterator iterator = mi;
+  	numNewsgroups = iterator.numNewsgroups;
+		
+		int numMessagesRead = 0;
+		int classNum = -1;
+		int numDocsInClass = 0;
+  	try {
+  		System.out.print("Initializing database of docs/words");
+    	while (true) {
+    		MessageFeatures message = iterator.getNextMessage();
+    		if (message.newsgroupNumber != classNum) {
+    			classNum = message.newsgroupNumber;
+    			numDocsInClass = 1;
+				} else {
+					numDocsInClass++;
+				}
+    		addMessageToDatabase(message);
+    		addOccurrencesToBinomialConditionalProbabilities(message);
+    		
+    		numMessagesRead++;
+    		if (numMessagesRead % 1000 == 0) System.out.print(".");
+    	}	
+    	
+  	} catch (Exception e) {
+  		totalNumDocs = numMessagesRead;
+  		System.out.println("\nDone initializing database of docs/words");
+		}
+		
+		calculateBinomialConditionalProbabilities();
+		
+	}
+
+	public static void addOccurrencesToBinomialConditionalProbabilities(MessageFeatures message) {
+	
+		Set<String> tokens = new HashSet<String>();
+		tokens.addAll(message.subject.keySet());
+		tokens.addAll(message.body.keySet());
+		
+		for (String token : tokens) {
+			if (!conditionalProbabilities.containsKey(token)) conditionalProbabilities.put(token, new HashMap<Integer, Double>());
+			HashMap<Integer, Double> occurrences = conditionalProbabilities.get(token);
+			if (!occurrences.containsKey(message.newsgroupNumber)) {
+				occurrences.put(message.newsgroupNumber, 1.0);
+			} else {
+				double numOccurrences = occurrences.get(message.newsgroupNumber);
+				conditionalProbabilities.get(token).put(message.newsgroupNumber, numOccurrences+1);
+			}
+		}
+	
+	}
+
+	public static void addMessageToDatabase(MessageFeatures message) {
+		
+		allTokens.addAll(message.subject.keySet());
+		allTokens.addAll(message.body.keySet());
+		
+		int newsgroupNumber = message.newsgroupNumber;
+		String filename = message.fileName;
+
+		// Add document to class->docs hashmap		
+		if (!classToDocs.containsKey(newsgroupNumber)) {
+			classToDocs.put(newsgroupNumber, new ArrayList<String>());
+		}
+		classToDocs.get(newsgroupNumber).add(filename);
+		
+		// Add MessageFeatures to doc->wordcounter hashmap
+		docToTokens.put(filename, message);
+  	
+	}
+	
+	// Calculates conditional probabilities for all tokens
+	public static void calculateBinomialConditionalProbabilities() {
+		System.out.println("Calculating conditional probabilities..");
+		int counter = 0;
+		for (String token : conditionalProbabilities.keySet()) {
+			counter++;
+//			if (counter %1000 == 0) System.out.println(counter + "/" + allTokens.size());
+			HashMap<Integer, Double> occurrences = conditionalProbabilities.get(token);
+			for (int i = 0; i < numNewsgroups; i++) {
+				if (!occurrences.containsKey(i)) occurrences.put(i, 0.0);
+				 // Calculates cond prob with smoothing
+				occurrences.put(i, (occurrences.get(i)+1)/(classToDocs.get(i).size()+2));
+			}
+		}
+		System.out.println("Done calculating conditional probabilities");
+	}
+  
   
   
   

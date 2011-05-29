@@ -9,10 +9,13 @@ public class NaiveBayesClassifier {
   static Set<String> allTokens;
   static HashMap<String, HashMap<Integer, Double>> conditionalProbabilities; // tokens -> conditional probabilities(class -> score)
   
+  static HashMap<Integer, Set<MessageFeatures>> kSets;
+  
   static int numNewsgroups = 0;
   static int totalNumDocs = 0;
   
   static int K_FOLD_CONSTANT = 10;
+  static int NUM_FEATURES = 300;
   
   
   public static void doBinomial(MessageIterator mi) {
@@ -33,12 +36,42 @@ public class NaiveBayesClassifier {
     testBinomial(topWords);
   }
   
+  public static void doBinomialKFold(MessageIterator mi) {
+    initializeKSets(mi);
+    System.out.println("K-fold: " + K_FOLD_CONSTANT);
+    double totalAccuracy = 0;
+    for (int i = 0; i < K_FOLD_CONSTANT; i++) {
+      initializeKFold(i);
+      trainBinomial();
+      double accuracy = testBinomialOnTestSet(allTokens, kSets.get(i));
+      totalAccuracy += accuracy;
+      System.out.println(i + ": " + accuracy);
+    }
+    System.out.println("Done");
+    System.out.println("Average accuracy: " + totalAccuracy/K_FOLD_CONSTANT);
+  }
+  
   public static void doMultinomial(MessageIterator mi) {
     initialize(mi);
     
     trainMultinomial();
     
     testMultinomial(allTokens);
+  }
+  
+  public static void doMultinomialKFold(MessageIterator mi) {
+    initializeKSets(mi);
+    System.out.println("K-fold: " + K_FOLD_CONSTANT);
+    double totalAccuracy = 0;
+    for (int i = 0; i < K_FOLD_CONSTANT; i++) {
+      initializeKFold(i);
+      trainMultinomial();
+      double accuracy = testMultinomialOnTestSet(allTokens, kSets.get(i));
+      totalAccuracy += accuracy;
+      System.out.println(i + ": " + accuracy);
+    }
+    System.out.println("Done");
+    System.out.println("Average accuracy: " + totalAccuracy/K_FOLD_CONSTANT);
   }
   
   public static void doTWCNB(MessageIterator mi) {
@@ -84,6 +117,10 @@ public class NaiveBayesClassifier {
       doMultinomial(mi);
     } else if (mode.equals("twcnb")) {
       doTWCNB(mi);
+    } else if (mode.equals("binomial-kfold")) {
+      doBinomialKFold(mi);
+    } else if (mode.equals("multinomial-kfold")) {
+      doMultinomialKFold(mi);
     } else { 
       // Add other test cases that you want to run here.
       
@@ -141,6 +178,56 @@ public class NaiveBayesClassifier {
 		  totalNumDocs = numMessagesRead;
 		  System.out.println("Done");
 	  }
+  }
+  
+  public static void initializeKSets(MessageIterator mi) {
+    kSets = new HashMap<Integer, Set<MessageFeatures>>();
+    for (int i = 0; i < K_FOLD_CONSTANT; i++) {
+      kSets.put(i, new HashSet<MessageFeatures>());
+    }
+  
+  	MessageIterator iterator = mi;
+  	numNewsgroups = iterator.numNewsgroups;
+  
+	  int numMessagesRead = 0;
+	  int classNum = -1;
+	  try {
+		  System.out.print("Reading training set");
+    	while (true) {
+    		MessageFeatures message = iterator.getNextMessage();
+    		kSets.get(numMessagesRead%K_FOLD_CONSTANT).add(message);
+    		
+    		if (message.newsgroupNumber != classNum) {
+    			classNum = message.newsgroupNumber;
+			  }
+    		
+    		numMessagesRead++;
+    		if (numMessagesRead % 1000 == 0) System.out.print(".");
+    	}	
+    	
+	  } catch (Exception e) {
+		  totalNumDocs = numMessagesRead;
+		  System.out.println("Done");
+	  }
+  
+  }
+  
+  
+  // Takes all sets that are not testIndex and adds it to training set
+  public static void initializeKFold(int testIndex) {
+	  classToDocs = new HashMap<Integer, List<String>>();
+	  docToTokens = new HashMap<String, MessageFeatures>();
+    conditionalProbabilities = new HashMap<String, HashMap<Integer, Double>>();
+	  allTokens = new HashSet<String>();
+  
+    for (int i = 0; i < K_FOLD_CONSTANT; i++) {
+      if (i != testIndex) {
+        for (MessageFeatures doc : kSets.get(i)) {
+          addMessageToDatabase(doc);
+        } 
+      }
+    }
+        
   }
 
 	public static void addMessageToDatabase(MessageFeatures message) {
@@ -239,11 +326,12 @@ public class NaiveBayesClassifier {
 					
 					// Add conditional probability for every token
 					for (String token : docTokens) {
-						double conditionalProbability = conditionalProbabilities.get(token).get(newsgroup);
-						  if (features.contains(token)){
-						    totalScore -= Math.log(1.0-conditionalProbability);
-						    totalScore += Math.log(conditionalProbability);
-              }
+					  if (!features.contains(token)) continue;
+				    if (conditionalProbabilities.containsKey(token) && conditionalProbabilities.get(token).containsKey(newsgroup)) {
+						  double conditionalProbability = conditionalProbabilities.get(token).get(newsgroup);
+					    totalScore -= Math.log(1.0-conditionalProbability);
+					    totalScore += Math.log(conditionalProbability);
+            }
 					}	
 					
 					// Store total score for class
@@ -297,6 +385,54 @@ public class NaiveBayesClassifier {
 	  return bestClass;
   }
   
+  
+  public static double testBinomialOnTestSet(Set<String> features, Set<MessageFeatures> testSet) {
+		System.out.println("Classifying documents...");
+		int total = 0;
+		int correct = 0;
+
+		// Get initial scores
+		double[] initialScores = getInitialScores(features);
+  
+  	for (MessageFeatures doc : testSet) {
+			// Get tokens in query document
+			Set<String> docTokens = getTokensFromDoc(doc);
+			int trueClass = doc.newsgroupNumber;
+			
+			// Calculate conditional probabilities for the document for each class
+			double[] scores = new double[numNewsgroups];
+			for (int newsgroup = 0; newsgroup < numNewsgroups; newsgroup++) {
+			
+				// Add prior
+				double totalScore = initialScores[newsgroup];
+				totalScore += Math.log(((double)classToDocs.get(newsgroup).size())/totalNumDocs);
+				
+				// Add conditional probability for every token
+				for (String token : docTokens) {
+					  if (!features.contains(token)) continue;
+				    if (conditionalProbabilities.containsKey(token) && conditionalProbabilities.get(token).containsKey(newsgroup)) {
+		          double conditionalProbability = conditionalProbabilities.get(token).get(newsgroup);
+				      totalScore -= Math.log(1.0-conditionalProbability);
+				      totalScore += Math.log(conditionalProbability);
+			      }
+				}	
+				
+				// Store total score for class
+				scores[newsgroup] = totalScore;
+			}
+			
+			// Print out scores for document			
+			int bestClass = getBestClass(scores);
+			if (bestClass == trueClass) correct++;
+			total++;
+			
+//			System.out.println("Accuracy: " + correct + "/" + total + " out of a total " + testSet.size());
+		}
+		return ((double)correct)/total;
+
+	}
+  
+  
 	// END BINOMIAL ----------------------------------------
   
   
@@ -346,7 +482,7 @@ public class NaiveBayesClassifier {
 		  
 		  // Retrieve top 300 for this class
 		  PriorityQueue<String> sortedTokens = chi2s.asPriorityQueue();
-		  for (int i = 0; i < 300; i++) {
+		  for (int i = 0; i < NUM_FEATURES; i++) {
 		    if (!sortedTokens.hasNext()) break;
 		    topWords.add(sortedTokens.next());
 		  }
@@ -458,10 +594,11 @@ public class NaiveBayesClassifier {
 					
 					// Add conditional probability for every token
 					for (String token : docTokens.keySet()) {
-						double conditionalProbability = conditionalProbabilities.get(token).get(newsgroup);
-						  if (features.contains(token)){
-						    totalScore += (Math.log(conditionalProbability)*docTokens.getCount(token));
-              }
+					  if (!features.contains(token)) continue;
+				    if (conditionalProbabilities.containsKey(token) && conditionalProbabilities.get(token).containsKey(newsgroup)) {
+						  double conditionalProbability = conditionalProbabilities.get(token).get(newsgroup);
+					    totalScore += (Math.log(conditionalProbability)*docTokens.getCount(token));
+            }
 					}	
 					
 					// Store total score for class
@@ -482,7 +619,52 @@ public class NaiveBayesClassifier {
   
   }
 
+  public static double testMultinomialOnTestSet(Set<String> features, Set<MessageFeatures> testSet) {
+		System.out.println("Classifying documents...");
+		int total = 0;
+		int correct = 0;
+	
+    for (MessageFeatures doc : testSet) {
+		  // Get tokens in query document
+		  Counter<String> docTokens = getTotalCounter(doc);
+		  int trueClass = doc.newsgroupNumber;
+		
+		  // Calculate conditional probabilities for the document for each class
+		  double[] scores = new double[numNewsgroups];
+		  for (int newsgroup = 0; newsgroup < numNewsgroups; newsgroup++) {
+		
+			  // Add prior
+			  double totalScore = 0;
+			  totalScore += Math.log(((double)classToDocs.get(newsgroup).size())/totalNumDocs);
+			
+			  // Add conditional probability for every token
+			  for (String token : docTokens.keySet()) {
+			    if (!features.contains(token)) continue;
+		      if (conditionalProbabilities.containsKey(token) && conditionalProbabilities.get(token).containsKey(newsgroup)) {
+				    double conditionalProbability = conditionalProbabilities.get(token).get(newsgroup);
+			      totalScore += (Math.log(conditionalProbability)*docTokens.getCount(token));
+          }
+			  }	
+			
+			  // Store total score for class
+			  scores[newsgroup] = totalScore;
+		  }
+		
+		  int bestClass = getBestClass(scores);
+		  if (bestClass == trueClass) correct++;
+		  total++;
+		}
+		return ((double)correct)/total;
+  
+  }
+
+
 
 //  END MULTINOMIAL -------------------------------------
+  
+  
+  
+  
+  
   
 }

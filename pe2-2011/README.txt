@@ -1,3 +1,3 @@
 Run build.sh to build the java files.
 
-Run test.sh to run tests (currently just binomial).
+Run test.sh to run tests (select test in test.sh).

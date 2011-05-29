@@ -1,5 +1,6 @@
 import java.util.*;
-import cs224n.util.Counter;
+import cs224n.util.PriorityQueue;
+import cs224n.util.*;
 
 public class NaiveBayesClassifier {
   
@@ -86,7 +87,80 @@ public class NaiveBayesClassifier {
   }
   
   public static void doBinomialChi2(MessageIterator mi) {
-    // Your code here.
+		initializeBinomial(mi);
+    Set<String> topWords = getTopWordsByChiSquared();
+  
+    // Basically copied from binomial, too lazy to change
+		System.out.println("Classifying documents...");
+		int total = 0;
+		int correct = 0;
+	
+    for (int curNewsgroup = 0; curNewsgroup < numNewsgroups; curNewsgroup++) {
+
+			// Get initial score
+			double[] initialScores = new double[numNewsgroups];
+			for (int newsgroup = 0; newsgroup < numNewsgroups; newsgroup++) {
+		    double initialScore = 0;
+        for (String token : topWords) {
+          double conditionalProbability = conditionalProbabilities.get(token).get(newsgroup);
+          initialScore += Math.log(1.0-conditionalProbability);
+        }
+        initialScores[newsgroup] = initialScore;
+      }
+    
+    	for (int doc = 0; doc < 20; doc++) {
+
+				// Get tokens in query document
+				MessageFeatures message = docToTokens.get(classToDocs.get(curNewsgroup).get(doc));
+				Set<String> docTokens = new HashSet<String>();
+				docTokens.addAll(message.subject.keySet());
+				docTokens.addAll(message.body.keySet());
+				
+				// Calculate conditional probabilities for the document for each class
+				double[] scores = new double[numNewsgroups];
+
+				for (int newsgroup = 0; newsgroup < numNewsgroups; newsgroup++) {
+				
+					// Add prior
+					double totalScore = initialScores[newsgroup];
+					totalScore += Math.log(((double)classToDocs.get(newsgroup).size())/totalNumDocs);
+					
+					// Add conditional probability for every token
+					for (String token : docTokens) {
+					  if (topWords.contains(token)) {
+						  double conditionalProbability = conditionalProbabilities.get(token).get(newsgroup);
+						  totalScore -= Math.log(1.0-conditionalProbability);
+						  totalScore += Math.log(conditionalProbability);
+						}
+					}	
+					
+					// Store total score for class
+					scores[newsgroup] = totalScore;
+				}
+				
+				// Print out scores for document
+				System.out.println("Document " + doc + " class " + curNewsgroup);
+				
+				int bestClass = 0;
+				double bestScore = -100000;
+				for (int i = 0; i < numNewsgroups; i++) {
+					if (scores[i] > bestScore) {
+						bestClass = i;
+						bestScore = scores[i];
+					}
+				}
+				
+				if (bestClass == curNewsgroup) correct++;
+				total++;
+				
+				outputProbability(scores);
+			
+				System.out.println("Accuracy: " + correct + "/" + total);
+				
+			}
+		}
+    
+    
   }
   
   public static void doMultinomial(MessageIterator mi) {
@@ -333,7 +407,58 @@ public class NaiveBayesClassifier {
   
   // CHI SQUARED ----------------------------------------
   
-  
+  public static Set<String> getTopWordsByChiSquared() {
+    System.out.print("Calculating chi2 values");
+    Set<String> topWords = new HashSet<String>();
+    Map<Integer, Counter<String>> newsgroupToWordOccurrences = new HashMap<Integer, Counter<String>>();
+    Counter<String> wordsToTotalOccurrences = new Counter<String>();
+    
+    // Calculate occurrences for all words
+		for (int newsgroup = 0; newsgroup < numNewsgroups; newsgroup++) {
+		  newsgroupToWordOccurrences.put(newsgroup, new Counter<String>());
+		  for (String docName : classToDocs.get(newsgroup)) {
+		    MessageFeatures doc = docToTokens.get(docName);
+	      Set<String> docTokens = new HashSet<String>();
+	      docTokens.addAll(doc.subject.keySet());
+	      docTokens.addAll(doc.body.keySet());
+	      for (String token : docTokens) {
+	        newsgroupToWordOccurrences.get(newsgroup).incrementCount(token);
+	        wordsToTotalOccurrences.incrementCount(token);
+	      }
+		  }
+	  }
+    
+    // Iterate through newsgroups
+		for (int newsgroup = 0; newsgroup < numNewsgroups; newsgroup++) {
+      System.out.print(".");
+      
+		  // Get all tokens in newsgroup
+		  Counter<String> newsgroupTokens = newsgroupToWordOccurrences.get(newsgroup);
+		  
+		  // Calculate and sort by chi-2 value
+		  Counter<String> chi2s = new Counter<String>();
+		  double N = (double)totalNumDocs;
+		  for (String token : newsgroupTokens.keySet()) {
+		    double A = newsgroupTokens.getCount(token);
+		    double B = (double)classToDocs.get(newsgroup).size() - A;
+		    double C = wordsToTotalOccurrences.getCount(token) - A;
+		    double D = totalNumDocs - classToDocs.get(newsgroup).size() - C;
+		    
+		    chi2s.setCount(token, (N*Math.pow(A*D-C*B,2)) / ((A+C)*(B+D)*(A+B)*(C+D)));
+		  }
+		  
+		  // Retrieve top 300 for this class
+		  PriorityQueue<String> sortedTokens = chi2s.asPriorityQueue();
+		  for (int i = 0; i < 300; i++) {
+		    if (!sortedTokens.hasNext()) break;
+		    topWords.add(sortedTokens.next());
+		  }
+		  
+	  }
+		
+    System.out.println("Done");
+    return topWords;
+  }
   
   
   

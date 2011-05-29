@@ -21,4 +21,5 @@
 #
 # (you should test your code the same way)
 
-/usr/pubsw/bin/java -Xmx1000m NaiveBayesClassifier $1 train.gz
+# /usr/pubsw/bin/java -Xmx1000m NaiveBayesClassifier $1 train.gz
+java -Xmx1000m NaiveBayesClassifier $1 train.gz

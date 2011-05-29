@@ -19,6 +19,18 @@ public class NaiveBayesClassifier {
 		int correct = 0;
 	
     for (int curNewsgroup = 0; curNewsgroup < numNewsgroups; curNewsgroup++) {
+
+			// Get initial score
+			double[] initialScores = new double[numNewsgroups];
+			for (int newsgroup = 0; newsgroup < numNewsgroups; newsgroup++) {
+		    double initialScore = 0;
+        for (String token : allTokens) {
+          double conditionalProbability = conditionalProbabilities.get(token).get(newsgroup);
+          initialScore += Math.log(1.0-conditionalProbability);
+        }
+        initialScores[newsgroup] = initialScore;
+      }
+    
     	for (int doc = 0; doc < 20; doc++) {
 
 				// Get tokens in query document
@@ -29,17 +41,20 @@ public class NaiveBayesClassifier {
 				
 				// Calculate conditional probabilities for the document for each class
 				double[] scores = new double[numNewsgroups];
+
 				for (int newsgroup = 0; newsgroup < numNewsgroups; newsgroup++) {
 				
 					// Add prior
-					double totalScore = 0;
+					double totalScore = initialScores[newsgroup];
 					totalScore += Math.log(((double)classToDocs.get(newsgroup).size())/totalNumDocs);
 					
 					// Add conditional probability for every token
-					for (String token : allTokens) {
+					for (String token : docTokens) {
 						double conditionalProbability = conditionalProbabilities.get(token).get(newsgroup);
-						if (docTokens.contains(token))	totalScore += Math.log(conditionalProbability);
-						else totalScore += Math.log(1.0-conditionalProbability);
+//						if (docTokens.contains(token)){
+						  totalScore -= Math.log(1.0-conditionalProbability);
+						  totalScore += Math.log(conditionalProbability);
+//            }
 					}	
 					
 					// Store total score for class

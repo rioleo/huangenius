@@ -14,13 +14,13 @@ public class NaiveBayesClassifier {
   static int numNewsgroups = 0;
   static int totalNumDocs = 0;
   
-  static int K_FOLD_CONSTANT = 10;
+  static int K_FOLD_CONSTANT = 2;
   static int NUM_FEATURES = 300;
   static int[] FEATURES = {100, 200, 400, 600, 800, 1600};
   
   static int UPWEIGHT_SUBJECT_FACTOR = 1;
   
-  static boolean TOP_FEATURES_BY_CLASS = false;
+  static boolean TOP_FEATURES_BY_CLASS = true;
   
   
   public static void doBinomial(MessageIterator mi, boolean doChi2) {
@@ -69,12 +69,12 @@ public class NaiveBayesClassifier {
 		
 		if (doChi2) {
 		
-  	  for (int feature : FEATURES) {
-  	    NUM_FEATURES = feature;
+//  	  for (int feature : FEATURES) {
+//  	    NUM_FEATURES = feature;
 	      System.out.println("NUM FEATURES: " + NUM_FEATURES);
         Set<String> topWords = getTopWordsByChiSquaredMultinomial();
         testMultinomial(topWords);
-      }
+//      }
 		
 //      Set<String> topWords = getTopWordsByChiSquaredMultinomial();
 //      testMultinomial(topWords);
@@ -118,8 +118,9 @@ public class NaiveBayesClassifier {
     for (int i = 0; i < K_FOLD_CONSTANT; i++) {
       initializeKFold(i);
       trainMultinomialTWCNB();
+      Set<String> topWords = getTopWordsByChiSquaredMultinomial();
       double accuracy = 0;
-      accuracy = testMultinomialTWCNBOnTestSet(allTokens, kSets.get(i));
+      accuracy = testMultinomialTWCNBOnTestSet(topWords, kSets.get(i));
       totalAccuracy += accuracy;
       System.out.println(i + ": " + accuracy);
     }
@@ -862,7 +863,7 @@ public class NaiveBayesClassifier {
 				occurrences.put(message.newsgroupNumber, f);
 			} else {
 				double numOccurrences = occurrences.get(message.newsgroupNumber);
-				conditionalProbabilities.get(token).put(message.newsgroupNumber, numOccurrences+f); // transform 1
+				conditionalProbabilities.get(token).put(message.newsgroupNumber, numOccurrences+f);
 			}
 		}
 	

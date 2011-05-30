@@ -1,6 +1,6 @@
 #./runNaiveBayes.sh "binomial" /afs/ir.stanford.edu/data/linguistic-data/TextCat/20Newsgroups/20news-18828
 
-#./runNaiveBayes.sh "binomial-chi2" /afs/ir.stanford.edu/data/linguistic-data/TextCat/20Newsgroups/20news-18828
+./runNaiveBayes.sh "binomial-chi2" /afs/ir.stanford.edu/data/linguistic-data/TextCat/20Newsgroups/20news-18828
 
 #./runNaiveBayes.sh "multinomial" /afs/ir.stanford.edu/data/linguistic-data/TextCat/20Newsgroups/20news-18828
 
@@ -14,7 +14,7 @@
 
 #./runNaiveBayes.sh "multinomial-kfold-chi2" /afs/ir.stanford.edu/data/linguistic-data/TextCat/20Newsgroups/20news-18828
 
-./runNaiveBayes.sh "twcnb" /afs/ir.stanford.edu/data/linguistic-data/TextCat/20Newsgroups/20news-18828
+#./runNaiveBayes.sh "twcnb" /afs/ir.stanford.edu/data/linguistic-data/TextCat/20Newsgroups/20news-18828
 
 #Current accuracies:
 #Binomial: 84.8%
@@ -30,7 +30,7 @@
 
 #RANDOM KFOLDING:
 #Binomial w/ Kfold=10: 
-#Multinomial w/ Kfold=10: 89.5%
+#Multinomial w/ Kfold=10: 89.5%-89.65%
 #Binomial w/ Kfold, Chi2: 
 #Multinomial w/ Kfold, Chi2: 
 #CNB: 384
@@ -41,3 +41,18 @@
 #CNB w/ Kfold=10: 89.7%
 #WCNB w/ Kfold=10: 89.5%
 #WCNB +1,2,3 w/ Kfold=10: 89.2%
+
+
+
+#Other stuff
+#MNB w/ upweight 5x: 90.0
+#MNB w/ upweight 10x: 90.3
+#MNB w/ upweight 20x: 90.5
+#MNB w/ upweight 50x: 90.5
+#MNB w/ upweight 200x: 90.0
+
+#No stemming: 90.0
+#No lowercasing: 90.0
+
+#No signature: 89.65
+#No from: 89.65

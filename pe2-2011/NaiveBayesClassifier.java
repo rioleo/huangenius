@@ -15,8 +15,12 @@ public class NaiveBayesClassifier {
   static int totalNumDocs = 0;
   
   static int K_FOLD_CONSTANT = 10;
-  static int NUM_FEATURES = 100;
+  static int NUM_FEATURES = 300;
   static int[] FEATURES = {100, 200, 400, 600, 800, 1600};
+  
+  static int UPWEIGHT_SUBJECT_FACTOR = 1;
+  
+  static boolean TOP_FEATURES_BY_CLASS = false;
   
   
   public static void doBinomial(MessageIterator mi, boolean doChi2) {
@@ -520,6 +524,8 @@ public class NaiveBayesClassifier {
 		  }
 	  }
     
+    Counter<String> topTokens = new Counter<String>();
+    
     // Iterate through newsgroups
 		for (int newsgroup = 0; newsgroup < numNewsgroups; newsgroup++) {
       System.out.print(".");
@@ -536,19 +542,32 @@ public class NaiveBayesClassifier {
 		    double C = wordsToTotalOccurrences.getCount(token) - A;
 		    double D = totalNumDocs - classToDocs.get(newsgroup).size() - C;
 		    
+        topTokens.incrementCount(token, (N*Math.pow(A*D-C*B,2)) / ((A+C)*(B+D)*(A+B)*(C+D)));
 		    chi2s.setCount(token, (N*Math.pow(A*D-C*B,2)) / ((A+C)*(B+D)*(A+B)*(C+D)));
 		  }
 		  
 		  // Retrieve top 300 for this class
-		  PriorityQueue<String> sortedTokens = chi2s.asPriorityQueue();
+		  if (TOP_FEATURES_BY_CLASS) {
+		    PriorityQueue<String> sortedTokens = chi2s.asPriorityQueue();
+		    for (int i = 0; i < NUM_FEATURES; i++) {
+		      if (!sortedTokens.hasNext()) break;
+  //		    if (newsgroup == 0)   System.out.println(sortedTokens.next());
+		      topWords.add(sortedTokens.next());
+		    }
+	    }
+		  
+	  }
+		
+	  if (!TOP_FEATURES_BY_CLASS) {
+		  PriorityQueue<String> sortedTokens = topTokens.asPriorityQueue();
 		  for (int i = 0; i < NUM_FEATURES; i++) {
 		    if (!sortedTokens.hasNext()) break;
 		    topWords.add(sortedTokens.next());
 		  }
-		  
 	  }
 		
     System.out.println("Done");
+    System.out.println(topWords.size() + " words chosen");
     return topWords;
   }
   
@@ -587,6 +606,8 @@ public class NaiveBayesClassifier {
 	    totalNumTokens += newsgroupToTotalWords.get(newsgroup);
 	  }
     
+    Counter<String> topTokens = new Counter<String>();
+    
     // Iterate through newsgroups
 		for (int newsgroup = 0; newsgroup < numNewsgroups; newsgroup++) {
       System.out.print(".");
@@ -604,19 +625,31 @@ public class NaiveBayesClassifier {
 		    double D = N - A - B - C;
 
 		    chi2s.setCount(token, (N*Math.pow(A*D-C*B,2)) / ((A+C)*(B+D)*(A+B)*(C+D)));
+        topTokens.incrementCount(token, (N*Math.pow(A*D-C*B,2)) / ((A+C)*(B+D)*(A+B)*(C+D)));
 		  }
 		  
 		  // Retrieve top 300 for this class
-		  PriorityQueue<String> sortedTokens = chi2s.asPriorityQueue();
+		  if (TOP_FEATURES_BY_CLASS) {
+		    PriorityQueue<String> sortedTokens = chi2s.asPriorityQueue();
+		    for (int i = 0; i < NUM_FEATURES; i++) {
+		      if (!sortedTokens.hasNext()) break;
+  //		    if (newsgroup == 0)   System.out.println(sortedTokens.next());
+		      topWords.add(sortedTokens.next());
+		    }
+	    }
+		  
+	  }
+	  
+	  if (!TOP_FEATURES_BY_CLASS) {
+		  PriorityQueue<String> sortedTokens = topTokens.asPriorityQueue();
 		  for (int i = 0; i < NUM_FEATURES; i++) {
 		    if (!sortedTokens.hasNext()) break;
-//		    if (newsgroup == 0)   System.out.println(sortedTokens.next());
 		    topWords.add(sortedTokens.next());
 		  }
-		  
 	  }
 		
     System.out.println("Done");
+    System.out.println(topWords.size() + " words chosen");
     return topWords;
   }
   
@@ -646,6 +679,7 @@ public class NaiveBayesClassifier {
 	  
 	  Counter<String> tokens = getTotalCounter(message);
 	  new Counter<String>();
+	  for (int i = 0; i < UPWEIGHT_SUBJECT_FACTOR; i++)
 	  tokens.incrementAll(message.subject);
 	  tokens.incrementAll(message.body);
 		

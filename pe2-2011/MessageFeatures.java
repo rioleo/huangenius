@@ -68,7 +68,8 @@ public class MessageFeatures implements Serializable {
 	protected static final String delims = " \t\n\r\f.()\"',-:;/\\?!@";
 
 	protected static void parseLine(String line, Counter<String> counter, Stemmer stemmer, HashSet<String> stopWords) {
-		line = line.toLowerCase();
+//	  if (line.startsWith("-")) return; // avoiding signature
+		line = line.toLowerCase(); // lowercase
 
 		// first find hyperlinks
 		Matcher mLink = hyperlink.matcher(line);
@@ -89,7 +90,7 @@ public class MessageFeatures implements Serializable {
 				if (numberRE.matcher(word).matches())
 					counter.incrementCount(word);
 				else {
-					word = stemmer.doStemming(word);
+					word = stemmer.doStemming(word); // STEMMING
 					if (wordRE.matcher(word).matches()
 							&& word.length() >= minWordLength
 							&& !stopWords.contains(word))

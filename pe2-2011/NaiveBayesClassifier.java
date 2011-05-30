@@ -15,7 +15,8 @@ public class NaiveBayesClassifier {
   static int totalNumDocs = 0;
   
   static int K_FOLD_CONSTANT = 10;
-  static int NUM_FEATURES = 300;
+  static int NUM_FEATURES = 100;
+  static int[] FEATURES = {100, 200, 400, 600, 800, 1600};
   
   
   public static void doBinomial(MessageIterator mi, boolean doChi2) {
@@ -24,8 +25,13 @@ public class NaiveBayesClassifier {
     trainBinomial();
 		
 		if (doChi2) {
-      Set<String> topWords = getTopWordsByChiSquaredBinomial();
-      testBinomial(topWords);
+		
+  	  for (int feature : FEATURES) {
+  	    NUM_FEATURES = feature;
+	      System.out.println("NUM FEATURES: " + NUM_FEATURES);
+        Set<String> topWords = getTopWordsByChiSquaredBinomial();
+        testBinomial(topWords);
+      }
     } else {
       testBinomial(allTokens);
     }
@@ -58,8 +64,16 @@ public class NaiveBayesClassifier {
     trainMultinomial();
 		
 		if (doChi2) {
-      Set<String> topWords = getTopWordsByChiSquaredMultinomial();
-      testMultinomial(topWords);
+		
+  	  for (int feature : FEATURES) {
+  	    NUM_FEATURES = feature;
+	      System.out.println("NUM FEATURES: " + NUM_FEATURES);
+        Set<String> topWords = getTopWordsByChiSquaredMultinomial();
+        testMultinomial(topWords);
+      }
+		
+//      Set<String> topWords = getTopWordsByChiSquaredMultinomial();
+//      testMultinomial(topWords);
     } else {
       testMultinomial(allTokens);
     }
@@ -87,7 +101,26 @@ public class NaiveBayesClassifier {
   }
   
   public static void doTWCNB(MessageIterator mi) {
-    // Your code here.
+  
+    // UNCOMMENT FOR TESTING ON FIRST 20 DOCS
+//    initialize(mi);
+//    trainMultinomialTWCNB();
+//    testMultinomialTWCNB(allTokens);
+      
+    // UNCOMMENT TO TEST CROSS VALIDATION
+    initializeKSets(mi);
+    System.out.println("K-fold: " + K_FOLD_CONSTANT);
+    double totalAccuracy = 0;
+    for (int i = 0; i < K_FOLD_CONSTANT; i++) {
+      initializeKFold(i);
+      trainMultinomialTWCNB();
+      double accuracy = 0;
+      accuracy = testMultinomialTWCNBOnTestSet(allTokens, kSets.get(i));
+      totalAccuracy += accuracy;
+      System.out.println(i + ": " + accuracy);
+    }
+    System.out.println("Done");
+    System.out.println("Average accuracy: " + totalAccuracy/K_FOLD_CONSTANT);
   }
   
   public static void outputProbability( final double[] probability )
@@ -199,6 +232,9 @@ public class NaiveBayesClassifier {
   }
   
   public static void initializeKSets(MessageIterator mi) {
+  
+    Random rand = new Random();
+  
     kSets = new HashMap<Integer, Set<MessageFeatures>>();
     for (int i = 0; i < K_FOLD_CONSTANT; i++) {
       kSets.put(i, new HashSet<MessageFeatures>());
@@ -213,7 +249,11 @@ public class NaiveBayesClassifier {
 		  System.out.print("Reading training set");
     	while (true) {
     		MessageFeatures message = iterator.getNextMessage();
-    		kSets.get(numMessagesRead%K_FOLD_CONSTANT).add(message);
+    		// NONRANDOM
+//    		kSets.get(numMessagesRead%K_FOLD_CONSTANT).add(message);
+
+        // RANDOM
+        kSets.get(rand.nextInt(K_FOLD_CONSTANT)).add(message);
     		
     		if (message.newsgroupNumber != classNum) {
     			classNum = message.newsgroupNumber;
@@ -357,16 +397,17 @@ public class NaiveBayesClassifier {
 				}
 				
 				// Print out scores for document
-				System.out.println("Document " + doc + " class " + curNewsgroup);
+//				System.out.println("Document " + doc + " class " + curNewsgroup);
 				
 				int bestClass = getBestClass(scores);
 				if (bestClass == trueClass) correct++;
 				total++;
 				
-				outputProbability(scores);
-				System.out.println("Accuracy: " + correct + "/" + total);
+//				outputProbability(scores);
+//				System.out.println("Accuracy: " + correct + "/" + total);
 			}
 		}
+		System.out.println("Accuracy: " + correct + "/" + total);
   
   }
   
@@ -561,7 +602,7 @@ public class NaiveBayesClassifier {
 		    double B = (double)newsgroupToTotalWords.get(newsgroup) - A;
 		    double C = wordsToTotalOccurrences.getCount(token) - A;
 		    double D = N - A - B - C;
-		    
+
 		    chi2s.setCount(token, (N*Math.pow(A*D-C*B,2)) / ((A+C)*(B+D)*(A+B)*(C+D)));
 		  }
 		  
@@ -569,6 +610,7 @@ public class NaiveBayesClassifier {
 		  PriorityQueue<String> sortedTokens = chi2s.asPriorityQueue();
 		  for (int i = 0; i < NUM_FEATURES; i++) {
 		    if (!sortedTokens.hasNext()) break;
+//		    if (newsgroup == 0)   System.out.println(sortedTokens.next());
 		    topWords.add(sortedTokens.next());
 		  }
 		  
@@ -691,16 +733,17 @@ public class NaiveBayesClassifier {
 				}
 				
 				// Print out scores for document
-				System.out.println("Document " + doc + " class " + curNewsgroup);
+//				System.out.println("Document " + doc + " class " + curNewsgroup);
 				
 				int bestClass = getBestClass(scores);
 				if (bestClass == trueClass) correct++;
 				total++;
 				
-				outputProbability(scores);
-				System.out.println("Accuracy: " + correct + "/" + total);
+//				outputProbability(scores);
+//				System.out.println("Accuracy: " + correct + "/" + total);
 			}
 		}
+		System.out.println("Accuracy: " + correct + "/" + total);
   
   }
 
@@ -750,6 +793,224 @@ public class NaiveBayesClassifier {
   
   
   
+//  TWCNB ------------------------------------------------
+
+  public static void trainMultinomialTWCNB() {
+    for (MessageFeatures doc : docToTokens.values()) {
+  		addOccurrencesToMultinomialConditionalProbabilities(doc);
+		}
   
+		calculateCNBConditionalProbabilities();
+  }
+
+	// Calculates conditional probabilities for all tokens
+	public static void calculateCNBConditionalProbabilities() {
+		System.out.println("Calculating conditional probabilities..");
+		int counter = 0;
+		
+		HashMap<Integer, Integer> totalTokensInClass = getTotalTokensByClass();
+		
+		for (String token : conditionalProbabilities.keySet()) {
+			counter++;
+			HashMap<Integer, Double> occurrences = conditionalProbabilities.get(token);
+			
+			double totalOccurrences = getTotalOccurrences(totalTokensInClass);
+			double totalTokenOccurrences = getTotalTokenOccurrences(conditionalProbabilities, token);
+			
+			for (int i = 0; i < numNewsgroups; i++) {
+				if (!occurrences.containsKey(i)) occurrences.put(i, 0.0);
+			  // Calculates COMPLEMENT cond prob with smoothing
+			  double numerator = totalTokenOccurrences - occurrences.get(i) + 1;
+			  double denominator = totalOccurrences - totalTokensInClass.get(i) + conditionalProbabilities.keySet().size();
+        occurrences.put(i, (numerator)/(denominator));				 
+			}
+		}
+		System.out.println("Done calculating conditional probabilities");
+	}
+
+  public static double getTotalOccurrences(HashMap<Integer, Integer> occurrences) {
+    int total = 0;
+    for (Integer num : occurrences.values()) total+= num;
+    return total;  
+  }
+  
+  public static double getTotalTokenOccurrences(HashMap<String, HashMap<Integer, Double>> probs, String token) {
+    int total = 0;
+    for (Double num : probs.get(token).values()) total+= num.intValue();
+    return total;
+  }
+
+
+  public static void testMultinomialTWCNB(Set<String> features) {
+		System.out.println("Classifying documents...");
+		int total = 0;
+		int correct = 0;
+	
+	  //  UNCOMMENT FOR WCNB Get normalization factors
+	  double[] normalizationFactors = getNormalizationFactors();
+	  double priorNormalizationFactor = getPriorNormalizationFactor();
+	
+    for (int curNewsgroup = 0; curNewsgroup < numNewsgroups; curNewsgroup++) {
+      int correctInNewsgroup = 0;
+    	for (int testDoc = 0; testDoc < 20; testDoc++) {
+
+				// Get tokens in query document
+				MessageFeatures doc = docToTokens.get(classToDocs.get(curNewsgroup).get(testDoc));
+				Counter<String> docTokens = getTotalCounter(doc);
+				int trueClass = doc.newsgroupNumber;
+				
+				// Calculate conditional probabilities for the document for each class
+				double[] scores = new double[numNewsgroups];
+
+				for (int newsgroup = 0; newsgroup < numNewsgroups; newsgroup++) {
+				
+					// Add prior
+					double totalScore = 0;
+					
+					// WCNB
+//					totalScore += (Math.log(((double)classToDocs.get(newsgroup).size())/totalNumDocs)) / priorNormalizationFactor;
+					// CNB
+//					totalScore += Math.log(((double)classToDocs.get(newsgroup).size())/totalNumDocs);
+					
+					// Add conditional probability for every token
+					for (String token : docTokens.keySet()) {
+					  if (!features.contains(token)) continue;
+				    if (conditionalProbabilities.containsKey(token) && conditionalProbabilities.get(token).containsKey(newsgroup)) {
+						  double conditionalProbability = conditionalProbabilities.get(token).get(newsgroup);
+						  
+						  // UNCOMMENT FOR WCNB (uncomment above as well)
+						  double numerator = Math.log(conditionalProbability);
+						  double denominator = normalizationFactors[newsgroup];
+						  totalScore += numerator/denominator;
+						  
+						  // UNCOMMENT FOR CNB
+//					    totalScore -= (Math.log(conditionalProbability)*docTokens.getCount(token));
+            }
+					}	
+					
+					// Store total score for class
+					scores[newsgroup] = totalScore;
+				}
+				
+				// Print out scores for document
+//				System.out.println("Document " + doc + " class " + curNewsgroup);
+				
+		  // UNCOMMENT FOR CNB
+//		  int bestClass = getBestClass(scores);
+		  // UNCOMMENT FOR WCNB
+		    int bestClass = getBestClassMin(scores);
+				if (bestClass == trueClass) correct++;
+				total++;
+				if (bestClass == trueClass) correctInNewsgroup++;
+				
+//				outputProbability(scores);
+//				System.out.println("Accuracy: " + correct + "/" + total);
+			}
+			System.out.println("Accuracy for newsgroup " + curNewsgroup + ": " + correctInNewsgroup + "/20");
+		}
+		System.out.println("Accuracy: " + correct + "/" + total);
+  
+  }
+
+  public static double[] getNormalizationFactors() {
+    double[] normalizationFactors = new double[numNewsgroups];
+    for (int i = 0; i < numNewsgroups; i++) {
+        normalizationFactors[i] = 0;
+    }
+    for (String token : conditionalProbabilities.keySet()) {
+      HashMap<Integer, Double> probs = conditionalProbabilities.get(token);
+      for (int i = 0; i < numNewsgroups; i++) {
+        normalizationFactors[i] += Math.abs(Math.log(probs.get(i)));
+      }
+    }
+    return normalizationFactors;  
+  }
+  
+  public static double getPriorNormalizationFactor() {
+    double total = 0;
+    for (int newsgroup = 0; newsgroup < numNewsgroups; newsgroup++)	total += Math.abs(Math.log(((double)classToDocs.get(newsgroup).size())/totalNumDocs));
+    return total;
+  }
+
+
+  public static double testMultinomialTWCNBOnTestSet(Set<String> features, Set<MessageFeatures> testSet) {
+		System.out.println("Classifying documents...");
+		int total = 0;
+		int correct = 0;
+	
+	  //  UNCOMMENT FOR WCNB Get normalization factors
+	  double[] normalizationFactors = getNormalizationFactors();
+	  double priorNormalizationFactor = getPriorNormalizationFactor();
+	
+    for (MessageFeatures doc : testSet) {
+		  // Get tokens in query document
+		  Counter<String> docTokens = getTotalCounter(doc);
+		  int trueClass = doc.newsgroupNumber;
+		
+		  // Calculate conditional probabilities for the document for each class
+		  double[] scores = new double[numNewsgroups];
+		  for (int newsgroup = 0; newsgroup < numNewsgroups; newsgroup++) {
+		
+			  // Add prior
+			  double totalScore = 0;
+			  // UNCOMMENT FOR CNB
+//			  totalScore += Math.log(((double)classToDocs.get(newsgroup).size())/totalNumDocs);
+			
+			  // Add conditional probability for every token
+			  for (String token : docTokens.keySet()) {
+			    if (!features.contains(token)) continue;
+		      if (conditionalProbabilities.containsKey(token) && conditionalProbabilities.get(token).containsKey(newsgroup)) {
+				    double conditionalProbability = conditionalProbabilities.get(token).get(newsgroup);
+				    
+					  // UNCOMMENT FOR WCNB (uncomment above as well)
+				    double numerator = Math.log(conditionalProbability);
+				    double denominator = normalizationFactors[newsgroup];
+				    totalScore += numerator/denominator;
+				    
+				    // UNCOMMENT FOR CNB
+//			      totalScore -= (Math.log(conditionalProbability)*docTokens.getCount(token));
+          }
+			  }	
+			
+			  // Store total score for class
+			  scores[newsgroup] = totalScore;
+		  }
+		
+		  // UNCOMMENT FOR CNB
+//		  int bestClass = getBestClass(scores);
+		  // UNCOMMENT FOR WCNB
+		  int bestClass = getBestClassMin(scores);
+		  if (bestClass == trueClass) correct++;
+		  total++;
+		}
+		return ((double)correct)/total;
+  }
+
+  public static int getBestClassMin(double[] scores) {
+	  int bestClass = 0;
+	  double bestScore = 100000;
+	  for (int i = 0; i < numNewsgroups; i++) {
+		  if (scores[i] < bestScore) {
+			  bestClass = i;
+			  bestScore = scores[i];
+		  }
+	  }
+	  return bestClass;
+  }
+
+//  END TWCNB --------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
   
 }

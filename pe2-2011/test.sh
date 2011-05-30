@@ -40,5 +40,9 @@
 #Multinomial w/ Kfold, Chi2: 
 #CNB: 384
 #WCNB: 386
+#WCNB+T1: 385
+#WCNB+T1+T2: 389
+#WCNB+T1+T2+T3: 382
 #CNB w/ Kfold=10: 89.7%
 #WCNB w/ Kfold=10: 89.5%
+#WCNB +1,2,3 w/ Kfold=10: 89.2%

@@ -796,12 +796,44 @@ public class NaiveBayesClassifier {
 //  TWCNB ------------------------------------------------
 
   public static void trainMultinomialTWCNB() {
+	  // Get binomial occurrences for transform 2
+	  Counter<String> binomialOccurrences = getOccurrences();
+	  
     for (MessageFeatures doc : docToTokens.values()) {
-  		addOccurrencesToMultinomialConditionalProbabilities(doc);
+  		addOccurrencesToMultinomialTWCNBConditionalProbabilities(doc, binomialOccurrences);
 		}
   
 		calculateCNBConditionalProbabilities();
   }
+  
+  // Transforms happen here
+ 	public static void addOccurrencesToMultinomialTWCNBConditionalProbabilities(MessageFeatures message, Counter<String> binomialOccurrences) {
+	  
+	  Counter<String> tokens = getTotalCounter(message);
+	  new Counter<String>();
+	  tokens.incrementAll(message.subject);
+	  tokens.incrementAll(message.body);
+	  
+	  double lengthNormalization = 0;
+	  for (String token : tokens.keySet()) lengthNormalization += Math.pow(tokens.getCount(token),2);
+		
+		for (String token : tokens.keySet()) {
+			if (!conditionalProbabilities.containsKey(token)) conditionalProbabilities.put(token, new HashMap<Integer, Double>());
+			HashMap<Integer, Double> occurrences = conditionalProbabilities.get(token);
+			double f = tokens.getCount(token);
+			f = Math.log(1+f); // transform 1
+      f = f*Math.log(docToTokens.size()/((double)binomialOccurrences.getCount(token))); // transform 2
+      f = f/Math.sqrt(lengthNormalization); // transform 3
+			if (!occurrences.containsKey(message.newsgroupNumber)) {
+				occurrences.put(message.newsgroupNumber, f);
+			} else {
+				double numOccurrences = occurrences.get(message.newsgroupNumber);
+				conditionalProbabilities.get(token).put(message.newsgroupNumber, numOccurrences+f); // transform 1
+			}
+		}
+	
+	}
+  
 
 	// Calculates conditional probabilities for all tokens
 	public static void calculateCNBConditionalProbabilities() {
@@ -827,6 +859,21 @@ public class NaiveBayesClassifier {
 		}
 		System.out.println("Done calculating conditional probabilities");
 	}
+
+
+  public static Counter<String> getOccurrences() {
+    Counter<String> occurrences = new Counter<String>();
+    for (MessageFeatures doc : docToTokens.values()) {
+      Set<String> docTokens = new HashSet<String>();
+      docTokens.addAll(doc.subject.keySet());
+      docTokens.addAll(doc.body.keySet());
+      for (String token : docTokens) {
+        occurrences.incrementCount(token);
+      }
+    }
+    return occurrences;
+  }
+
 
   public static double getTotalOccurrences(HashMap<Integer, Integer> occurrences) {
     int total = 0;

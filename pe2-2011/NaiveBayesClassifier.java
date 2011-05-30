@@ -18,32 +18,33 @@ public class NaiveBayesClassifier {
   static int NUM_FEATURES = 300;
   
   
-  public static void doBinomial(MessageIterator mi) {
-    initialize(mi);
-  
-		trainBinomial();
-		
-		testBinomial(allTokens);
-  }
-  
-  public static void doBinomialChi2(MessageIterator mi) {
+  public static void doBinomial(MessageIterator mi, boolean doChi2) {
     initialize(mi);
 
     trainBinomial();
 		
-    Set<String> topWords = getTopWordsByChiSquared();
-  
-    testBinomial(topWords);
+		if (doChi2) {
+      Set<String> topWords = getTopWordsByChiSquaredBinomial();
+      testBinomial(topWords);
+    } else {
+      testBinomial(allTokens);
+    }
   }
   
-  public static void doBinomialKFold(MessageIterator mi) {
+  public static void doBinomialKFold(MessageIterator mi, boolean doChi2) {
     initializeKSets(mi);
     System.out.println("K-fold: " + K_FOLD_CONSTANT);
     double totalAccuracy = 0;
     for (int i = 0; i < K_FOLD_CONSTANT; i++) {
       initializeKFold(i);
       trainBinomial();
-      double accuracy = testBinomialOnTestSet(allTokens, kSets.get(i));
+      double accuracy = 0;
+      if (doChi2) {
+        Set<String> topWords = getTopWordsByChiSquaredBinomial();
+        accuracy = testBinomialOnTestSet(topWords, kSets.get(i));
+      } else {
+        accuracy = testBinomialOnTestSet(allTokens, kSets.get(i));
+      }
       totalAccuracy += accuracy;
       System.out.println(i + ": " + accuracy);
     }
@@ -51,22 +52,33 @@ public class NaiveBayesClassifier {
     System.out.println("Average accuracy: " + totalAccuracy/K_FOLD_CONSTANT);
   }
   
-  public static void doMultinomial(MessageIterator mi) {
+  public static void doMultinomial(MessageIterator mi, boolean doChi2) {
     initialize(mi);
-    
+
     trainMultinomial();
-    
-    testMultinomial(allTokens);
+		
+		if (doChi2) {
+      Set<String> topWords = getTopWordsByChiSquaredMultinomial();
+      testMultinomial(topWords);
+    } else {
+      testMultinomial(allTokens);
+    }
   }
   
-  public static void doMultinomialKFold(MessageIterator mi) {
+  public static void doMultinomialKFold(MessageIterator mi, boolean doChi2) {
     initializeKSets(mi);
     System.out.println("K-fold: " + K_FOLD_CONSTANT);
     double totalAccuracy = 0;
     for (int i = 0; i < K_FOLD_CONSTANT; i++) {
       initializeKFold(i);
       trainMultinomial();
-      double accuracy = testMultinomialOnTestSet(allTokens, kSets.get(i));
+      double accuracy = 0;
+      if (doChi2) {
+        Set<String> topWords = getTopWordsByChiSquaredMultinomial();
+        accuracy = testMultinomialOnTestSet(topWords, kSets.get(i));
+      } else {
+        accuracy = testMultinomialOnTestSet(allTokens, kSets.get(i));
+      }
       totalAccuracy += accuracy;
       System.out.println(i + ": " + accuracy);
     }
@@ -110,17 +122,23 @@ public class NaiveBayesClassifier {
     }
     
     if (mode.equals("binomial")) {
-      doBinomial(mi);
+      doBinomial(mi, false);
     } else if (mode.equals("binomial-chi2")) {
-      doBinomialChi2(mi);
+      doBinomial(mi, true);
     } else if (mode.equals("multinomial")) {
-      doMultinomial(mi);
+      doMultinomial(mi, false);
+    } else if (mode.equals("multinomial-chi2")) {
+      doMultinomial(mi, true);
     } else if (mode.equals("twcnb")) {
       doTWCNB(mi);
     } else if (mode.equals("binomial-kfold")) {
-      doBinomialKFold(mi);
+      doBinomialKFold(mi, false);
+    } else if (mode.equals("binomial-kfold-chi2")) {
+      doBinomialKFold(mi, true);
     } else if (mode.equals("multinomial-kfold")) {
-      doMultinomialKFold(mi);
+      doMultinomialKFold(mi, false);
+    } else if (mode.equals("multinomial-kfold-chi2")) {
+      doMultinomialKFold(mi, true);
     } else { 
       // Add other test cases that you want to run here.
       
@@ -440,7 +458,7 @@ public class NaiveBayesClassifier {
   
   // CHI SQUARED ----------------------------------------
   
-  public static Set<String> getTopWordsByChiSquared() {
+  public static Set<String> getTopWordsByChiSquaredBinomial() {
     System.out.print("Calculating chi2 values");
     Set<String> topWords = new HashSet<String>();
     Map<Integer, Counter<String>> newsgroupToWordOccurrences = new HashMap<Integer, Counter<String>>();
@@ -476,6 +494,73 @@ public class NaiveBayesClassifier {
 		    double B = (double)classToDocs.get(newsgroup).size() - A;
 		    double C = wordsToTotalOccurrences.getCount(token) - A;
 		    double D = totalNumDocs - classToDocs.get(newsgroup).size() - C;
+		    
+		    chi2s.setCount(token, (N*Math.pow(A*D-C*B,2)) / ((A+C)*(B+D)*(A+B)*(C+D)));
+		  }
+		  
+		  // Retrieve top 300 for this class
+		  PriorityQueue<String> sortedTokens = chi2s.asPriorityQueue();
+		  for (int i = 0; i < NUM_FEATURES; i++) {
+		    if (!sortedTokens.hasNext()) break;
+		    topWords.add(sortedTokens.next());
+		  }
+		  
+	  }
+		
+    System.out.println("Done");
+    return topWords;
+  }
+  
+
+  public static Set<String> getTopWordsByChiSquaredMultinomial() {
+    System.out.print("Calculating chi2 values");
+    Set<String> topWords = new HashSet<String>();
+    Map<Integer, Counter<String>> newsgroupToWordOccurrences = new HashMap<Integer, Counter<String>>();
+    Counter<String> wordsToTotalOccurrences = new Counter<String>();
+    Map<Integer, Integer> newsgroupToTotalWords = new HashMap<Integer, Integer>();
+    
+    // Calculate occurrences for all words
+		for (int newsgroup = 0; newsgroup < numNewsgroups; newsgroup++) {
+		  newsgroupToTotalWords.put(newsgroup, 0);
+		  newsgroupToWordOccurrences.put(newsgroup, new Counter<String>());
+		  for (String docName : classToDocs.get(newsgroup)) {
+		    MessageFeatures doc = docToTokens.get(docName);
+	      for (String token : doc.subject.keySet()) {
+	        double occurrences = doc.subject.getCount(token);
+	        newsgroupToWordOccurrences.get(newsgroup).incrementCount(token, occurrences);
+	        wordsToTotalOccurrences.incrementCount(token, occurrences);
+	        newsgroupToTotalWords.put(newsgroup, newsgroupToTotalWords.get(newsgroup) + (int)occurrences);
+	      }
+	      for (String token : doc.body.keySet()) {
+	        double occurrences = doc.body.getCount(token);
+	        newsgroupToWordOccurrences.get(newsgroup).incrementCount(token, occurrences);
+	        wordsToTotalOccurrences.incrementCount(token, occurrences);
+	        newsgroupToTotalWords.put(newsgroup, newsgroupToTotalWords.get(newsgroup) + (int)occurrences);
+	      }
+		  }
+	  }
+	  
+	  // Calculate N
+	  int totalNumTokens = 0;
+	  for (int newsgroup = 0; newsgroup < numNewsgroups; newsgroup++) {
+	    totalNumTokens += newsgroupToTotalWords.get(newsgroup);
+	  }
+    
+    // Iterate through newsgroups
+		for (int newsgroup = 0; newsgroup < numNewsgroups; newsgroup++) {
+      System.out.print(".");
+      
+		  // Get all tokens in newsgroup
+		  Counter<String> newsgroupTokens = newsgroupToWordOccurrences.get(newsgroup);
+		  
+		  // Calculate and sort by chi-2 value
+		  Counter<String> chi2s = new Counter<String>();
+		  double N = (double)totalNumTokens;
+		  for (String token : newsgroupTokens.keySet()) {
+		    double A = newsgroupTokens.getCount(token);
+		    double B = (double)newsgroupToTotalWords.get(newsgroup) - A;
+		    double C = wordsToTotalOccurrences.getCount(token) - A;
+		    double D = N - A - B - C;
 		    
 		    chi2s.setCount(token, (N*Math.pow(A*D-C*B,2)) / ((A+C)*(B+D)*(A+B)*(C+D)));
 		  }

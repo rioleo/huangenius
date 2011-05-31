@@ -2,6 +2,9 @@ All you will need to do is run setup.sh once, then run runNaiveBayes.sh with the
 
 You will want....
 
+Setup:
+./setup.sh /afs/ir.stanford.edu/data/linguistic-data/TextCat/20Newsgroups/20news-18828
+
 Part 1:
 ./runNaiveBayes.sh "binomial" /afs/ir.stanford.edu/data/linguistic-data/TextCat/20Newsgroups/20news-18828
 

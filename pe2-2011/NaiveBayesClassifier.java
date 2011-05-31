@@ -14,7 +14,7 @@ public class NaiveBayesClassifier {
   static int numNewsgroups = 0;
   static int totalNumDocs = 0;
   
-  static int K_FOLD_CONSTANT = 2;
+  static int K_FOLD_CONSTANT = 10;
   static int NUM_FEATURES = 300;
   static int[] FEATURES = {100, 200, 400, 600, 800, 1600};
   
@@ -29,13 +29,8 @@ public class NaiveBayesClassifier {
     trainBinomial();
 		
 		if (doChi2) {
-		
-  	  for (int feature : FEATURES) {
-  	    NUM_FEATURES = feature;
-	      System.out.println("NUM FEATURES: " + NUM_FEATURES);
-        Set<String> topWords = getTopWordsByChiSquaredBinomial();
-        testBinomial(topWords);
-      }
+      Set<String> topWords = getTopWordsByChiSquaredBinomial();
+      testBinomial(topWords);
     } else {
       testBinomial(allTokens);
     }
@@ -68,16 +63,8 @@ public class NaiveBayesClassifier {
     trainMultinomial();
 		
 		if (doChi2) {
-		
-//  	  for (int feature : FEATURES) {
-//  	    NUM_FEATURES = feature;
-	      System.out.println("NUM FEATURES: " + NUM_FEATURES);
-        Set<String> topWords = getTopWordsByChiSquaredMultinomial();
-        testMultinomial(topWords);
-//      }
-		
-//      Set<String> topWords = getTopWordsByChiSquaredMultinomial();
-//      testMultinomial(topWords);
+      Set<String> topWords = getTopWordsByChiSquaredMultinomial();
+      testMultinomial(topWords);
     } else {
       testMultinomial(allTokens);
     }
@@ -107,25 +94,25 @@ public class NaiveBayesClassifier {
   public static void doTWCNB(MessageIterator mi) {
   
     // UNCOMMENT FOR TESTING ON FIRST 20 DOCS
-//    initialize(mi);
-//    trainMultinomialTWCNB();
-//    testMultinomialTWCNB(allTokens);
+    initialize(mi);
+    trainMultinomialTWCNB();
+    testMultinomialTWCNB(allTokens);
       
     // UNCOMMENT TO TEST CROSS VALIDATION
-    initializeKSets(mi);
-    System.out.println("K-fold: " + K_FOLD_CONSTANT);
-    double totalAccuracy = 0;
-    for (int i = 0; i < K_FOLD_CONSTANT; i++) {
-      initializeKFold(i);
-      trainMultinomialTWCNB();
-      Set<String> topWords = getTopWordsByChiSquaredMultinomial();
-      double accuracy = 0;
-      accuracy = testMultinomialTWCNBOnTestSet(topWords, kSets.get(i));
-      totalAccuracy += accuracy;
-      System.out.println(i + ": " + accuracy);
-    }
-    System.out.println("Done");
-    System.out.println("Average accuracy: " + totalAccuracy/K_FOLD_CONSTANT);
+//    initializeKSets(mi);
+//    System.out.println("K-fold: " + K_FOLD_CONSTANT);
+//    double totalAccuracy = 0;
+//    for (int i = 0; i < K_FOLD_CONSTANT; i++) {
+//      initializeKFold(i);
+//      trainMultinomialTWCNB();
+////      Set<String> topWords = getTopWordsByChiSquaredMultinomial();
+//      double accuracy = 0;
+//      accuracy = testMultinomialTWCNBOnTestSet(allTokens, kSets.get(i));
+//      totalAccuracy += accuracy;
+//      System.out.println(i + ": " + accuracy);
+//    }
+//    System.out.println("Done");
+//    System.out.println("Average accuracy: " + totalAccuracy/K_FOLD_CONSTANT);
   }
   
   public static void outputProbability( final double[] probability )
@@ -215,7 +202,7 @@ public class NaiveBayesClassifier {
 	  int classNum = -1;
 	  int numDocsInClass = 0;
 	  try {
-		  System.out.print("Reading training set");
+//		  System.out.print("Reading training set");
     	while (true) {
     		MessageFeatures message = iterator.getNextMessage();
     		if (message.newsgroupNumber != classNum) {
@@ -227,12 +214,12 @@ public class NaiveBayesClassifier {
     		addMessageToDatabase(message);
     		
     		numMessagesRead++;
-    		if (numMessagesRead % 1000 == 0) System.out.print(".");
+//    		if (numMessagesRead % 1000 == 0) System.out.print(".");
     	}	
     	
 	  } catch (Exception e) {
 		  totalNumDocs = numMessagesRead;
-		  System.out.println("Done");
+//		  System.out.println("Done");
 	  }
   }
   
@@ -346,7 +333,7 @@ public class NaiveBayesClassifier {
 
 	// Calculates conditional probabilities for all tokens
 	public static void calculateBinomialConditionalProbabilities() {
-		System.out.println("Calculating conditional probabilities..");
+//		System.out.println("Calculating conditional probabilities..");
 		int counter = 0;
 		for (String token : conditionalProbabilities.keySet()) {
 			counter++;
@@ -358,11 +345,11 @@ public class NaiveBayesClassifier {
 				occurrences.put(i, (occurrences.get(i)+1)/(classToDocs.get(i).size()+2));
 			}
 		}
-		System.out.println("Done calculating conditional probabilities");
+//		System.out.println("Done calculating conditional probabilities");
 	}
   
   public static void testBinomial(Set<String> features) {
-		System.out.println("Classifying documents...");
+//		System.out.println("Classifying documents...");
 		int total = 0;
 		int correct = 0;
 	
@@ -408,11 +395,11 @@ public class NaiveBayesClassifier {
 				if (bestClass == trueClass) correct++;
 				total++;
 				
-//				outputProbability(scores);
+				outputProbability(scores);
 //				System.out.println("Accuracy: " + correct + "/" + total);
 			}
 		}
-		System.out.println("Accuracy: " + correct + "/" + total);
+//		System.out.println("Accuracy: " + correct + "/" + total);
   
   }
   
@@ -451,7 +438,7 @@ public class NaiveBayesClassifier {
   
   
   public static double testBinomialOnTestSet(Set<String> features, Set<MessageFeatures> testSet) {
-		System.out.println("Classifying documents...");
+//		System.out.println("Classifying documents...");
 		int total = 0;
 		int correct = 0;
 
@@ -505,7 +492,7 @@ public class NaiveBayesClassifier {
   // CHI SQUARED ----------------------------------------
   
   public static Set<String> getTopWordsByChiSquaredBinomial() {
-    System.out.print("Calculating chi2 values");
+//    System.out.print("Calculating chi2 values");
     Set<String> topWords = new HashSet<String>();
     Map<Integer, Counter<String>> newsgroupToWordOccurrences = new HashMap<Integer, Counter<String>>();
     Counter<String> wordsToTotalOccurrences = new Counter<String>();
@@ -529,7 +516,7 @@ public class NaiveBayesClassifier {
     
     // Iterate through newsgroups
 		for (int newsgroup = 0; newsgroup < numNewsgroups; newsgroup++) {
-      System.out.print(".");
+//      System.out.print(".");
       
 		  // Get all tokens in newsgroup
 		  Counter<String> newsgroupTokens = newsgroupToWordOccurrences.get(newsgroup);
@@ -567,14 +554,14 @@ public class NaiveBayesClassifier {
 		  }
 	  }
 		
-    System.out.println("Done");
-    System.out.println(topWords.size() + " words chosen");
+//    System.out.println("Done");
+//    System.out.println(topWords.size() + " words chosen");
     return topWords;
   }
   
 
   public static Set<String> getTopWordsByChiSquaredMultinomial() {
-    System.out.print("Calculating chi2 values");
+//    System.out.print("Calculating chi2 values");
     Set<String> topWords = new HashSet<String>();
     Map<Integer, Counter<String>> newsgroupToWordOccurrences = new HashMap<Integer, Counter<String>>();
     Counter<String> wordsToTotalOccurrences = new Counter<String>();
@@ -611,7 +598,7 @@ public class NaiveBayesClassifier {
     
     // Iterate through newsgroups
 		for (int newsgroup = 0; newsgroup < numNewsgroups; newsgroup++) {
-      System.out.print(".");
+//      System.out.print(".");
       
 		  // Get all tokens in newsgroup
 		  Counter<String> newsgroupTokens = newsgroupToWordOccurrences.get(newsgroup);
@@ -649,8 +636,8 @@ public class NaiveBayesClassifier {
 		  }
 	  }
 		
-    System.out.println("Done");
-    System.out.println(topWords.size() + " words chosen");
+//    System.out.println("Done");
+//    System.out.println(topWords.size() + " words chosen");
     return topWords;
   }
   
@@ -699,7 +686,7 @@ public class NaiveBayesClassifier {
 
 	// Calculates conditional probabilities for all tokens
 	public static void calculateMultinomialConditionalProbabilities() {
-		System.out.println("Calculating conditional probabilities..");
+//		System.out.println("Calculating conditional probabilities..");
 		int counter = 0;
 		
 		HashMap<Integer, Integer> totalTokensInClass = getTotalTokensByClass();
@@ -714,7 +701,7 @@ public class NaiveBayesClassifier {
 				occurrences.put(i, (occurrences.get(i)+1)/(totalTokensInClass.get(i) + conditionalProbabilities.keySet().size()));
 			}
 		}
-		System.out.println("Done calculating conditional probabilities");
+//		System.out.println("Done calculating conditional probabilities");
 	}
 
   public static HashMap<Integer, Integer> getTotalTokensByClass() {
@@ -733,7 +720,7 @@ public class NaiveBayesClassifier {
 
 
   public static void testMultinomial(Set<String> features) {
-		System.out.println("Classifying documents...");
+//		System.out.println("Classifying documents...");
 		int total = 0;
 		int correct = 0;
 	
@@ -774,11 +761,11 @@ public class NaiveBayesClassifier {
 				if (bestClass == trueClass) correct++;
 				total++;
 				
-//				outputProbability(scores);
+				outputProbability(scores);
 //				System.out.println("Accuracy: " + correct + "/" + total);
 			}
 		}
-		System.out.println("Accuracy: " + correct + "/" + total);
+//		System.out.println("Accuracy: " + correct + "/" + total);
   
   }
 
@@ -872,7 +859,7 @@ public class NaiveBayesClassifier {
 
 	// Calculates conditional probabilities for all tokens
 	public static void calculateCNBConditionalProbabilities() {
-		System.out.println("Calculating conditional probabilities..");
+//		System.out.println("Calculating conditional probabilities..");
 		int counter = 0;
 		
 		HashMap<Integer, Integer> totalTokensInClass = getTotalTokensByClass();
@@ -892,7 +879,7 @@ public class NaiveBayesClassifier {
         occurrences.put(i, (numerator)/(denominator));				 
 			}
 		}
-		System.out.println("Done calculating conditional probabilities");
+//		System.out.println("Done calculating conditional probabilities");
 	}
 
 
@@ -924,7 +911,7 @@ public class NaiveBayesClassifier {
 
 
   public static void testMultinomialTWCNB(Set<String> features) {
-		System.out.println("Classifying documents...");
+//		System.out.println("Classifying documents...");
 		int total = 0;
 		int correct = 0;
 	
@@ -985,12 +972,12 @@ public class NaiveBayesClassifier {
 				total++;
 				if (bestClass == trueClass) correctInNewsgroup++;
 				
-//				outputProbability(scores);
+				outputProbability(scores);
 //				System.out.println("Accuracy: " + correct + "/" + total);
 			}
-			System.out.println("Accuracy for newsgroup " + curNewsgroup + ": " + correctInNewsgroup + "/20");
+//			System.out.println("Accuracy for newsgroup " + curNewsgroup + ": " + correctInNewsgroup + "/20");
 		}
-		System.out.println("Accuracy: " + correct + "/" + total);
+//		System.out.println("Accuracy: " + correct + "/" + total);
   
   }
 
